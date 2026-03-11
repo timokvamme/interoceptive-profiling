@@ -27,7 +27,7 @@
 # Inspired by Dalka et al. (2022) network visualization approach.
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(tidyverse)
 library(igraph)
@@ -35,9 +35,9 @@ library(ggraph)
 library(ggforce)  # for geom_mark_hull
 library(ggrepel)  # for geom_text_repel
 
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 sub_plots_dir <- file.path(plots_dir, "sub_plots")
 dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
@@ -46,7 +46,7 @@ dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv('C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv')
+dfc <- read.csv('C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv')
 
 # Define item columns for each scale
 ias_items <- paste0('ias_', 1:21)

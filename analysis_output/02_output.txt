@@ -156,6 +156,6 @@ GENERATING SUPPLEMENTARY FIGURE
 =============================================================================
 
 
-Supplementary figure saved: C:/code/projects/intero_mod/plots/supplementary_plots/2_s_1_item_mh_correlations.png 
+Supplementary figure saved: C:/code/projects/interoceptive-profiling/plots/supplementary_plots/2_s_1_item_mh_correlations.png 
 
 Done.

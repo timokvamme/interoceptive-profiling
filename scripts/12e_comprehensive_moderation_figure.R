@@ -11,7 +11,7 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(dplyr)
 library(lavaan)
@@ -23,7 +23,7 @@ library(grid)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 
 # Save full-scale totals for clustering (consistent with 04_cluster_analysis.R)
 ias_full <- dfc$ias

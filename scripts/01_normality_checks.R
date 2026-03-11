@@ -9,9 +9,9 @@
 
 library(tidyverse)
 
-setwd("C:/code/projects/mi/analyses/soma")
-output_dir <- "C:/code/projects/intero_mod/analysis_output"
-plots_dir <- "C:/code/projects/intero_mod/plots/supplementary_plots"
+setwd("C:/code/projects/interoceptive-profiling")
+output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots/supplementary_plots"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
 
@@ -19,7 +19,7 @@ dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
 sink(file.path(output_dir, "01_output.txt"), split = TRUE)
 
 # Load data
-df <- read.csv("results/dfc_vviq_q_k.csv")
+df <- read.csv("dfc_vviq_q_k.csv")
 cat("N =", nrow(df), "\n\n")
 
 cat(paste(rep("=", 70), collapse = ""), "\n")

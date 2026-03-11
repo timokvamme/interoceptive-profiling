@@ -315,14 +315,14 @@ if __name__ == "__main__":
     # =========================================================================
 
     # Data path
-    data_path = "C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv"
-    output_dir = "C:/code/projects/intero_mod"
+    data_path = "C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv"
+    output_dir = "C:/code/projects/interoceptive-profiling"
     analysis_output_dir = os.path.join(output_dir, "analysis_output")
     plots_dir = os.path.join(output_dir, "plots")
     sub_plots_dir = os.path.join(plots_dir, "sub_plots")
     supplementary_plots_dir = os.path.join(plots_dir, "supplementary_plots")
     other_plots_vviq_dir = os.path.join(plots_dir, "other_plots_vviq_plots")
-    supplementary_data_dir = "C:/code/projects/intero_mod/supplementary_data"
+    supplementary_data_dir = "C:/code/projects/interoceptive-profiling/supplementary_data"
     os.makedirs(analysis_output_dir, exist_ok=True)
     os.makedirs(sub_plots_dir, exist_ok=True)
     os.makedirs(supplementary_plots_dir, exist_ok=True)

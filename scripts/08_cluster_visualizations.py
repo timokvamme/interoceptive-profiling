@@ -23,7 +23,7 @@ import os
 # Set working directory
 script_dir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(script_dir)
-plots_dir = "C:/code/projects/intero_mod/plots"
+plots_dir = "C:/code/projects/interoceptive-profiling/plots"
 sub_plots_dir = os.path.join(plots_dir, "sub_plots")
 supplementary_plots_dir = os.path.join(plots_dir, "supplementary_plots")
 os.makedirs(sub_plots_dir, exist_ok=True)

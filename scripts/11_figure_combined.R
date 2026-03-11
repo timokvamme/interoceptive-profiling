@@ -20,7 +20,7 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(ggplot2)
 library(dplyr)
@@ -30,8 +30,8 @@ library(grid)
 library(igraph)
 library(ggrepel)
 
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 sub_plots_dir <- file.path(plots_dir, "sub_plots")
 supplementary_plots_dir <- file.path(plots_dir, "supplementary_plots")
 dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
@@ -46,7 +46,7 @@ consensus_df <- read.csv(file.path(supplementary_data_dir, "item_consensus_ranki
 saturation_results <- read.csv(file.path(supplementary_data_dir, "saturation_results.csv"))
 config_results <- read.csv(file.path(supplementary_data_dir, "minimal_set_comparison.csv"))
 centrality_df <- read.csv(file.path(supplementary_data_dir, "network_centrality.csv"))
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 
 # =============================================================================
 # 2. FULL QUESTIONNAIRE TEXT

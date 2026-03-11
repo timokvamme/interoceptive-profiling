@@ -3,7 +3,7 @@ CORRELATION HEATMAP GENERATOR
 Interoception and Mental Health Variables
 ======================================================================
 
-Loading data from: C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv
+Loading data from: C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv
 Dataset shape: (833, 187)
 
 --------------------------------------------------
@@ -11,14 +11,14 @@ Creating heatmap: Subjective interoceptive accuracy and attention
 --------------------------------------------------
   Variables: 8
   Complete cases: 833
-  Saved: C:/code/projects/intero_mod\plots\sub_plots\fig1_A_heatmap.png
+  Saved: C:/code/projects/interoceptive-profiling\plots\sub_plots\fig1_A_heatmap.png
 
 --------------------------------------------------
 Creating heatmap: Subjective interoceptive accuracy and attention (with VVIQ)
 --------------------------------------------------
   Variables: 9
   Complete cases: 833
-  Saved: C:/code/projects/intero_mod\plots\supplementary_plots\1_s_1_heatmap_intero_mh_vviq.png
+  Saved: C:/code/projects/interoceptive-profiling\plots\supplementary_plots\1_s_1_heatmap_intero_mh_vviq.png
 
 --------------------------------------------------
 Saving correlation matrices

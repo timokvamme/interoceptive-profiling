@@ -22,7 +22,7 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/mi/analyses/soma")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(tidyverse)
 library(cluster)
@@ -32,10 +32,10 @@ library(gridExtra)
 library(grid)
 library(png)
 
-output_dir <- "C:/code/projects/intero_mod"
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+output_dir <- "C:/code/projects/interoceptive-profiling"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 sub_plots_dir <- file.path(plots_dir, "sub_plots")
 supplementary_plots_dir <- file.path(plots_dir, "supplementary_plots")
 dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
@@ -48,7 +48,7 @@ dir.create(supplementary_data_dir, showWarnings = FALSE, recursive = TRUE)
 # LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("results/dfc_vviq_q_k.csv")
+dfc <- read.csv("dfc_vviq_q_k.csv")
 cluster_data <- scale(dfc[, c("ias", "iats")])
 colnames(cluster_data) <- c("IAS_z", "IATS_z")
 

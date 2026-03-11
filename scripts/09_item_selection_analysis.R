@@ -18,8 +18,8 @@
 # 6. Cluster flow - who gets reclassified with reduced items?
 #
 # READS FROM:
-#   - Main project data: C:/code/projects/intero_mod/data_with_k_means_clusters.csv
-#   - Original data: C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv
+#   - Main project data: C:/code/projects/interoceptive-profiling/data_with_k_means_clusters.csv
+#   - Original data: C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv
 #
 # OUTPUTS:
 #   - 09_output.txt (all statistics)
@@ -37,7 +37,7 @@
 # =============================================================================
 
 # Set working directory to project root
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(glmnet)      # LASSO/Elastic Net
 library(caret)       # Cross-validation framework
@@ -50,9 +50,9 @@ library(mclust)      # Adjusted Rand Index
 library(patchwork)
 
 # Output directories
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 supplementary_plots_dir <- file.path(plots_dir, "supplementary_plots")
 dir.create(supplementary_plots_dir, showWarnings = FALSE, recursive = TRUE)
 
@@ -61,7 +61,7 @@ dir.create(supplementary_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # =============================================================================
 
 # Load original data with all items
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 cat("Sample size:", nrow(dfc), "\n")
 
 # Define item names

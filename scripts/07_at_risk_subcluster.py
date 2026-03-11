@@ -24,7 +24,7 @@ import os
 warnings.filterwarnings('ignore')
 
 # Output directories
-os.chdir('C:/code/projects/intero_mod')
+os.chdir('C:/code/projects/interoceptive-profiling')
 analysis_output_dir = 'analysis_output'
 plots_dir = 'plots'
 supplementary_plots_dir = os.path.join(plots_dir, 'supplementary_plots')

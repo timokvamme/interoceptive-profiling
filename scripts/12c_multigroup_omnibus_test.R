@@ -9,12 +9,12 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(dplyr)
 library(lavaan)
 
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
 dir.create(analysis_output_dir, showWarnings = FALSE, recursive = TRUE)
 
 # Redirect output to file
@@ -24,7 +24,7 @@ sink(file.path(analysis_output_dir, "12c_output.txt"), split = TRUE)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 
 cat("=============================================================================\n")
 cat("MULTI-GROUP SEM: OMNIBUS TEST FOR PATHWAY DIFFERENCES\n")

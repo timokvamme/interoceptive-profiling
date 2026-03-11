@@ -17,7 +17,7 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(dplyr)
 library(tidyr)
@@ -27,9 +27,9 @@ library(gridExtra)
 library(openxlsx)
 
 # Output directories
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 sub_plots_dir <- file.path(plots_dir, "sub_plots")
 dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
 dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
@@ -38,7 +38,7 @@ dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # 1. LOAD DATA AND COMPUTE SCALES
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 
 cat("Loading data...\n")
 cat("Sample: N =", nrow(dfc), "\n\n")

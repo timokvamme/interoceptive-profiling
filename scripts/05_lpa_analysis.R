@@ -15,11 +15,11 @@ library(tidyLPA)
 library(mclust)
 library(gridExtra)
 
-setwd("C:/code/projects/mi/analyses/soma")
-output_dir <- "C:/code/projects/intero_mod"
-analysis_output_dir <- "C:/code/projects/intero_mod/analysis_output"
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-plots_dir <- "C:/code/projects/intero_mod/plots"
+setwd("C:/code/projects/interoceptive-profiling")
+output_dir <- "C:/code/projects/interoceptive-profiling"
+analysis_output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+plots_dir <- "C:/code/projects/interoceptive-profiling/plots"
 dir.create(analysis_output_dir, showWarnings = FALSE, recursive = TRUE)
 
 # Redirect output to file
@@ -29,7 +29,7 @@ sink(file.path(analysis_output_dir, "05_output.txt"), split = TRUE)
 # PART 1: LPA MODEL FITTING AND COMPARISON
 # =============================================================================
 
-df <- read.csv("results/dfc_vviq_q_k.csv")
+df <- read.csv("dfc_vviq_q_k.csv")
 cat("Loaded", nrow(df), "participants\n\n")
 
 lpa_data <- df %>%

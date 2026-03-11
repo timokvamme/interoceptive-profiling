@@ -19,7 +19,7 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/intero_mod")
+setwd("C:/code/projects/interoceptive-profiling")
 
 library(dplyr)
 library(tidyr)
@@ -31,7 +31,7 @@ library(gridExtra)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/mi/analyses/soma/results/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
 
 cat("=============================================================================\n")
 cat("PATHWAY DOMINANCE ANALYSIS: STATISTICAL TESTING\n")

@@ -7,22 +7,22 @@
 #
 # =============================================================================
 
-setwd("C:/code/projects/mi/analyses/soma")
+setwd("C:/code/projects/interoceptive-profiling")
 
-output_dir <- "C:/code/projects/intero_mod/analysis_output"
+output_dir <- "C:/code/projects/interoceptive-profiling/analysis_output"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
 # Redirect output to file
 sink(file.path(output_dir, "02_output.txt"), split = TRUE)
 
 # Load data
-dfc <- read.csv('results/dfc_vviq_q_k.csv')
+dfc <- read.csv('dfc_vviq_q_k.csv')
 
 library(tidyverse)
 
 # Directories
-supplementary_data_dir <- "C:/code/projects/intero_mod/supplementary_data"
-supplementary_plots_dir <- "C:/code/projects/intero_mod/plots/supplementary_plots"
+supplementary_data_dir <- "C:/code/projects/interoceptive-profiling/supplementary_data"
+supplementary_plots_dir <- "C:/code/projects/interoceptive-profiling/plots/supplementary_plots"
 dir.create(supplementary_plots_dir, showWarnings = FALSE, recursive = TRUE)
 
 cat("=============================================================================\n")
