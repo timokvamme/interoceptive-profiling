@@ -1,0 +1,4 @@
+"cluster","n","pct","IAS_mean","IAS_sd","IAS_z","IATS_mean","IATS_sd","IATS_z","label"
+1,273,32.8,81.4,7.6,0.34,60.7,9.4,0.97,"Average Accuracy / High Attention"
+2,302,36.3,84.4,7.8,0.62,34.6,7.7,-0.9,"High Accuracy / Low Attention"
+3,258,31,66.1,6.5,-1.08,47.4,9.4,0.02,"Low Accuracy / Average Attention"

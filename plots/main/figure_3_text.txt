@@ -1,0 +1,15 @@
+FIGURE 3. Dual-pathway model of interoception and mental health.
+===============================================================
+
+Panel A: Path coefficients (standardized) for the dual-pathway SEM.
+Panel B: SEM diagram showing IAS and IATS effects on TAS and Somatic pathways,
+and downstream effects on mental health.
+
+Panel C: Pathway dominance by profile. Bars show the percentage of the IAS
+indirect effect through TAS vs Somatic routes with bootstrap 95% CIs.
+
+Panels D and E: Simple slopes illustrating IAS effects by profile. Panel D
+(Somatic) shows profile-dependent slopes (moderation), whereas Panel E (TAS)
+shows consistent negative slopes across profiles (no moderation).
+
+Sample: N = 833. Bootstrap = 5000.

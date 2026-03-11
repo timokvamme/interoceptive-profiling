@@ -1,0 +1,101 @@
+======================================================================
+AT-RISK SUBGROUP CLUSTER ANALYSIS
+(Hypervigilant + Uncertain profiles only)
+======================================================================
+
+Total sample: n = 833
+At-risk subset: n = 531
+  - Hypervigilant: n = 273
+  - Uncertain: n = 258
+
+======================================================================
+K-SELECTION METHODS
+======================================================================
+
+Index values by k:
+ k        WSS  Silhouette         CH       DB
+ 2 593.074236    0.375552 418.264215 0.987245
+ 3 458.473664    0.301547 347.524766 1.130091
+ 4 342.468911    0.346743 369.077670 0.885235
+ 5 279.334626    0.339644 368.448761 0.903784
+ 6 229.250898    0.360706 381.410309 0.826691
+ 7 199.430989    0.332565 377.729796 0.849247
+ 8 178.034269    0.337827 370.967166 0.856091
+ 9 160.295008    0.332337 367.049800 0.855394
+10 144.708144    0.336297 366.952439 0.831226
+
+======================================================================
+OPTIMAL K BY METHOD
+======================================================================
+1. Elbow (WSS): k = 2
+2. Silhouette (max): k = 2
+3. Calinski-Harabasz (max): k = 2
+4. Davies-Bouldin (min): k = 6
+5. Gap Statistic: Computing...
+   Gap Statistic: k = 2
+6. Hartigan's Rule: k = 1
+7. Dunn Index: k = 2 (default)
+
+======================================================================
+VOTE SUMMARY
+======================================================================
+
+Method Results:
+  Elbow: k = 2
+  Silhouette: k = 2
+  Calinski-Harabasz: k = 2
+  Davies-Bouldin: k = 6
+  Gap: k = 2
+  Hartigan: k = 1
+  Dunn: k = 2
+
+Vote Tally:
+  k = 2: 5 votes (Elbow, Silhouette, Calinski-Harabasz, Gap, Dunn)
+  k = 6: 1 votes (Davies-Bouldin)
+
+CONSENSUS: k = 2 (5/7 methods)
+
+======================================================================
+CLUSTERING WITH k = 2
+======================================================================
+
+Subcluster characteristics:
+
+  Subcluster 1: n = 270
+    IAS: mean = 81.2
+    IATS: mean = 61.2
+    Hypervigilant: 262 (97.0%)
+    Uncertain: 8 (3.0%)
+
+  Subcluster 2: n = 261
+    IAS: mean = 66.5
+    IATS: mean = 47.0
+    Hypervigilant: 11 (4.2%)
+    Uncertain: 250 (95.8%)
+
+Mental health by subcluster:
+
+  Subcluster 1:
+    TAS: 53.1
+    PHQ9: 18.9
+    GAD7: 19.8
+    STAI: 48.1
+    SSS8: 19.2
+    PCS: 34.0
+
+  Subcluster 2:
+    TAS: 55.9
+    PHQ9: 18.4
+    GAD7: 19.4
+    STAI: 49.2
+    SSS8: 17.5
+    PCS: 31.2
+
+Creating visualization...
+
+Figure saved: plots/supplementary_plots/1_s_10_at_risk_cluster_analysis.png
+Data saved: supplementary_data/data_at_risk_subclusters.csv
+
+======================================================================
+ANALYSIS COMPLETE
+======================================================================

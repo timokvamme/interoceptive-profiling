@@ -1,0 +1,19 @@
+FIGURE 2. Minimal interoceptive subtyping network and item selection.
+=====================================================================
+
+Panel A: Item importance for predicting the mental health composite (TAS,
+PHQ-9, GAD-7, STAI, SSS-8, PCS). Importance is a consensus rank from LASSO,
+random forest, and network centrality.
+
+Panel B: Saturation curve of cross-validated R-squared vs number of items.
+The curve shows a strong performance gain with a small set of items and a
+plateau near the 21-item solution.
+
+Panel C: Network centrality vs predictive importance. Centrality is normalized
+within each scale (IAS vs IATS) to avoid bias from different within-scale
+correlation strengths.
+
+Panel D: MDS network of interoceptive and mental health items. Distances are
+based on 1 - |r|. Node size reflects absolute correlation with the mental
+health composite; white rings mark the top 10 predictor items. Edges indicate
+|r| > 0.30 and transparency scales with strength. N = 833.

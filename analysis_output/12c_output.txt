@@ -1,0 +1,130 @@
+=============================================================================
+MULTI-GROUP SEM: OMNIBUS TEST FOR PATHWAY DIFFERENCES
+=============================================================================
+
+Sample sizes by profile:
+
+    Efficient Hypervigilant     Uncertain 
+          302           273           258 
+
+=============================================================================
+FITTING MULTI-GROUP SEM MODELS
+=============================================================================
+
+Fitting Model 1: Configural (all paths FREE across profiles)...
+Fitting Model 2: Regression paths CONSTRAINED equal...
+Fitting Model 3: Labeled model for Wald tests...
+
+=============================================================================
+OMNIBUS TESTS: Chi-Square Difference (Like ANOVA F-test)
+=============================================================================
+
+TEST 1: Do path coefficients differ across profiles?
+        (Configural vs. Equal Regressions)
+
+
+Chi-Squared Difference Test
+
+                Df    AIC    BIC   Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)
+fit_configural   3 5964.7 6163.1  86.529                                      
+fit_equal_paths 19 5967.4 6090.3 121.294     34.765 0.06499      16    0.00428
+                  
+fit_configural    
+fit_equal_paths **
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+*** OMNIBUS TEST RESULT ***
+Chi-square difference: 34.765
+df difference: 16
+p-value: 0.0043
+
+CONCLUSION: Path coefficients SIGNIFICANTLY DIFFER across profiles (p < .05)
+            At least one profile has different pathway strengths.
+
+
+=============================================================================
+PROFILE-SPECIFIC PATH ESTIMATES (from Configural Model)
+=============================================================================
+
+--- Efficient (n = 302) ---
+From         → To                Est      Std          p
+ias_z        → tas_z          -0.388   -0.255     0.0000
+iats_z       → tas_z           0.274    0.200     0.0007
+ias_z        → somatic_z      -0.147   -0.095     0.1066
+iats_z       → somatic_z       0.449    0.322     0.0000
+tas_z        → mh_z            0.305    0.313     0.0000
+somatic_z    → mh_z            0.547    0.574     0.0000
+ias_z        → mh_z            0.000    0.000     0.9957
+iats_z       → mh_z           -0.065   -0.049     0.3311
+
+--- Hypervigilant (n = 273) ---
+From         → To                Est      Std          p
+ias_z        → tas_z          -0.267   -0.225     0.0000
+iats_z       → tas_z           0.332    0.216     0.0001
+ias_z        → somatic_z       0.135    0.113     0.0415
+iats_z       → somatic_z       0.382    0.246     0.0000
+tas_z        → mh_z            0.320    0.332     0.0000
+somatic_z    → mh_z            0.550    0.572     0.0000
+ias_z        → mh_z            0.071    0.062     0.1619
+iats_z       → mh_z            0.019    0.013     0.7757
+
+--- Uncertain (n = 258) ---
+From         → To                Est      Std          p
+ias_z        → tas_z          -0.332   -0.235     0.0000
+iats_z       → tas_z           0.312    0.213     0.0002
+ias_z        → somatic_z      -0.323   -0.220     0.0001
+iats_z       → somatic_z       0.451    0.297     0.0000
+tas_z        → mh_z            0.279    0.286     0.0000
+somatic_z    → mh_z            0.606    0.643     0.0000
+ias_z        → mh_z           -0.172   -0.125     0.0022
+iats_z       → mh_z           -0.031   -0.022     0.6014
+
+=============================================================================
+INDIRECT EFFECTS BY PROFILE (computed from path products)
+=============================================================================
+
+Profile          IAS→TAS→MH  IAS→Som→MH
+-------------------------------------------------- 
+Efficient               -0.0798         -0.0545
+Hypervigilant           -0.0746          0.0646
+Uncertain               -0.0672         -0.1418
+
+
+=============================================================================
+WALD TESTS: Specific Path Comparisons Across Profiles
+=============================================================================
+
+Test: Is IAS → Somatic path equal across profiles?
+  Wald chi-sq = 19.711, df = 2, p = 0.0001
+
+Test: Is IAS → TAS path equal across profiles?
+  Wald chi-sq = 1.239, df = 2, p = 0.5383
+
+Test: Is TAS → MH path equal across profiles?
+  Wald chi-sq = 0.516, df = 2, p = 0.7727
+
+Test: Is Somatic → MH path equal across profiles?
+  Wald chi-sq = 1.308, df = 2, p = 0.5200
+
+
+=============================================================================
+SUMMARY: OMNIBUS TEST RESULTS
+=============================================================================
+
+1. OVERALL CHI-SQUARE DIFFERENCE TEST:
+   χ²(16) = 34.765, p = 0.0043
+   → Paths DIFFER significantly across profiles
+
+2. SPECIFIC PATH TESTS (Wald):
+   IAS → TAS:     p = 0.5383 
+   IAS → Somatic: p = 0.0001 ***
+   TAS → MH:      p = 0.7727 
+   Somatic → MH:  p = 0.5200 
+
+3. INTERPRETATION:
+   Some paths differ across profiles. See specific tests above.
+
+=============================================================================
+ANALYSIS COMPLETE
+=============================================================================

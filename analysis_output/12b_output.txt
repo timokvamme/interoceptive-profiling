@@ -1,0 +1,64 @@
+=============================================================================
+PATHWAY DOMINANCE ANALYSIS: STATISTICAL TESTING
+=============================================================================
+
+Sample: N = 833 
+Bootstrap iterations: 5000
+Date: 2026-02-06 14:40 
+
+Profile-Typical IATS Values (z-scored):
+  Hypervigilant: 0.971
+  Uncertain:     0.022
+  Efficient:     -0.896
+
+=============================================================================
+KEY RESULTS SUMMARY
+=============================================================================
+
+1. OVERALL PATHWAY PERCENTAGES (with 95% CIs):
+   TAS (Alexithymia)   :  30.1% [ 23.3%,  37.6%]
+   Somatic             :  52.2% [ 44.7%,  59.9%]
+   Direct              :  17.7% [  9.5%,  26.3%]
+
+2. INDEX OF MODERATED MEDIATION:
+   Somatic pathway: -0.0495, 95% CI [-0.0874, -0.0132]
+   TAS pathway:     -0.0022, 95% CI [-0.0228, 0.0192]
+
+3. PROFILE-SPECIFIC PATHWAY PERCENTAGES (with 95% CIs):
+   Hypervigilant: TAS = 51.5% [37.8, 69.2], Somatic = 48.5% [30.8, 62.2]
+   Uncertain: TAS = 66.0% [50.6, 85.7], Somatic = 34.0% [14.3, 49.4]
+   Efficient: TAS = 84.6% [64.2, 99.2], Somatic = 15.4% [0.8, 35.8]
+
+4. WITHIN-PROFILE PATHWAY DOMINANCE TESTS (Bonferroni-corrected):
+   Bonferroni α = 0.05 / 3 = 0.0167
+
+   Profile            p-value Significant? Conclusion
+    ------------------------------------------------------- 
+   Hyper               0.9227           No Balanced (n.s.)
+   Uncert              0.0342           No Balanced (n.s.)
+   Effic               0.0004          Yes TAS > Somatic ***
+
+5. OVERALL PATHWAY DIFFERENCE (TAS vs Somatic):
+   Somatic > TAS overall: YES (p = 0.0000)
+
+*** = survives Bonferroni correction (p < 0.0167)
+
+6. INDIVIDUAL INDIRECT EFFECTS:
+   ind_ias_tas: -0.1038 [-0.1321, -0.0773], p = 0.0000
+   ind_iats_tas: 0.0945 [0.0684, 0.1234], p = 0.0000
+   ind_int_tas: -0.0022 [-0.0228, 0.0192], p = 0.8322
+   ind_ias_som: -0.0550 [-0.0936, -0.0159], p = 0.0057
+   ind_iats_som: 0.2560 [0.2164, 0.2985], p = 0.0000
+   ind_int_som: -0.0495 [-0.0874, -0.0132], p = 0.0082
+
+7. PREDICTOR-SPECIFIC PATHWAY SPLITS:
+   IATS through Somatic: 73.0%
+   IATS through TAS: 27.0%
+   IAS through TAS: 65.4%
+   IAS through Somatic: 34.6%
+
+8. TOTAL MEDIATION PERCENTAGE:
+   TAS pathway: 30.1%
+   Somatic pathway: 52.2%
+   Total mediated: 82.3%
+   Direct: 17.7%

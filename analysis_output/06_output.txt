@@ -1,0 +1,19 @@
+======================================================================
+SIMPSON'S PARADOX: BAYES FACTOR ANALYSIS
+======================================================================
+
+Data source: data_with_clusters.csv (k-means)
+N = 833
+
+Profiles: {'Efficient': 302, 'Hypervigilant': 273, 'Uncertain': 258}
+
+=== OVERALL CORRELATION ===
+r = -0.078, p = 0.0240, n = 833
+BF01 = 9.09 (support for null)
+
+=== WITHIN-PROFILE CORRELATIONS ===
+Efficient: r = 0.087 (ns), n = 302, BF01 = 11.1 (Strong evidence for null)
+Hypervigilant: r = 0.013 (ns), n = 273, BF01 = 18.4 (Strong evidence for null)
+Uncertain: r = 0.051 (ns), n = 258, BF01 = 15.3 (Strong evidence for null)
+
+Figure saved: plots/supplementary_plots/1_s_9_simpsons_paradox_bayes.png

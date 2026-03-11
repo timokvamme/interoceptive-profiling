@@ -1,0 +1,161 @@
+=============================================================================
+INTEROCEPTION AND MENTAL HEALTH: CORRELATION ANALYSIS
+=============================================================================
+
+N = 833 
+
+=============================================================================
+PART 1: IAS vs IATS SCALE CORRELATION
+=============================================================================
+
+IAS (Interoceptive Accuracy Scale): 21 items, sum score
+  Mean = 77.73 | SD = 10.79 
+  Range: 36 - 105 
+
+IATS (Interoceptive Attention Scale): 21 items, sum score
+  Mean = 47.1 | SD = 13.97 
+  Range: 21 - 91 
+
+IAS-IATS Correlation:
+  r = -0.078 
+  p = 0.024 
+  95% CI: -0.145 to -0.01 
+  n = 833 
+
+Interpretation: IAS and IATS are weakly negatively correlated,
+suggesting they measure distinct constructs.
+
+=============================================================================
+PART 2: MENTAL HEALTH COMPOSITE CONSTRUCTION
+=============================================================================
+
+The MH Composite is constructed as:
+  MH_Composite = rowMeans(z-scored outcomes)
+
+Components (all z-scored before averaging):
+  1. TAS (Alexithymia): Mean = 50.80, SD = 12.73
+  2. PHQ-9 (Depression): Mean = 17.14, SD = 6.38
+  3. GAD-7 (Anxiety): Mean = 17.51, SD = 7.94
+  4. STAI (Trait Anxiety): Mean = 46.21, SD = 10.79
+  5. SSS-8 (Somatic Symptoms): Mean = 16.94, SD = 6.04
+  6. PCS (Pain Catastrophizing): Mean = 30.39, SD = 12.52
+
+MH Composite:
+  Mean = 0 (by construction ~0)
+  SD = 0.802 
+  Range: -1.46 to 2.69 
+
+Higher MH Composite = worse mental health
+
+=============================================================================
+PART 3: SCALE TOTALS vs MH COMPOSITE
+=============================================================================
+
+IAS Total vs MH Composite:
+  r = -0.261 
+  p = 2.17e-14 
+  95% CI: -0.323 to -0.196 
+  Interpretation: NEGATIVE correlation - higher accuracy = BETTER mental health
+
+IATS Total vs MH Composite:
+  r = 0.428 
+  p = <2e-16 
+  95% CI: 0.371 to 0.482 
+  Interpretation: POSITIVE correlation - higher attention = WORSE mental health
+
+=============================================================================
+PART 4: ITEM-LEVEL CORRELATIONS WITH MH COMPOSITE
+=============================================================================
+
+IAS Items (negative r = protective):
+Item            r        p Direction
+------------------------------------------------------------ 
+ias_1      -0.097 0.0051** Protective
+ias_2      -0.285 <2e-16*** Protective
+ias_3      -0.166 1.5e-06*** Protective
+ias_4      -0.229 2.2e-11*** Protective
+ias_5      -0.264 9.4e-15*** Protective
+ias_6      -0.178 2.3e-07*** Protective
+ias_7      -0.093  0.007** Protective
+ias_8      -0.153 9.7e-06*** Protective
+ias_9      -0.108 0.0018** Protective
+ias_10     -0.090 0.0091** Protective
+ias_11     -0.184 8.9e-08*** Protective
+ias_12     -0.192 2.2e-08*** Protective
+ias_13     -0.122 4e-04*** Protective
+ias_14     -0.135 9e-05*** Protective
+ias_15     -0.142 4.1e-05*** Protective
+ias_16     -0.051     0.14 Protective
+ias_17     -0.118 0.00061*** Protective
+ias_18     -0.028     0.41 Protective
+ias_19     -0.263 1.3e-14*** Protective
+ias_20     -0.042     0.23 Protective
+ias_21      0.061    0.081 Risk
+
+IAS Summary:
+  Items with protective effect (r < 0): 20 / 21
+  Significant protective (p < .05): 17 / 21
+  Mean r = -0.137 
+
+IATS Items (positive r = risk):
+Item            r        p Direction
+------------------------------------------------------------ 
+iats_1      0.333 <2e-16*** Risk
+iats_2      0.207 1.6e-09*** Risk
+iats_3      0.369 <2e-16*** Risk
+iats_4      0.207 1.7e-09*** Risk
+iats_5      0.229 2.4e-11*** Risk
+iats_6      0.245 7.3e-13*** Risk
+iats_7      0.045      0.2 Risk
+iats_8      0.254 9.2e-14*** Risk
+iats_9      0.149 1.7e-05*** Risk
+iats_10     0.238 3.4e-12*** Risk
+iats_11     0.311 <2e-16*** Risk
+iats_12     0.189 3.8e-08*** Risk
+iats_13     0.222 9.5e-11*** Risk
+iats_14     0.183 1.1e-07*** Risk
+iats_15     0.340 <2e-16*** Risk
+iats_16     0.341 <2e-16*** Risk
+iats_17     0.439 <2e-16*** Risk
+iats_18     0.242 1.6e-12*** Risk
+iats_19     0.196 1.3e-08*** Risk
+iats_20     0.301 <2e-16*** Risk
+iats_21     0.350 <2e-16*** Risk
+
+IATS Summary:
+  Items with risk effect (r > 0): 21 / 21
+  Significant risk (p < .05): 20 / 21
+  Mean r = 0.257 
+
+=============================================================================
+PART 5: SCALE CORRELATIONS WITH INDIVIDUAL MH OUTCOMES
+=============================================================================
+
+IAS correlations with MH outcomes:
+Outcome                          r        p
+--------------------------------------------- 
+TAS (Alexithymia)           -0.369   <2e-16
+PHQ-9 (Depression)          -0.206 1.84e-09
+GAD-7 (Anxiety)             -0.219 1.65e-10
+STAI (Trait Anxiety)        -0.251 1.82e-13
+SSS-8 (Somatic Symptoms)    -0.129  0.00018
+PCS (Pain Catastrophizing)   -0.078   0.0236
+
+IATS correlations with MH outcomes:
+Outcome                          r        p
+--------------------------------------------- 
+TAS (Alexithymia)            0.340   <2e-16
+PHQ-9 (Depression)           0.331   <2e-16
+GAD-7 (Anxiety)              0.363   <2e-16
+STAI (Trait Anxiety)         0.289   <2e-16
+SSS-8 (Somatic Symptoms)     0.406   <2e-16
+PCS (Pain Catastrophizing)    0.332   <2e-16
+
+=============================================================================
+GENERATING SUPPLEMENTARY FIGURE
+=============================================================================
+
+
+Supplementary figure saved: C:/code/projects/intero_mod/plots/supplementary_plots/2_s_1_item_mh_correlations.png 
+
+Done.

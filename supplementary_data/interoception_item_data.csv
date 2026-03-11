@@ -1,0 +1,43 @@
+"item","item_label","scale","questionnaire_text","correlation_with_mh_composite","abs_correlation_with_mh","edges_to_mh","top_10_predictor"
+"iats_17","IATS 17","IATS","Most of the time my attention is focused on pain NOT caused by injury",0.438965353919258,0.438965353919258,5,TRUE
+"iats_3","IATS 3","IATS","Most of the time my attention is focused on whether I am breathing fast",0.369436353398483,0.369436353398483,1,TRUE
+"iats_21","IATS 21","IATS","Most of the time my attention is focused on whether my body feels itchy",0.349913147052785,0.349913147052785,0,TRUE
+"iats_16","IATS 16","IATS","Most of the time my attention is focused on pain after injury",0.340769185725677,0.340769185725677,0,TRUE
+"iats_15","IATS 15","IATS","Most of the time my attention is focused on whether my muscles are tired/sore",0.340371020163016,0.340371020163016,1,FALSE
+"iats_1","IATS 1","IATS","Most of the time my attention is focused on whether my heart is beating fast",0.333182655888284,0.333182655888284,0,TRUE
+"iats_11","IATS 11","IATS","Most of the time my attention is focused on my body temperature",0.311088198791316,0.311088198791316,0,TRUE
+"iats_20","IATS 20","IATS","Most of the time my attention is focused on whether touch feels ticklish",0.300953033380561,0.300953033380561,0,FALSE
+"ias_2","IAS 2","IAS","I can always accurately perceive when I am hungry",-0.284530344595439,0.284530344595439,0,TRUE
+"ias_5","IAS 5","IAS","I can always accurately perceive when I need to urinate",-0.264035020652725,0.264035020652725,0,TRUE
+"ias_19","IAS 19","IAS","I can always accurately perceive when someone is touching me affectionately",-0.262555455311236,0.262555455311236,0,TRUE
+"iats_8","IATS 8","IATS","Most of the time my attention is focused on whether I am nauseated",0.254327955014131,0.254327955014131,0,FALSE
+"iats_6","IATS 6","IATS","Most of the time my attention is focused on whether I need to defecate",0.2451179117045,0.2451179117045,0,FALSE
+"iats_18","IATS 18","IATS","Most of the time my attention is focused on whether my blood sugar is low",0.241518701699455,0.241518701699455,0,TRUE
+"iats_10","IATS 10","IATS","Most of the time my attention is focused on whether I need to cough",0.237975236583326,0.237975236583326,0,FALSE
+"ias_4","IAS 4","IAS","I can always accurately perceive when I am thirsty",-0.229197831625295,0.229197831625295,0,FALSE
+"iats_5","IATS 5","IATS","Most of the time my attention is focused on whether I need to urinate",0.228615147628457,0.228615147628457,0,FALSE
+"iats_13","IATS 13","IATS","Most of the time my attention is focused on whether I need to pass wind",0.221874707043987,0.221874707043987,0,FALSE
+"iats_2","IATS 2","IATS","Most of the time my attention is focused on whether I am hungry",0.207180535800927,0.207180535800927,0,FALSE
+"iats_4","IATS 4","IATS","Most of the time my attention is focused on whether I am thirsty",0.206810296898667,0.206810296898667,0,FALSE
+"iats_19","IATS 19","IATS","Most of the time my attention is focused on whether touch is pleasant",0.195601429682478,0.195601429682478,0,FALSE
+"ias_12","IAS 12","IAS","I can always accurately perceive when I am sexually aroused",-0.192354253135805,0.192354253135805,0,FALSE
+"iats_12","IATS 12","IATS","Most of the time my attention is focused on whether I am sexually aroused",0.189083511966448,0.189083511966448,0,FALSE
+"ias_11","IAS 11","IAS","I can always accurately perceive when I am hot/cold",-0.183959048365481,0.183959048365481,0,FALSE
+"iats_14","IATS 14","IATS","Most of the time my attention is focused on whether I need to burp",0.182861552731912,0.182861552731912,0,FALSE
+"ias_6","IAS 6","IAS","I can always accurately perceive when I need to defecate",-0.178156571440518,0.178156571440518,0,FALSE
+"ias_3","IAS 3","IAS","I can always accurately perceive when I am breathing fast",-0.166015142660602,0.166015142660602,0,FALSE
+"ias_8","IAS 8","IAS","I can always accurately perceive when I am going to vomit",-0.152569675803807,0.152569675803807,0,FALSE
+"iats_9","IATS 9","IATS","Most of the time my attention is focused on whether I need to sneeze",0.148614540809976,0.148614540809976,0,FALSE
+"ias_15","IAS 15","IAS","I can always accurately perceive when my muscles are tired/sore",-0.141658436896408,0.141658436896408,0,FALSE
+"ias_14","IAS 14","IAS","I can always accurately perceive when I am going to burp",-0.135220405053877,0.135220405053877,0,FALSE
+"ias_13","IAS 13","IAS","I can always accurately perceive when I am going to pass wind",-0.122274100201895,0.122274100201895,0,FALSE
+"ias_17","IAS 17","IAS","I can always accurately perceive when I am in pain",-0.118450358418517,0.118450358418517,0,FALSE
+"ias_9","IAS 9","IAS","I can always accurately perceive when I am going to sneeze",-0.107903365706646,0.107903365706646,0,FALSE
+"ias_1","IAS 1","IAS","I can always accurately perceive when my heart is beating fast",-0.0970400903095189,0.0970400903095189,0,FALSE
+"ias_7","IAS 7","IAS","I can always accurately perceive when I encounter different tastes",-0.0933600161510544,0.0933600161510544,0,FALSE
+"ias_10","IAS 10","IAS","I can always accurately perceive when I am going to cough",-0.0903539774821294,0.0903539774821294,0,FALSE
+"ias_21","IAS 21","IAS","I can always accurately perceive when something is going to be itchy",0.0605333853665599,0.0605333853665599,0,FALSE
+"ias_16","IAS 16","IAS","I can always accurately perceive when I am going to get a bruise",-0.0510350000564783,0.0510350000564783,0,FALSE
+"iats_7","IATS 7","IATS","Most of the time my attention is focused on different tastes when eating",0.0445587682578433,0.0445587682578433,0,FALSE
+"ias_20","IAS 20","IAS","I can always accurately perceive when something is going to be ticklish",-0.0417157788268982,0.0417157788268982,0,FALSE
+"ias_18","IAS 18","IAS","I can always accurately perceive when my blood sugar is low",-0.0282955502080893,0.0282955502080893,0,FALSE
