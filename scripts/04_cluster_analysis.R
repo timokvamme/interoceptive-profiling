@@ -48,7 +48,7 @@ dir.create(supplementary_data_dir, showWarnings = FALSE, recursive = TRUE)
 # LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("dfc_vviq_q_k.csv")
+dfc <- read.csv("dfc_interoception_profiling.csv")
 cluster_data <- scale(dfc[, c("ias", "iats")])
 colnames(cluster_data) <- c("IAS_z", "IATS_z")
 

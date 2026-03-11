@@ -3,7 +3,7 @@ CORRELATION HEATMAP GENERATOR
 Interoception and Mental Health Variables
 ======================================================================
 
-Loading data from: C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv
+Loading data from: C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv
 Dataset shape: (833, 187)
 
 --------------------------------------------------

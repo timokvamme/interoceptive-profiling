@@ -315,7 +315,7 @@ if __name__ == "__main__":
     # =========================================================================
 
     # Data path
-    data_path = "C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv"
+    data_path = "C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv"
     output_dir = "C:/code/projects/interoceptive-profiling"
     analysis_output_dir = os.path.join(output_dir, "analysis_output")
     plots_dir = os.path.join(output_dir, "plots")

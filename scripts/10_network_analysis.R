@@ -46,7 +46,7 @@ dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv('C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv')
+dfc <- read.csv('C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv')
 
 # Define item columns for each scale
 ias_items <- paste0('ias_', 1:21)

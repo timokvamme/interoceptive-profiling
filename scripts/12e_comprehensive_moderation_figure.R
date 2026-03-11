@@ -23,7 +23,7 @@ library(grid)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 
 # Save full-scale totals for clustering (consistent with 04_cluster_analysis.R)
 ias_full <- dfc$ias

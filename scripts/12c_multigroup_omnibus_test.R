@@ -24,7 +24,7 @@ sink(file.path(analysis_output_dir, "12c_output.txt"), split = TRUE)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 
 cat("=============================================================================\n")
 cat("MULTI-GROUP SEM: OMNIBUS TEST FOR PATHWAY DIFFERENCES\n")

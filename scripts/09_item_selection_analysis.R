@@ -19,7 +19,7 @@
 #
 # READS FROM:
 #   - Main project data: C:/code/projects/interoceptive-profiling/data_with_k_means_clusters.csv
-#   - Original data: C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv
+#   - Original data: C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv
 #
 # OUTPUTS:
 #   - 09_output.txt (all statistics)
@@ -61,7 +61,7 @@ dir.create(supplementary_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # =============================================================================
 
 # Load original data with all items
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 cat("Sample size:", nrow(dfc), "\n")
 
 # Define item names

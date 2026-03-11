@@ -38,7 +38,7 @@ dir.create(sub_plots_dir, showWarnings = FALSE, recursive = TRUE)
 # 1. LOAD DATA AND COMPUTE SCALES
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 
 cat("Loading data...\n")
 cat("Sample: N =", nrow(dfc), "\n\n")

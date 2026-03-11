@@ -31,7 +31,7 @@ library(gridExtra)
 # 1. LOAD AND PREPARE DATA
 # =============================================================================
 
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 
 cat("=============================================================================\n")
 cat("PATHWAY DOMINANCE ANALYSIS: STATISTICAL TESTING\n")

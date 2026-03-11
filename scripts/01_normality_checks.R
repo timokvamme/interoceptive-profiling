@@ -19,7 +19,7 @@ dir.create(plots_dir, showWarnings = FALSE, recursive = TRUE)
 sink(file.path(output_dir, "01_output.txt"), split = TRUE)
 
 # Load data
-df <- read.csv("dfc_vviq_q_k.csv")
+df <- read.csv("dfc_interoception_profiling.csv")
 cat("N =", nrow(df), "\n\n")
 
 cat(paste(rep("=", 70), collapse = ""), "\n")

@@ -16,7 +16,7 @@ dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 sink(file.path(output_dir, "02_output.txt"), split = TRUE)
 
 # Load data
-dfc <- read.csv('dfc_vviq_q_k.csv')
+dfc <- read.csv('dfc_interoception_profiling.csv')
 
 library(tidyverse)
 

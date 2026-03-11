@@ -46,7 +46,7 @@ consensus_df <- read.csv(file.path(supplementary_data_dir, "item_consensus_ranki
 saturation_results <- read.csv(file.path(supplementary_data_dir, "saturation_results.csv"))
 config_results <- read.csv(file.path(supplementary_data_dir, "minimal_set_comparison.csv"))
 centrality_df <- read.csv(file.path(supplementary_data_dir, "network_centrality.csv"))
-dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_vviq_q_k.csv")
+dfc <- read.csv("C:/code/projects/interoceptive-profiling/dfc_interoception_profiling.csv")
 
 # =============================================================================
 # 2. FULL QUESTIONNAIRE TEXT

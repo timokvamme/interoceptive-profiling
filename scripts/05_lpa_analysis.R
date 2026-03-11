@@ -29,7 +29,7 @@ sink(file.path(analysis_output_dir, "05_output.txt"), split = TRUE)
 # PART 1: LPA MODEL FITTING AND COMPARISON
 # =============================================================================
 
-df <- read.csv("dfc_vviq_q_k.csv")
+df <- read.csv("dfc_interoception_profiling.csv")
 cat("Loaded", nrow(df), "participants\n\n")
 
 lpa_data <- df %>%
