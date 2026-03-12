@@ -82,4 +82,4 @@ This work was supported by the Carlsberg Foundation (CF22-0132 to T.L.K.), the U
 
 ## License
 
-This repository accompanies the manuscript submitted to *Nature Mental Health*. Please cite the paper if you use this code or data.
+Please cite the paper if you use this code or data.
