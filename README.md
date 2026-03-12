@@ -1,14 +1,6 @@
 # Interoceptive Profiling Identifies Separable Somatic and Alexithymic Contributors to Mental Health
 
-**Timo L. Kvamme**<sup>1,2,3,4</sup> & **Juha Silvanto**<sup>1,5</sup>
-
-1. Centre for Cognitive and Brain Sciences, University of Macau, China SAR
-2. Center of Functionally Integrative Neuroscience, Aarhus University, Denmark
-3. Department of Experimental Psychology, University of Oxford, UK
-4. School of Psychology, University of Surrey, UK
-5. Department of Psychology, University of Macau, China SAR
-
-Correspondence: timo@cfin.au.dk or juhasilvanto@um.edu.mo
+*Authors and affiliations redacted for double-blind review*
 
 ## Overview
 
@@ -78,7 +70,7 @@ Rscript scripts/12_sem_pathway_analysis.R
 
 ## Funding
 
-This work was supported by the Carlsberg Foundation (CF22-0132 to T.L.K.), the University of Macau (SRG2025-00010-ICI to J.S.), and the BIAL Foundation (25/24).
+*Funding details redacted for double-blind review*
 
 ## License
 
