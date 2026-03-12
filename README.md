@@ -1,6 +1,6 @@
 # Interoceptive Profiling Identifies Separable Somatic and Alexithymic Contributors to Mental Health
 
-*Authors and affiliations redacted for double-blind review*
+Timo L. Kvamme & Juha Silvanto
 
 ## Overview
 
@@ -67,10 +67,6 @@ Or run individual scripts:
 Rscript scripts/04_cluster_analysis.R
 Rscript scripts/12_sem_pathway_analysis.R
 ```
-
-## Funding
-
-*Funding details redacted for double-blind review*
 
 ## License
 
