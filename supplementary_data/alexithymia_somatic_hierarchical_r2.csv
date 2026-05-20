@@ -1,0 +1,5 @@
+step,formula,n_params,R2,adj_R2,delta_R2,F,p
+step1_TAS_total,somatic_z ~ tas,1,0.1807,0.1797,0.1807,183.28,7.016572524304783e-38
+step1b_facets,somatic_z ~ dif_z + ddf_z + eot_z,3,0.3197,0.3172,0.139,129.86,5.878903425323825e-69
+step2_facets_plus_intero,somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z,5,0.3647,0.3608,0.045,94.93,4.9270735370417224e-79
+step3_full,somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z + ias_x_iats,6,0.3687,0.3641,0.0041,80.41,3.6696984762996616e-79

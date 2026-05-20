@@ -40,6 +40,11 @@ In 833 adults, we identified three interoceptive profiles based on self-reported
 │   ├── 12c_multigroup_omnibus_test.R
 │   ├── 12d_pathway_dominance_figure.R
 │   ├── 12e_comprehensive_moderation_figure.R
+│   ├── 13_tas_subscale_analysis.R
+│   ├── 13b_tas_subscale_path_diagram.R
+│   ├── 14_vviq_interoception_mediation.R
+│   ├── 15_item_level_clustering_sensitivity.py
+│   ├── 16_alexithymia_somatic_pathway.py
 │   └── run_analysis.py                # Runs all scripts in sequence
 ├── analysis_output/                   # Statistical output logs
 ├── plots/

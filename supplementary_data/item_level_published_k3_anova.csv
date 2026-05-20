@@ -1,0 +1,7 @@
+outcome,F,p,eta2_p,mean_Average Accuracy / High Attention,sd_Average Accuracy / High Attention,n_Average Accuracy / High Attention,mean_High Accuracy / Low Attention,sd_High Accuracy / Low Attention,n_High Accuracy / Low Attention,mean_Low Accuracy / Average Attention,sd_Low Accuracy / Average Attention,n_Low Accuracy / Average Attention
+tas,75.6,6.8894003692178985e-31,0.1541,53.08,12.59,273,44.35,10.88,302,55.93,11.71,258
+sss8,52.16,4.571094728652716e-22,0.1117,19.19,6.25,273,14.42,5.19,302,17.52,5.68,258
+pcs,27.61,2.4646979914733474e-12,0.0624,33.82,12.69,273,26.46,11.58,302,31.37,12.18,258
+phq9,46.12,1.0159132793102308e-19,0.1,18.79,6.71,273,14.47,5.24,302,18.52,6.23,258
+gad7,58.11,2.3964431155269565e-24,0.1228,19.72,8.08,273,13.83,6.74,302,19.49,7.53,258
+stai,40.4,1.8072250571704522e-17,0.0887,48.0,10.62,273,42.0,10.28,302,49.24,10.04,258

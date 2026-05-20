@@ -1,0 +1,275 @@
+{
+  "n": 833,
+  "facets_by_profile_anova": [
+    {
+      "facet": "dif",
+      "F": 89.51,
+      "p": 6.319724774390541e-36,
+      "eta2_p": 0.1774,
+      "mean_Efficient": 13.24,
+      "mean_Hypervigilant": 18.72,
+      "mean_Uncertain": 19.28
+    },
+    {
+      "facet": "ddf",
+      "F": 53.05,
+      "p": 2.0847834652935004e-22,
+      "eta2_p": 0.1133,
+      "mean_Efficient": 11.72,
+      "mean_Hypervigilant": 14.45,
+      "mean_Uncertain": 15.42
+    },
+    {
+      "facet": "eot",
+      "F": 14.05,
+      "p": 9.993782732688385e-07,
+      "eta2_p": 0.0327,
+      "mean_Efficient": 19.4,
+      "mean_Hypervigilant": 19.91,
+      "mean_Uncertain": 21.23
+    },
+    {
+      "facet": "tas",
+      "F": 75.6,
+      "p": 6.889400369217997e-31,
+      "eta2_p": 0.1541,
+      "mean_Efficient": 44.35,
+      "mean_Hypervigilant": 53.08,
+      "mean_Uncertain": 55.93
+    }
+  ],
+  "uncertain_vs_hypervigilant_pairwise": [
+    {
+      "facet": "dif",
+      "t": 1.012,
+      "p": 0.31188271479823304,
+      "mean_Uncertain": 19.28,
+      "mean_Hypervigilant": 18.72,
+      "diff": 0.56,
+      "cohen_d": 0.088
+    },
+    {
+      "facet": "ddf",
+      "t": 2.421,
+      "p": 0.015794297818489227,
+      "mean_Uncertain": 15.42,
+      "mean_Hypervigilant": 14.45,
+      "diff": 0.96,
+      "cohen_d": 0.21
+    },
+    {
+      "facet": "eot",
+      "t": 3.876,
+      "p": 0.00011958407242143574,
+      "mean_Uncertain": 21.23,
+      "mean_Hypervigilant": 19.91,
+      "diff": 1.32,
+      "cohen_d": 0.337
+    },
+    {
+      "facet": "tas",
+      "t": 2.702,
+      "p": 0.007112128335438591,
+      "mean_Uncertain": 55.93,
+      "mean_Hypervigilant": 53.08,
+      "diff": 2.85,
+      "cohen_d": 0.234
+    }
+  ],
+  "hierarchical_R2": [
+    {
+      "step": "step1_TAS_total",
+      "formula": "somatic_z ~ tas",
+      "n_params": 1,
+      "R2": 0.1807,
+      "adj_R2": 0.1797,
+      "delta_R2": 0.1807,
+      "F": 183.28,
+      "p": 7.016572524304783e-38
+    },
+    {
+      "step": "step1b_facets",
+      "formula": "somatic_z ~ dif_z + ddf_z + eot_z",
+      "n_params": 3,
+      "R2": 0.3197,
+      "adj_R2": 0.3172,
+      "delta_R2": 0.139,
+      "F": 129.86,
+      "p": 5.878903425323825e-69
+    },
+    {
+      "step": "step2_facets_plus_intero",
+      "formula": "somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z",
+      "n_params": 5,
+      "R2": 0.3647,
+      "adj_R2": 0.3608,
+      "delta_R2": 0.045,
+      "F": 94.93,
+      "p": 4.9270735370417224e-79
+    },
+    {
+      "step": "step3_full",
+      "formula": "somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z + ias_x_iats",
+      "n_params": 6,
+      "R2": 0.3687,
+      "adj_R2": 0.3641,
+      "delta_R2": 0.0041,
+      "F": 80.41,
+      "p": 3.6696984762996616e-79
+    }
+  ],
+  "full_model_coefs": [
+    {
+      "predictor": "dif_z",
+      "beta": 0.5505,
+      "se": 0.0449,
+      "t": 12.256,
+      "p": 7.561131663140963e-32,
+      "ci_lower": 0.4623,
+      "ci_upper": 0.6387
+    },
+    {
+      "predictor": "ddf_z",
+      "beta": -0.0947,
+      "se": 0.0435,
+      "t": -2.18,
+      "p": 0.029573315021573874,
+      "ci_lower": -0.1801,
+      "ci_upper": -0.0094
+    },
+    {
+      "predictor": "eot_z",
+      "beta": -0.0813,
+      "se": 0.0304,
+      "t": -2.678,
+      "p": 0.0075524494275260685,
+      "ci_lower": -0.141,
+      "ci_upper": -0.0217
+    },
+    {
+      "predictor": "ias_z",
+      "beta": 0.0246,
+      "se": 0.0299,
+      "t": 0.825,
+      "p": 0.40971186341771476,
+      "ci_lower": -0.034,
+      "ci_upper": 0.0833
+    },
+    {
+      "predictor": "iats_z",
+      "beta": 0.2458,
+      "se": 0.0313,
+      "t": 7.842,
+      "p": 1.3707209021615993e-14,
+      "ci_lower": 0.1843,
+      "ci_upper": 0.3074
+    },
+    {
+      "predictor": "ias_x_iats",
+      "beta": -0.0619,
+      "se": 0.0269,
+      "t": -2.304,
+      "p": 0.021480372931062232,
+      "ci_lower": -0.1146,
+      "ci_upper": -0.0092
+    }
+  ],
+  "model_comparison_R2": [
+    {
+      "model": "DIF only",
+      "R2": 0.2998,
+      "predictors": "DIF"
+    },
+    {
+      "model": "TAS total only",
+      "R2": 0.1807,
+      "predictors": "TAS"
+    },
+    {
+      "model": "DIF + DDF + EOT",
+      "R2": 0.3197,
+      "predictors": "facets"
+    },
+    {
+      "model": "IAS + IATS + IAS x IATS",
+      "R2": 0.2039,
+      "predictors": "intero"
+    },
+    {
+      "model": "TAS + IAS + IATS + IAS x IATS",
+      "R2": 0.2833,
+      "predictors": "TAS + intero"
+    },
+    {
+      "model": "Full (facets + intero + interaction)",
+      "R2": 0.3687,
+      "predictors": "facets + intero"
+    }
+  ],
+  "variance_decomposition": {
+    "r2_facets_only": 0.3197005227906651,
+    "r2_intero_only": 0.20390867835375925,
+    "r2_full": 0.36871315770597346,
+    "unique_to_facets": 0.1648044793522142,
+    "unique_to_intero": 0.049012634915308384,
+    "shared": 0.15489604343845087
+  },
+  "gap_decomposition": [
+    {
+      "predictor": "dif_z",
+      "mean_Uncertain": 0.3604,
+      "mean_Hypervigilant": 0.2752,
+      "mean_diff": -0.0851,
+      "beta_full_model": 0.5505,
+      "contribution_to_gap": -0.0469,
+      "pct_of_total_gap": -19.1
+    },
+    {
+      "predictor": "ddf_z",
+      "mean_Uncertain": 0.3515,
+      "mean_Hypervigilant": 0.147,
+      "mean_diff": -0.2045,
+      "beta_full_model": -0.0947,
+      "contribution_to_gap": 0.0194,
+      "pct_of_total_gap": 7.9
+    },
+    {
+      "predictor": "eot_z",
+      "mean_Uncertain": 0.2596,
+      "mean_Hypervigilant": -0.0531,
+      "mean_diff": -0.3127,
+      "beta_full_model": -0.0813,
+      "contribution_to_gap": 0.0254,
+      "pct_of_total_gap": 10.37
+    },
+    {
+      "predictor": "ias_z",
+      "mean_Uncertain": -1.0827,
+      "mean_Hypervigilant": 0.3413,
+      "mean_diff": 1.4239,
+      "beta_full_model": 0.0246,
+      "contribution_to_gap": 0.0351,
+      "pct_of_total_gap": 14.3
+    },
+    {
+      "predictor": "iats_z",
+      "mean_Uncertain": 0.0219,
+      "mean_Hypervigilant": 0.9714,
+      "mean_diff": 0.9495,
+      "beta_full_model": 0.2458,
+      "contribution_to_gap": 0.2334,
+      "pct_of_total_gap": 95.13
+    },
+    {
+      "predictor": "ias_x_iats",
+      "mean_Uncertain": -0.0031,
+      "mean_Hypervigilant": 0.3375,
+      "mean_diff": 0.3406,
+      "beta_full_model": -0.0619,
+      "contribution_to_gap": -0.0211,
+      "pct_of_total_gap": -8.59
+    }
+  ],
+  "observed_hyp_minus_unc_somatic_z": 0.27869316714549797,
+  "predicted_hyp_minus_unc_somatic_z": 0.2453707976945745
+}

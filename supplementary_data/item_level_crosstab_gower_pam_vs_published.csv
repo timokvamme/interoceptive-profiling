@@ -1,0 +1,5 @@
+c42_pam3,Average Accuracy / High Attention,High Accuracy / Low Attention,Low Accuracy / Average Attention,All
+Average,177,91,179,447
+High Attention,92,0,11,103
+Low Attention,4,211,68,283
+All,273,302,258,833

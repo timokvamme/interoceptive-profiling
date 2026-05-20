@@ -1,0 +1,7 @@
+model,R2,predictors
+DIF only,0.2998,DIF
+TAS total only,0.1807,TAS
+DIF + DDF + EOT,0.3197,facets
+IAS + IATS + IAS x IATS,0.2039,intero
+TAS + IAS + IATS + IAS x IATS,0.2833,TAS + intero
+Full (facets + intero + interaction),0.3687,facets + intero

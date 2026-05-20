@@ -1,0 +1,558 @@
+{
+  "n": 833,
+  "kmeans_42item": {
+    "k_selection": [
+      {
+        "k": 2,
+        "silhouette": 0.1152,
+        "CH": 123.5,
+        "DB": 2.4871,
+        "inertia": 30459.28,
+        "min_max_ratio": 0.843,
+        "sizes": [
+          452,
+          381
+        ]
+      },
+      {
+        "k": 3,
+        "silhouette": 0.103,
+        "CH": 98.04,
+        "DB": 2.6364,
+        "inertia": 28300.5,
+        "min_max_ratio": 0.85,
+        "sizes": [
+          260,
+          267,
+          306
+        ]
+      },
+      {
+        "k": 4,
+        "silhouette": 0.0683,
+        "CH": 79.02,
+        "DB": 2.8423,
+        "inertia": 27206.3,
+        "min_max_ratio": 0.542,
+        "sizes": [
+          223,
+          203,
+          143,
+          264
+        ]
+      },
+      {
+        "k": 5,
+        "silhouette": 0.0636,
+        "CH": 67.17,
+        "DB": 2.7707,
+        "inertia": 26414.24,
+        "min_max_ratio": 0.465,
+        "sizes": [
+          122,
+          174,
+          118,
+          254,
+          165
+        ]
+      },
+      {
+        "k": 6,
+        "silhouette": 0.0519,
+        "CH": 58.75,
+        "DB": 2.8139,
+        "inertia": 25815.56,
+        "min_max_ratio": 0.362,
+        "sizes": [
+          85,
+          128,
+          121,
+          136,
+          128,
+          235
+        ]
+      },
+      {
+        "k": 7,
+        "silhouette": 0.0472,
+        "CH": 52.48,
+        "DB": 2.9819,
+        "inertia": 25330.09,
+        "min_max_ratio": 0.449,
+        "sizes": [
+          133,
+          122,
+          156,
+          135,
+          103,
+          114,
+          70
+        ]
+      },
+      {
+        "k": 8,
+        "silhouette": 0.0442,
+        "CH": 47.33,
+        "DB": 2.929,
+        "inertia": 24961.54,
+        "min_max_ratio": 0.361,
+        "sizes": [
+          105,
+          111,
+          95,
+          104,
+          48,
+          124,
+          133,
+          113
+        ]
+      }
+    ],
+    "k3_centroids": [
+      {
+        "c42_km3_raw": 0,
+        "ias_z": 0.32805850651095936,
+        "iats_z": 1.0607314932778034,
+        "n": 254,
+        "canonical": "Hypervigilant"
+      },
+      {
+        "c42_km3_raw": 1,
+        "ias_z": -0.9966978057927152,
+        "iats_z": 0.02806447413215735,
+        "n": 268,
+        "canonical": "Uncertain"
+      },
+      {
+        "c42_km3_raw": 2,
+        "ias_z": 0.5909586858477933,
+        "iats_z": -0.8905050751124766,
+        "n": 311,
+        "canonical": "Efficient"
+      }
+    ],
+    "k3_anova": [
+      {
+        "outcome": "tas",
+        "F": 76.27,
+        "p": 3.9158513882826766e-31,
+        "eta2_p": 0.1552,
+        "mean_Efficient": 44.35,
+        "sd_Efficient": 11.01,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 53.84,
+        "sd_Hypervigilant": 12.58,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 55.39,
+        "sd_Uncertain": 11.65,
+        "n_Uncertain": 268
+      },
+      {
+        "outcome": "sss8",
+        "F": 60.16,
+        "p": 3.9935446072263164e-25,
+        "eta2_p": 0.1266,
+        "mean_Efficient": 14.37,
+        "sd_Efficient": 5.15,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 19.54,
+        "sd_Hypervigilant": 6.25,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 17.46,
+        "sd_Uncertain": 5.63,
+        "n_Uncertain": 268
+      },
+      {
+        "outcome": "pcs",
+        "F": 34.66,
+        "p": 3.4998838597872975e-15,
+        "eta2_p": 0.0771,
+        "mean_Efficient": 26.15,
+        "sd_Efficient": 11.45,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 34.42,
+        "sd_Hypervigilant": 12.45,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 31.5,
+        "sd_Uncertain": 12.31,
+        "n_Uncertain": 268
+      },
+      {
+        "outcome": "phq9",
+        "F": 50.83,
+        "p": 1.4970628969126606e-21,
+        "eta2_p": 0.1091,
+        "mean_Efficient": 14.43,
+        "sd_Efficient": 5.22,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 19.1,
+        "sd_Hypervigilant": 6.72,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 18.42,
+        "sd_Uncertain": 6.21,
+        "n_Uncertain": 268
+      },
+      {
+        "outcome": "gad7",
+        "F": 64.22,
+        "p": 1.1647154644839685e-26,
+        "eta2_p": 0.134,
+        "mean_Efficient": 13.78,
+        "sd_Efficient": 6.63,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 20.22,
+        "sd_Hypervigilant": 8.19,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 19.28,
+        "sd_Uncertain": 7.45,
+        "n_Uncertain": 268
+      },
+      {
+        "outcome": "stai",
+        "F": 41.73,
+        "p": 5.363870395645887e-18,
+        "eta2_p": 0.0914,
+        "mean_Efficient": 42.0,
+        "sd_Efficient": 10.39,
+        "n_Efficient": 311,
+        "mean_Hypervigilant": 48.39,
+        "sd_Hypervigilant": 10.48,
+        "n_Hypervigilant": 254,
+        "mean_Uncertain": 49.03,
+        "sd_Uncertain": 10.02,
+        "n_Uncertain": 268
+      }
+    ],
+    "k3_crosstab_vs_published": {
+      "Average Accuracy / High Attention": {
+        "Efficient": 9,
+        "Hypervigilant": 240,
+        "Uncertain": 24,
+        "All": 273
+      },
+      "High Accuracy / Low Attention": {
+        "Efficient": 292,
+        "Hypervigilant": 3,
+        "Uncertain": 7,
+        "All": 302
+      },
+      "Low Accuracy / Average Attention": {
+        "Efficient": 10,
+        "Hypervigilant": 11,
+        "Uncertain": 237,
+        "All": 258
+      },
+      "All": {
+        "Efficient": 311,
+        "Hypervigilant": 254,
+        "Uncertain": 268,
+        "All": 833
+      }
+    },
+    "k3_diagonal_agreement": 0.9231692677070829,
+    "k3_bootstrap_jaccard_mean": {
+      "Efficient": 0.5947162341807936,
+      "Hypervigilant": 0.5661294236915613,
+      "Uncertain": 0.5663518085387773
+    }
+  },
+  "gower_pam_42item": {
+    "k_selection": [
+      {
+        "k": 2,
+        "silhouette": 0.1542,
+        "sizes": [
+          550,
+          283
+        ],
+        "min_max_ratio": 0.515
+      },
+      {
+        "k": 3,
+        "silhouette": 0.1227,
+        "sizes": [
+          283,
+          447,
+          103
+        ],
+        "min_max_ratio": 0.23
+      },
+      {
+        "k": 4,
+        "silhouette": 0.0868,
+        "sizes": [
+          186,
+          121,
+          132,
+          394
+        ],
+        "min_max_ratio": 0.307
+      },
+      {
+        "k": 5,
+        "silhouette": 0.075,
+        "sizes": [
+          147,
+          188,
+          111,
+          244,
+          143
+        ],
+        "min_max_ratio": 0.455
+      },
+      {
+        "k": 6,
+        "silhouette": 0.0665,
+        "sizes": [
+          112,
+          141,
+          130,
+          201,
+          155,
+          94
+        ],
+        "min_max_ratio": 0.468
+      }
+    ],
+    "k3_centroids": [
+      {
+        "c42_pam3_raw": 0,
+        "ias_z": 0.13899021406548598,
+        "iats_z": -1.0237213535218976,
+        "n": 283,
+        "label": "Low Attention"
+      },
+      {
+        "c42_pam3_raw": 1,
+        "ias_z": -0.12458342362399664,
+        "iats_z": 0.26702655134996717,
+        "n": 447,
+        "label": "Average"
+      },
+      {
+        "c42_pam3_raw": 2,
+        "ias_z": 0.1587821337805214,
+        "iats_z": 1.6539055785753567,
+        "n": 103,
+        "label": "High Attention"
+      }
+    ],
+    "k3_anova": [
+      {
+        "outcome": "tas",
+        "F": 41.51,
+        "p": 6.59578148994189e-18,
+        "eta2_p": 0.0909,
+        "mean_Average": 52.48,
+        "sd_Average": 11.23,
+        "n_Average": 447,
+        "mean_High Attention": 57.08,
+        "sd_High Attention": 12.98,
+        "n_High Attention": 103,
+        "mean_Low Attention": 45.85,
+        "sd_Low Attention": 13.19,
+        "n_Low Attention": 283
+      },
+      {
+        "outcome": "sss8",
+        "F": 47.16,
+        "p": 4.0046057582723125e-20,
+        "eta2_p": 0.102,
+        "mean_Average": 17.58,
+        "sd_Average": 5.78,
+        "n_Average": 447,
+        "mean_High Attention": 20.6,
+        "sd_High Attention": 6.37,
+        "n_High Attention": 103,
+        "mean_Low Attention": 14.61,
+        "sd_Low Attention": 5.42,
+        "n_Low Attention": 283
+      },
+      {
+        "outcome": "pcs",
+        "F": 21.84,
+        "p": 5.705508717644512e-10,
+        "eta2_p": 0.05,
+        "mean_Average": 31.35,
+        "sd_Average": 12.12,
+        "n_Average": 447,
+        "mean_High Attention": 35.61,
+        "sd_High Attention": 13.3,
+        "n_High Attention": 103,
+        "mean_Low Attention": 26.98,
+        "sd_Low Attention": 11.95,
+        "n_Low Attention": 283
+      },
+      {
+        "outcome": "phq9",
+        "F": 30.25,
+        "p": 2.0772319300224208e-13,
+        "eta2_p": 0.0679,
+        "mean_Average": 17.57,
+        "sd_Average": 6.09,
+        "n_Average": 447,
+        "mean_High Attention": 20.53,
+        "sd_High Attention": 7.04,
+        "n_High Attention": 103,
+        "mean_Low Attention": 15.23,
+        "sd_Low Attention": 5.94,
+        "n_Low Attention": 283
+      },
+      {
+        "outcome": "gad7",
+        "F": 38.93,
+        "p": 6.941155960884564e-17,
+        "eta2_p": 0.0858,
+        "mean_Average": 18.47,
+        "sd_Average": 7.74,
+        "n_Average": 447,
+        "mean_High Attention": 21.49,
+        "sd_High Attention": 8.38,
+        "n_High Attention": 103,
+        "mean_Low Attention": 14.56,
+        "sd_Low Attention": 7.06,
+        "n_Low Attention": 283
+      },
+      {
+        "outcome": "stai",
+        "F": 19.36,
+        "p": 6.044293539152173e-09,
+        "eta2_p": 0.0446,
+        "mean_Average": 47.19,
+        "sd_Average": 10.16,
+        "n_Average": 447,
+        "mean_High Attention": 49.98,
+        "sd_High Attention": 10.88,
+        "n_High Attention": 103,
+        "mean_Low Attention": 43.28,
+        "sd_Low Attention": 11.06,
+        "n_Low Attention": 283
+      }
+    ],
+    "k3_crosstab_vs_published": {
+      "Average Accuracy / High Attention": {
+        "Average": 177,
+        "High Attention": 92,
+        "Low Attention": 4,
+        "All": 273
+      },
+      "High Accuracy / Low Attention": {
+        "Average": 91,
+        "High Attention": 0,
+        "Low Attention": 211,
+        "All": 302
+      },
+      "Low Accuracy / Average Attention": {
+        "Average": 179,
+        "High Attention": 11,
+        "Low Attention": 68,
+        "All": 258
+      },
+      "All": {
+        "Average": 447,
+        "High Attention": 103,
+        "Low Attention": 283,
+        "All": 833
+      }
+    }
+  },
+  "primary_solution_recomputed": {
+    "k3_anova": [
+      {
+        "outcome": "tas",
+        "F": 75.6,
+        "p": 6.8894003692178985e-31,
+        "eta2_p": 0.1541,
+        "mean_Average Accuracy / High Attention": 53.08,
+        "sd_Average Accuracy / High Attention": 12.59,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 44.35,
+        "sd_High Accuracy / Low Attention": 10.88,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 55.93,
+        "sd_Low Accuracy / Average Attention": 11.71,
+        "n_Low Accuracy / Average Attention": 258
+      },
+      {
+        "outcome": "sss8",
+        "F": 52.16,
+        "p": 4.571094728652716e-22,
+        "eta2_p": 0.1117,
+        "mean_Average Accuracy / High Attention": 19.19,
+        "sd_Average Accuracy / High Attention": 6.25,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 14.42,
+        "sd_High Accuracy / Low Attention": 5.19,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 17.52,
+        "sd_Low Accuracy / Average Attention": 5.68,
+        "n_Low Accuracy / Average Attention": 258
+      },
+      {
+        "outcome": "pcs",
+        "F": 27.61,
+        "p": 2.4646979914733474e-12,
+        "eta2_p": 0.0624,
+        "mean_Average Accuracy / High Attention": 33.82,
+        "sd_Average Accuracy / High Attention": 12.69,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 26.46,
+        "sd_High Accuracy / Low Attention": 11.58,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 31.37,
+        "sd_Low Accuracy / Average Attention": 12.18,
+        "n_Low Accuracy / Average Attention": 258
+      },
+      {
+        "outcome": "phq9",
+        "F": 46.12,
+        "p": 1.0159132793102308e-19,
+        "eta2_p": 0.1,
+        "mean_Average Accuracy / High Attention": 18.79,
+        "sd_Average Accuracy / High Attention": 6.71,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 14.47,
+        "sd_High Accuracy / Low Attention": 5.24,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 18.52,
+        "sd_Low Accuracy / Average Attention": 6.23,
+        "n_Low Accuracy / Average Attention": 258
+      },
+      {
+        "outcome": "gad7",
+        "F": 58.11,
+        "p": 2.3964431155269565e-24,
+        "eta2_p": 0.1228,
+        "mean_Average Accuracy / High Attention": 19.72,
+        "sd_Average Accuracy / High Attention": 8.08,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 13.83,
+        "sd_High Accuracy / Low Attention": 6.74,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 19.49,
+        "sd_Low Accuracy / Average Attention": 7.53,
+        "n_Low Accuracy / Average Attention": 258
+      },
+      {
+        "outcome": "stai",
+        "F": 40.4,
+        "p": 1.8072250571704522e-17,
+        "eta2_p": 0.0887,
+        "mean_Average Accuracy / High Attention": 48.0,
+        "sd_Average Accuracy / High Attention": 10.62,
+        "n_Average Accuracy / High Attention": 273,
+        "mean_High Accuracy / Low Attention": 42.0,
+        "sd_High Accuracy / Low Attention": 10.28,
+        "n_High Accuracy / Low Attention": 302,
+        "mean_Low Accuracy / Average Attention": 49.24,
+        "sd_Low Accuracy / Average Attention": 10.04,
+        "n_Low Accuracy / Average Attention": 258
+      }
+    ],
+    "k3_bootstrap_jaccard_mean": {
+      "Average Accuracy / High Attention": 0.5824681506464234,
+      "High Accuracy / Low Attention": 0.60198890413176,
+      "Low Accuracy / Average Attention": 0.5843475043814379
+    }
+  }
+}

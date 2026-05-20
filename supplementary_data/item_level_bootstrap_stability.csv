@@ -1,0 +1,7 @@
+algorithm,cluster,mean_jaccard
+kmeans_42,Efficient,0.595
+kmeans_42,Hypervigilant,0.566
+kmeans_42,Uncertain,0.566
+kmeans_2var,Average Accuracy / High Attention,0.582
+kmeans_2var,High Accuracy / Low Attention,0.602
+kmeans_2var,Low Accuracy / Average Attention,0.584

@@ -1,0 +1,237 @@
+=============================================================================
+TAS-20 SUBSCALE DECOMPOSITION ANALYSIS
+=============================================================================
+
+Sample: N = 833 
+Date: 2026-03-27 09:35 
+
+Research question: Which TAS-20 subscale (DIF, DDF, EOT) drives the
+alexithymia pathway in the dual-pathway model of interoception?
+
+#############################################################################
+PART 1: SUBSCALE DESCRIPTIVES AND INTERNAL CONSISTENCY
+#############################################################################
+
+--- Subscale Descriptives ---
+
+Subscale     Items     Mean       SD   Min   Max    Alpha
+------------------------------------------------------------ 
+DIF              7    16.90     6.59     7    34    0.897
+DDF              5    13.76     4.72     5    25    0.834
+EOT              8    20.13     4.24     8    35    0.562
+TAS Total       20    50.80    12.73    20    87    0.880
+
+--- Inter-Subscale Correlations ---
+
+           DIF      DDF      EOT      TAS
+DIF      1.000    0.749    0.290    0.892
+DDF      0.749    1.000    0.387    0.888
+EOT      0.290    0.387    1.000    0.626
+TAS      0.892    0.888    0.626    1.000
+
+
+#############################################################################
+PART 2: CORRELATIONS - SUBSCALES x INTEROCEPTIVE AND CLINICAL MEASURES
+#############################################################################
+
+--- Pearson Correlations ---
+
+Variable                  DIF      DDF      EOT      TAS
+------------------------------------------------------- 
+IAS                  -0.332*** -0.319*** -0.236*** -0.369***
+IATS                 0.424*** 0.284*** 0.044    0.340***
+SSS-8                0.518*** 0.329*** 0.055    0.409***
+PCS                  0.413*** 0.257*** 0.016    0.315***
+PHQ-9                0.583*** 0.454*** 0.123*** 0.511***
+GAD-7                0.621*** 0.468*** 0.101**  0.529***
+STAI                 0.624*** 0.488*** 0.128*** 0.547***
+MH Composite         0.652*** 0.503*** 0.126*** 0.566***
+Somatic Composite    0.548*** 0.344*** 0.042    0.425***
+
+Note: *** p < .001, ** p < .01, * p < .05
+
+--- Strongest Subscale Correlate per Variable ---
+
+  IAS                  → DIF (r = -0.332)
+  IATS                 → DIF (r = 0.424)
+  SSS-8                → DIF (r = 0.518)
+  PCS                  → DIF (r = 0.413)
+  PHQ-9                → DIF (r = 0.583)
+  GAD-7                → DIF (r = 0.621)
+  STAI                 → DIF (r = 0.624)
+  MH Composite         → DIF (r = 0.652)
+  Somatic Composite    → DIF (r = 0.548)
+
+
+#############################################################################
+PART 3: MODERATION - IAS x IATS INTERACTION ON EACH SUBSCALE
+#############################################################################
+
+Testing whether the null IAS x IATS -> TAS interaction holds for all
+subscales, or whether one subscale shows a hidden interaction effect.
+
+Subscale        IAS b    IAS p   IATS b   IATS p    IxI b    IxI p  Sig
+------------------------------------------------------------------------------ 
+DIF            -2.003   0.0000    2.692   0.0000   -0.252   0.1843  
+DDF            -1.414   0.0000    1.244   0.0000   -0.059   0.6855  
+EOT            -0.977   0.0000    0.064   0.6606    0.215   0.1198  
+TAS Total      -4.393   0.0000    4.000   0.0000   -0.095   0.8001  
+
+Delta R-squared for interaction term:
+  DIF         : Delta R2 = 0.0016
+  DDF         : Delta R2 = 0.0002
+  EOT         : Delta R2 = 0.0028
+  TAS Total   : Delta R2 = 0.0001
+
+KEY FINDING: IAS x IATS interaction is non-significant for ALL subscales,
+confirming that the null interaction on TAS total is not masking
+subscale-specific effects. The alexithymia pathway operates additively.
+
+
+#############################################################################
+PART 4: SEPARATE DUAL-PATHWAY SEMS (ONE PER SUBSCALE)
+#############################################################################
+
+Each model replaces TAS total with one subscale in the dual-pathway SEM.
+This shows the total (non-unique) mediation through each subscale.
+
+Running bootstrap SEMs (1000 replicates each)...
+This may take a few minutes.
+
+  DIF model complete.
+  DDF model complete.
+  EOT model complete.
+  TAS Total model complete.
+
+--- DIF as Mediator (replacing TAS total) ---
+
+  Paths to DIF (alexithymia subscale):
+    IAS → DIF:       beta = -0.304 (p = 0.0000) [-0.361, -0.241]
+    IATS → DIF:      beta =  0.408 (p = 0.0000) [0.345, 0.469]
+    IASxIATS → DIF:  beta = -0.040 (p = 0.2325) [-0.099, 0.028] 
+
+  DIF → MH:          beta =  0.385 (p = 0.0000) [0.298, 0.417]
+  Somatic → MH:      beta =  0.554 (p = 0.0000) [0.462, 0.577]
+
+  Indirect: IAS → DIF → MH = -0.1169 (p = 0.0000) [-0.1381, -0.0806]
+  Indirect: IAS → Som → MH  = -0.0529 (p = 0.0072) [-0.0854, -0.0119]
+
+--- DDF as Mediator (replacing TAS total) ---
+
+  Paths to DDF (alexithymia subscale):
+    IAS → DDF:       beta = -0.300 (p = 0.0000) [-0.365, -0.234]
+    IATS → DDF:      beta =  0.264 (p = 0.0000) [0.198, 0.332]
+    IASxIATS → DDF:  beta = -0.013 (p = 0.7077) [-0.078, 0.054] 
+
+  DDF → MH:          beta =  0.275 (p = 0.0000) [0.209, 0.321]
+  Somatic → MH:      beta =  0.624 (p = 0.0000) [0.551, 0.659]
+
+  Indirect: IAS → DDF → MH = -0.0825 (p = 0.0000) [-0.1064, -0.0574]
+  Indirect: IAS → Som → MH  = -0.0596 (p = 0.0069) [-0.0998, -0.0133]
+
+--- EOT as Mediator (replacing TAS total) ---
+
+  Paths to EOT (alexithymia subscale):
+    IAS → EOT:       beta = -0.231 (p = 0.0000) [-0.298, -0.165]
+    IATS → EOT:      beta =  0.015 (p = 0.6906) [-0.061, 0.089]
+    IASxIATS → EOT:  beta =  0.054 (p = 0.1564) [-0.022, 0.124] 
+
+  EOT → MH:          beta =  0.064 (p = 0.0126) [0.015, 0.116]
+  Somatic → MH:      beta =  0.669 (p = 0.0000) [0.619, 0.723]
+
+  Indirect: IAS → EOT → MH = -0.0149 (p = 0.0230) [-0.0291, -0.0036]
+  Indirect: IAS → Som → MH  = -0.0638 (p = 0.0069) [-0.1093, -0.0150]
+
+
+#############################################################################
+PART 5: PARALLEL MEDIATION SEM (ALL SUBSCALES + SOMATIC SIMULTANEOUSLY)
+#############################################################################
+
+This model includes DIF, DDF, EOT, and Somatic as simultaneous mediators.
+It reveals the UNIQUE contribution of each subscale after controlling
+for the others - the critical test of which subscale drives the effect.
+
+Running parallel mediation SEM with bootstrap (1000 replicates)...
+  Parallel model complete.
+
+=== A-Paths: Predictors → Alexithymia Subscales ===
+
+Path                     beta        p    CI_lo    CI_hi      Sig
+----------------------------------------------------------------- 
+IAS → DIF            -0.304   0.0000   -0.361   -0.241      ***
+IATS → DIF            0.408   0.0000    0.345    0.469      ***
+IxI → DIF            -0.040   0.2325   -0.099    0.028         
+
+IAS → DDF            -0.300   0.0000   -0.365   -0.234      ***
+IATS → DDF            0.264   0.0000    0.198    0.332      ***
+IxI → DDF            -0.013   0.7077   -0.078    0.054         
+
+IAS → EOT            -0.231   0.0000   -0.298   -0.165      ***
+IATS → EOT            0.015   0.6906   -0.061    0.089         
+IxI → EOT             0.054   0.1564   -0.022    0.124         
+
+
+=== B-Paths: Mediators → Mental Health (unique effects) ===
+
+Path                     beta        p    CI_lo    CI_hi      Sig
+----------------------------------------------------------------- 
+DIF → MH              0.301   0.0000    0.207    0.356      ***
+DDF → MH              0.122   0.0005    0.046    0.177      ***
+EOT → MH             -0.035   0.1717   -0.080    0.018         
+Somatic → MH          0.558   0.0000    0.467    0.582      ***
+
+
+=== Indirect Effects Through Each Mediator (IAS → Mediator → MH) ===
+
+Pathway                       Effect        p      CI_lo      CI_hi      Sig
+--------------------------------------------------------------------------- 
+IAS → DIF → MH           -0.0915   0.0000    -0.1148    -0.0578      ***
+IAS → DDF → MH           -0.0365   0.0013    -0.0555    -0.0133      ***
+IAS → EOT → MH            0.0080   0.1793    -0.0040     0.0190         
+IAS → Somatic → MH       -0.0533   0.0073    -0.0859    -0.0120      ***
+IAS → All Alex → MH      -0.1200   0.0000    -0.1423    -0.0823      ***
+
+
+=== Pairwise Contrasts: IAS Indirect Effect Differences ===
+
+Contrast                        Diff        p      CI_lo      CI_hi      Sig
+--------------------------------------------------------------------------- 
+DIF - DDF                    -0.0549   0.0121    -0.0953    -0.0130      ***
+DIF - EOT                    -0.0995   0.0000    -0.1259    -0.0608      ***
+DDF - EOT                    -0.0446   0.0010    -0.0660    -0.0168      ***
+
+
+=== Proportion of Alexithymia Pathway by Subscale ===
+
+  DIF: -0.0915 (67.2% of alexithymia pathway)
+  DDF: -0.0365 (26.9% of alexithymia pathway)
+  EOT: 0.0080 (5.9% of alexithymia pathway)
+  Total alexithymia indirect: -0.1200
+
+
+#############################################################################
+SUMMARY: KEY FINDINGS
+#############################################################################
+
+1. SUBSCALE STRUCTURE:
+   - DIF-DDF correlation: r = 0.749 (shared affective alexithymia)
+   - DIF-EOT correlation: r = 0.290
+   - DDF-EOT correlation: r = 0.387
+
+2. MODERATION (IAS x IATS → subscale):
+   - IAS x IATS → DIF: b = -0.252 (p = 0.1843) n.s.
+   - IAS x IATS → DDF: b = -0.059 (p = 0.6855) n.s.
+   - IAS x IATS → EOT: b = 0.215 (p = 0.1198) n.s.
+
+3. UNIQUE MEDIATION (parallel model):
+   - Significant mediators: DIF, DDF
+   - Dominant subscale: DIF (67.2% of alexithymia pathway)
+
+4. SUBSCALE-SPECIFIC PATH COEFFICIENTS (unique, from parallel model):
+   - IAS → DIF: beta = -0.304 (p = 0.0000); DIF → MH: beta = 0.301 (p = 0.0000)
+   - IAS → DDF: beta = -0.300 (p = 0.0000); DDF → MH: beta = 0.122 (p = 0.0005)
+   - IAS → EOT: beta = -0.231 (p = 0.0000); EOT → MH: beta = -0.035 (p = 0.1717)
+
+5. CLINICAL IMPLICATION:
+   DIF is the primary alexithymia facet linking interoceptive
+   accuracy to mental health outcomes in the dual-pathway model.
