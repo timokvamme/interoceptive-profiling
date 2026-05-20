@@ -7,16 +7,27 @@ Executes all analysis scripts in order. Scripts are numbered to indicate
 the logical flow of the analysis pipeline.
 
 Pipeline:
-  01. Normality checks (R) - Data assumption validation
-  02. IAS-IATS correlation (R) - Basic bivariate relationship (stats only)
-  03. Correlation heatmaps (Python) - Broader correlations with MH outcomes
-  04. Cluster analysis (R) - K-selection, k-means, robustness
-  05. LPA analysis (R) - Latent profile analysis
-  06. Simpson's paradox (Python) - Bayes factor analysis
-  07. At-risk subcluster (Python) - Subgroup analysis
-  08. Cluster visualizations (Python) - 3D density, combined figures
-  09. Moderation + demographics (R) - IAS x IATS interaction with controls
-  10. Mediation analysis (R) - Dual-pathway mediation (TAS + Somatic)
+  01.  Normality checks (R) - data-assumption validation
+  02.  IAS-IATS correlation (R) - bivariate relationship (stats only)
+  03.  Correlation heatmaps (Python) - correlations with mental-health outcomes
+  04.  Cluster analysis (R) - K-selection, k-means, robustness
+  05.  LPA analysis (R) - latent profile analysis
+  06.  Simpson's paradox (Python) - Bayes factor analysis
+  07.  At-risk subcluster (Python) - subgroup analysis
+  08.  Cluster visualizations (Python) - 3D density, combined figures
+  09.  Item selection (R) - minimal item-set selection
+  10.  Network analysis (R) - network community structure
+  11.  Combined figure (R) - main figure assembly
+  12.  SEM pathway (R) - dual-pathway structural equation model
+  12b. Pathway dominance test (R)
+  12c. Multi-group omnibus invariance test (R)
+  12d. Pathway dominance figure (R)
+  12e. Comprehensive moderation figure (R)
+  13.  TAS-20 subscale (R) - subscale mediation
+  13b. TAS-20 subscale path diagrams (R)
+  14.  VVIQ mediation (R) - VVIQ-interoception mediation
+  15.  Item-level clustering sensitivity (Python)
+  16.  Alexithymia-somatic pathway (Python)
 
 Usage:
   python run_analysis.py           # Run all scripts
@@ -31,16 +42,27 @@ from pathlib import Path
 
 # Define analysis pipeline
 PIPELINE = [
-    ("01", "01_normality_checks.R", "R", "Data assumption checks"),
+    ("01", "01_normality_checks.R", "R", "Normality / data-assumption checks"),
     ("02", "02_correlation_ias_iats.R", "R", "IAS-IATS correlation stats"),
-    ("03", "03_correlation_heatmaps.py", "Python", "Correlation heatmaps with MH"),
-    ("04", "04_cluster_analysis.R", "R", "K-selection + clustering + robustness"),
+    ("03", "03_correlation_heatmaps.py", "Python", "Correlation heatmaps with mental-health outcomes"),
+    ("04", "04_cluster_analysis.R", "R", "K-selection, k-means clustering, robustness"),
     ("05", "05_lpa_analysis.R", "R", "Latent profile analysis"),
     ("06", "06_simpsons_paradox_bayes.py", "Python", "Simpson's paradox Bayes factor"),
-    ("07", "07_at_risk_subcluster.py", "Python", "At-risk subgroup analysis"),
-    ("08", "08_cluster_visualizations.py", "Python", "3D density + combined figures"),
-    ("09", "09_moderation_demographics.R", "R", "Moderation + demographic controls"),
-    ("10", "10_mediation_analysis.R", "R", "Dual-pathway mediation"),
+    ("07", "07_at_risk_subcluster.py", "Python", "At-risk subcluster analysis"),
+    ("08", "08_cluster_visualizations.py", "Python", "Cluster visualizations (3D density, combined)"),
+    ("09", "09_item_selection_analysis.R", "R", "Minimal item-set selection"),
+    ("10", "10_network_analysis.R", "R", "Network community analysis"),
+    ("11", "11_figure_combined.R", "R", "Combined main figure assembly"),
+    ("12", "12_sem_pathway_analysis.R", "R", "Dual-pathway SEM analysis"),
+    ("12b", "12b_pathway_dominance_test.R", "R", "Pathway dominance test"),
+    ("12c", "12c_multigroup_omnibus_test.R", "R", "Multi-group omnibus invariance test"),
+    ("12d", "12d_pathway_dominance_figure.R", "R", "Pathway dominance figure"),
+    ("12e", "12e_comprehensive_moderation_figure.R", "R", "Comprehensive moderation figure"),
+    ("13", "13_tas_subscale_analysis.R", "R", "TAS-20 subscale mediation"),
+    ("13b", "13b_tas_subscale_path_diagram.R", "R", "TAS-20 subscale path diagrams"),
+    ("14", "14_vviq_interoception_mediation.R", "R", "VVIQ-interoception mediation"),
+    ("15", "15_item_level_clustering_sensitivity.py", "Python", "Item-level clustering sensitivity"),
+    ("16", "16_alexithymia_somatic_pathway.py", "Python", "Alexithymia-somatic pathway decomposition"),
 ]
 
 def run_r_script(script_path):
