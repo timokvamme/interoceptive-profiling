@@ -1,0 +1,1053 @@
+=============================================================================
+FACTOR STRUCTURE OF THE SOMATIC COMPOSITE: SSS-8 + PCS ITEMS
+COMMSPSYCHOL-26-0385-T revision
+=============================================================================
+
+Date: 2026-09-07 09:44 
+R 4.4.0 | psych 2.4.3 | lavaan 0.6.21 | GPArotation 2024.3.1 
+
+QUESTION
+--------
+The SEM's somatic mediator is the z-scored average of SSS-8 and PCS.
+Reviewer 1 argues these index different constructs (bodily symptom burden
+vs cognitive appraisal of pain). Do the 21 items form ONE factor here?
+
+SAMPLE
+------
+Source file: supplementary_data/data_with_ias_iats_ratio.csv
+Rows in file: 832 (the analysis sample used throughout the paper)
+Missing item responses: 10 cells across 2 participants
+  items with missing values: sss_8_1 (1), sss_8_2 (1), sss_8_3 (1), sss_8_4 (1), sss_8_5 (2), sss_8_6 (1), sss_8_7 (1), sss_8_8 (1), pcs_6 (1)
+ANALYSIS N (listwise complete on all 21 items) = 830
+No further exclusions are applied: the item file already contains exactly
+the 832 participants of the published analyses. 
+The 2-participant shortfall is item-level missingness only, not exclusion.
+Note: for those 2 participants the raw item sums do NOT equal the sss8 /
+pcs scale scores used in 12_sem_pathway_analysis.R. Those two totals are
+prorated (and one SSS-8 total is mean-imputed) by 00_score_corrections.py,
+because the original totals scored omitted items as zero. Both rows are
+marked in the scoring_flag column. See CORRECTIONS.md.
+
+MEASURES
+--------
+SSS-8: 8 items (sss_8_1 ... sss_8_8), 5 ordered categories, coded 1-5
+PCS  : 13 items (pcs_1 ... pcs_13), 5 ordered categories, coded 1-5
+Because every item has only 5 ordered categories, all factor analyses use
+POLYCHORIC correlations, and the CFAs use the WLSMV estimator with items
+declared ordered. Pearson/ML equivalents are reported as cross-checks.
+
+
+#############################################################################
+1. SUITABILITY FOR FACTOR ANALYSIS
+#############################################################################
+
+KMO overall (polychoric matrix): 0.947
+KMO overall (Pearson matrix)   : 0.951
+Kaiser's benchmarks: >.90 marvellous, >.80 meritorious, >.70 middling,
+>.60 mediocre, <.50 unacceptable.
+
+Per-item KMO (measure of sampling adequacy):
+Item          MSA(poly)  MSA(pear)
+---------------------------------- 
+sss_8_1           0.878      0.888
+sss_8_2           0.939      0.933
+sss_8_3           0.922      0.920
+sss_8_4           0.911      0.908
+sss_8_5           0.923      0.931
+sss_8_6           0.922      0.921
+sss_8_7           0.949      0.938
+sss_8_8           0.913      0.906
+pcs_1             0.953      0.963
+pcs_2             0.945      0.952
+pcs_3             0.951      0.953
+pcs_4             0.953      0.957
+pcs_5             0.938      0.944
+pcs_6             0.964      0.969
+pcs_7             0.960      0.967
+pcs_8             0.968      0.969
+pcs_9             0.957      0.960
+pcs_10            0.943      0.946
+pcs_11            0.944      0.947
+pcs_12            0.966      0.970
+pcs_13            0.956      0.960
+
+Minimum per-item MSA (poly): 0.878 (sss_8_1)
+
+Bartlett's test of sphericity (H0: correlation matrix = identity):
+  polychoric: chi2(210) = 14414.0, p = < 1e-300
+  Pearson   : chi2(210) = 11154.5, p = < 1e-300
+
+Both criteria are comfortably met: the 21 items are factorable. Note that
+this says the items are INTERCORRELATED, not that they are UNIDIMENSIONAL.
+
+#############################################################################
+2. DIMENSIONALITY
+#############################################################################
+
+PARALLEL ANALYSIS (Horn), principal axis factoring on the polychoric
+matrix, 500 simulated datasets, n.obs = 830, seed = 42.
+Simulation-based (rather than resampling-based) because the input is a
+polychoric correlation matrix; this is psych's standard behaviour for a
+matrix input and matches how ordinal parallel analysis is normally run.
+
+Factors retained (parallel analysis, PA): 4
+Components retained (parallel analysis, PC): 2
+
+Eigenvalues, actual vs simulated:
+n       FA actual FA simulated    PC actual PC simulated
+-------------------------------------------------------- 
+1          10.154        0.352       10.543        1.293
+2           1.981        0.254        2.716        1.242
+3           0.390        0.219        0.922        1.206
+4           0.234        0.186        0.767        1.173
+5           0.091        0.156        0.692        1.143
+6           0.061        0.129        0.630        1.116
+7           0.033        0.102        0.602        1.089
+8          -0.044        0.078        0.558        1.064
+9          -0.062        0.053        0.517        1.039
+10         -0.079        0.031        0.440        1.016
+11         -0.107        0.007        0.426        0.992
+12         -0.126       -0.015        0.391        0.970
+13         -0.132       -0.038        0.362        0.947
+14         -0.175       -0.060        0.313        0.925
+15         -0.181       -0.082        0.236        0.901
+16         -0.201       -0.105        0.208        0.878
+17         -0.251       -0.129        0.190        0.855
+18         -0.265       -0.154        0.150        0.830
+19         -0.349       -0.180        0.139        0.804
+20         -0.400       -0.207        0.099        0.777
+21         -0.417       -0.243        0.096        0.740
+
+A factor is retained while the actual eigenvalue exceeds the simulated one.
+Scree + parallel plot: plots/figure_18_scree_parallel_somatic.png
+
+NOTE ON INTERPRETATION: only the first two factor eigenvalues are
+substantively large. Any factor beyond the second that parallel analysis
+retains sits barely above the simulated line and, in the EFA below,
+attracts no item at |lambda| >= 0.40 (see the 3-factor solution). The
+defensible reading is TWO substantive dimensions, with any further
+factors reflecting minor residual covariance among PCS items rather than
+additional interpretable constructs. Whatever the exact count, the crucial
+point for the reviewer's question is that it is NOT one.
+
+VERY SIMPLE STRUCTURE and VELICER'S MAP (polychoric, PA, oblimin):
+k        VSS1     VSS2        MAP        BIC      RMSEA
+------------------------------------------------------ 
+1       0.904    0.000    0.04297     2167.1     0.1439
+2       0.822    0.848    0.02005      671.3     0.1081
+3       0.819    0.838    0.02211       49.4     0.0854
+4       0.487    0.595    0.02619     -116.1     0.0764
+5       0.441    0.545    0.02751     -152.1     0.0728
+6       0.369    0.523    0.03370     -147.2     0.0714
+
+VSS complexity 1 maximised at k = 1
+VSS complexity 2 maximised at k = 2
+Velicer's MAP minimised at k = 2
+
+#############################################################################
+3. EXPLORATORY FACTOR ANALYSIS (principal axis, oblimin)
+#############################################################################
+
+Polychoric input, principal axis factoring (fm = 'pa'), oblique oblimin
+rotation for k >= 2 (unrotated for k = 1). Loadings with |lambda| >= 0.40 are flagged '*'.
+Item block: rows 1-8 are SSS-8, rows 9-21 are PCS.
+
+--- 1-FACTOR SOLUTION ---
+
+Item         scale        PA1       h2       u2 
+----------------------------------------------- 
+sss_8_1      SSS-8     0.309     0.095    0.905 
+sss_8_2      SSS-8     0.445*    0.198    0.802 
+sss_8_3      SSS-8     0.407*    0.165    0.835 
+sss_8_4      SSS-8     0.509*    0.259    0.741 
+sss_8_5      SSS-8     0.428*    0.183    0.817 
+sss_8_6      SSS-8     0.419*    0.175    0.825 
+sss_8_7      SSS-8     0.389     0.151    0.849 
+sss_8_8      SSS-8     0.415*    0.172    0.828 
+pcs_1        PCS       0.805*    0.648    0.352 
+pcs_2        PCS       0.814*    0.663    0.337 
+pcs_3        PCS       0.869*    0.754    0.246 
+pcs_4        PCS       0.895*    0.800    0.200 
+pcs_5        PCS       0.853*    0.727    0.273 
+pcs_6        PCS       0.838*    0.702    0.298 
+pcs_7        PCS       0.701*    0.491    0.509 
+pcs_8        PCS       0.821*    0.674    0.326 
+pcs_9        PCS       0.860*    0.739    0.261 
+pcs_10       PCS       0.853*    0.727    0.273 
+pcs_11       PCS       0.820*    0.673    0.327 
+pcs_12       PCS       0.765*    0.586    0.414 
+pcs_13       PCS       0.754*    0.568    0.432 
+
+Variance accounted for:
+                   PA1
+SS loadings    10.1537
+Proportion Var  0.4835
+
+Factor composition at |lambda| >= 0.40:
+  PA1    : 19 items (6 SSS-8, 13 PCS)  -> sss_8_2, sss_8_3, sss_8_4, sss_8_5, sss_8_6, sss_8_8, pcs_1, pcs_2, pcs_3, pcs_4, pcs_5, pcs_6, pcs_7, pcs_8, pcs_9, pcs_10, pcs_11, pcs_12, pcs_13
+  cross-loading items: 0 | items loading on no factor: 2
+
+Model fit of this EFA solution: RMSEA = 0.1439, TLI = 0.746, BIC = 2167.1
+Chi-square (empirical): 3437.4, df = 189, p = 0
+
+--- 2-FACTOR SOLUTION ---
+
+Item         scale        PA1       PA2       h2       u2 
+--------------------------------------------------------- 
+sss_8_1      SSS-8    -0.049     0.554*    0.283    0.717 
+sss_8_2      SSS-8     0.031     0.649*    0.442    0.558 
+sss_8_3      SSS-8     0.002     0.633*    0.402    0.598 
+sss_8_4      SSS-8     0.044     0.736*    0.576    0.424 
+sss_8_5      SSS-8     0.028     0.627*    0.411    0.589 
+sss_8_6      SSS-8     0.017     0.629*    0.406    0.594 
+sss_8_7      SSS-8    -0.019     0.638*    0.395    0.605 
+sss_8_8      SSS-8     0.035     0.594*    0.374    0.626 
+pcs_1        PCS       0.793*    0.042     0.663    0.337 
+pcs_2        PCS       0.752*    0.116     0.663    0.337 
+pcs_3        PCS       0.811*    0.110     0.757    0.243 
+pcs_4        PCS       0.852*    0.089     0.808    0.192 
+pcs_5        PCS       0.847*    0.034     0.747    0.253 
+pcs_6        PCS       0.813*    0.063     0.714    0.286 
+pcs_7        PCS       0.635*    0.118     0.490    0.510 
+pcs_8        PCS       0.870*   -0.045     0.721    0.279 
+pcs_9        PCS       0.918*   -0.056     0.796    0.204 
+pcs_10       PCS       0.942*   -0.100     0.806    0.194 
+pcs_11       PCS       0.937*   -0.141     0.771    0.229 
+pcs_12       PCS       0.745*    0.052     0.596    0.404 
+pcs_13       PCS       0.745*    0.035     0.582    0.418 
+
+Variance accounted for:
+                         PA1    PA2
+SS loadings           8.9682 3.4351
+Proportion Var        0.4271 0.1636
+Cumulative Var        0.4271 0.5906
+Proportion Explained  0.7231 0.2769
+Cumulative Proportion 0.7231 1.0000
+
+Factor intercorrelations (oblimin):
+      PA1   PA2
+PA1 1.000 0.485
+PA2 0.485 1.000
+
+Factor composition at |lambda| >= 0.40:
+  PA1    : 13 items (0 SSS-8, 13 PCS)  -> pcs_1, pcs_2, pcs_3, pcs_4, pcs_5, pcs_6, pcs_7, pcs_8, pcs_9, pcs_10, pcs_11, pcs_12, pcs_13
+  PA2    :  8 items (8 SSS-8, 0 PCS)  -> sss_8_1, sss_8_2, sss_8_3, sss_8_4, sss_8_5, sss_8_6, sss_8_7, sss_8_8
+  cross-loading items: 0 | items loading on no factor: 0
+
+Model fit of this EFA solution: RMSEA = 0.1081, TLI = 0.856, BIC = 671.3
+Chi-square (empirical): 1807.2, df = 169, p = 7.679e-272
+
+--- 3-FACTOR SOLUTION ---
+
+Item         scale        PA1       PA2       PA3       h2       u2 
+------------------------------------------------------------------- 
+sss_8_1      SSS-8    -0.072     0.519*    0.216     0.327    0.673 
+sss_8_2      SSS-8     0.023     0.651*    0.008     0.440    0.560 
+sss_8_3      SSS-8    -0.003     0.645*   -0.039     0.405    0.595 
+sss_8_4      SSS-8     0.039     0.762*   -0.086     0.590    0.410 
+sss_8_5      SSS-8     0.022     0.638*   -0.034     0.413    0.587 
+sss_8_6      SSS-8     0.002     0.613*    0.101     0.413    0.587 
+sss_8_7      SSS-8    -0.021     0.660*   -0.090     0.408    0.592 
+sss_8_8      SSS-8     0.030     0.618*   -0.078     0.387    0.613 
+pcs_1        PCS       0.773*    0.026     0.179     0.685    0.315 
+pcs_2        PCS       0.729*    0.069     0.311     0.747    0.253 
+pcs_3        PCS       0.787*    0.062     0.329     0.849    0.151 
+pcs_4        PCS       0.831*    0.073     0.187     0.832    0.168 
+pcs_5        PCS       0.828*    0.008     0.223     0.787    0.213 
+pcs_6        PCS       0.796*    0.075     0.056     0.711    0.289 
+pcs_7        PCS       0.622*    0.131     0.031     0.488    0.512 
+pcs_8        PCS       0.866*    0.003    -0.113     0.741    0.259 
+pcs_9        PCS       0.919*    0.003    -0.164     0.836    0.164 
+pcs_10       PCS       0.949*   -0.034    -0.205     0.868    0.132 
+pcs_11       PCS       0.946*   -0.076    -0.208     0.833    0.167 
+pcs_12       PCS       0.734*    0.076    -0.009     0.596    0.404 
+pcs_13       PCS       0.739*    0.074    -0.077     0.593    0.407 
+
+Variance accounted for:
+                         PA1    PA2    PA3
+SS loadings           8.8360 3.5273 0.5850
+Proportion Var        0.4208 0.1680 0.0279
+Cumulative Var        0.4208 0.5887 0.6166
+Proportion Explained  0.6824 0.2724 0.0452
+Cumulative Proportion 0.6824 0.9548 1.0000
+
+Factor intercorrelations (oblimin):
+      PA1   PA2   PA3
+PA1 1.000 0.474 0.123
+PA2 0.474 1.000 0.203
+PA3 0.123 0.203 1.000
+
+Factor composition at |lambda| >= 0.40:
+  PA1    : 13 items (0 SSS-8, 13 PCS)  -> pcs_1, pcs_2, pcs_3, pcs_4, pcs_5, pcs_6, pcs_7, pcs_8, pcs_9, pcs_10, pcs_11, pcs_12, pcs_13
+  PA2    :  8 items (8 SSS-8, 0 PCS)  -> sss_8_1, sss_8_2, sss_8_3, sss_8_4, sss_8_5, sss_8_6, sss_8_7, sss_8_8
+  PA3    :  0 items (0 SSS-8, 0 PCS)
+  cross-loading items: 0 | items loading on no factor: 0
+
+Model fit of this EFA solution: RMSEA = 0.0854, TLI = 0.910, BIC = 49.4
+Chi-square (empirical): 1057.6, df = 150, p = 2.553e-136
+
+
+#############################################################################
+4. CONFIRMATORY FACTOR ANALYSIS
+#############################################################################
+
+Estimator: WLSMV (diagonally weighted least squares with mean- and
+variance-adjusted test statistic), items declared ordered, delta
+parameterisation, latent variances fixed to 1 (std.lv = TRUE). This is the
+standard estimator for 5-category ordinal indicators. Fit indices reported
+are lavaan's ROBUST versions (scaled chi-square, robust CFI/TLI/RMSEA).
+An MLR (continuous-treatment) cross-check follows.
+
+Models:
+  (a) one-factor      : all 21 items -> a single SOM factor
+  (b) two-factor      : 8 SSS-8 items -> SSS, 13 PCS items -> PCS, correlated
+  (c) bifactor        : orthogonal general G (all 21) + SSS-specific +
+                        PCS-specific group factors
+
+WLSMV (robust / scaled indices), N = 830: 
+Model              chi2     df          p      CFI      TLI    RMSEA RMSEA 90% CI             SRMR   npar
+---------------------------------------------------------------------------------------------------------------- 
+one             3367.21    189    < .0001    0.779    0.755    0.142  [ 0.137,  0.148]        0.106    105
+two              976.43    188    < .0001    0.881    0.867    0.105  [ 0.099,  0.111]        0.046    106
+bifactor         608.20    168    < .0001    0.943    0.929    0.077  [ 0.070,  0.083]        0.032    126
+
+MLR cross-check (robust indices), items treated as continuous: 
+Model              chi2     df          p      CFI      TLI    RMSEA RMSEA 90% CI             SRMR   npar
+---------------------------------------------------------------------------------------------------------------- 
+one             1934.69    189    < .0001    0.809    0.788    0.116  [ 0.111,  0.121]        0.092     42
+two             1142.12    188    < .0001    0.896    0.883    0.086  [ 0.081,  0.091]        0.043     43
+bifactor         575.06    168    < .0001    0.956    0.945    0.059  [ 0.054,  0.064]        0.031     63
+
+Conventional cut-offs: CFI/TLI >= .95 good (>= .90 acceptable),
+RMSEA <= .06 good (<= .08 acceptable), SRMR <= .08 good.
+
+--- CHI-SQUARE DIFFERENCE TEST: one-factor (a) vs two-factor (b) ---
+Nested: the one-factor model is the two-factor model with the factor
+correlation fixed at 1. For WLSMV lavaan applies a scaled difference test.
+
+
+Scaled Chi-Squared Difference Test (method = "satorra.2000")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+
+               Df AIC BIC   Chisq Chisq diff  RMSEA Df diff Pr(>Chisq)    
+fit_wlsmv$two 188          754.18                                         
+fit_wlsmv$one 189         2508.57     353.11 1.4534       1  < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+--- same comparison, MLR ---
+
+Scaled Chi-Squared Difference Test (method = "satorra.bentler.2001")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+
+             Df   AIC   BIC  Chisq Chisq diff  RMSEA Df diff Pr(>Chisq)    
+fit_mlr$two 188 45126 45329 1376.4                                         
+fit_mlr$one 189 46082 46280 2334.2     655.24 1.0734       1  < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+--- two-factor (b) vs bifactor (c) ---
+
+Scaled Chi-Squared Difference Test (method = "satorra.2000")
+
+lavaan->lavTestLRT():  
+   lavaan NOTE: The "Chisq" column contains standard test statistics, not the 
+   robust test that should be reported per model. A robust difference test is 
+   a function of two standard (not robust) statistics.
+
+                    Df AIC BIC  Chisq Chisq diff   RMSEA Df diff Pr(>Chisq)    
+fit_wlsmv$bifactor 168         280.57                                          
+fit_wlsmv$two      188         754.18     239.85 0.16531      20  < 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+--- KEY QUANTITY: SSS x PCS LATENT CORRELATION (two-factor model) ---
+WLSMV: r(SSS, PCS) = 0.511, SE = 0.029, 95% CI [0.455, 0.568], z = 17.81, p < .0001
+Shared latent variance = 26.2% (r^2)
+MLR  : r(SSS, PCS) = 0.513, 95% CI [0.450, 0.575]
+
+A latent correlation of 1.00 would mean the two scales measure the same
+thing; the one-factor model is exactly that hypothesis.
+
+--- STANDARDIZED LOADINGS, ONE-FACTOR MODEL (WLSMV) ---
+Item         scale      lambda
+------------------------------ 
+sss_8_1      SSS-8       0.311
+sss_8_2      SSS-8       0.449 *
+sss_8_3      SSS-8       0.410 *
+sss_8_4      SSS-8       0.505 *
+sss_8_5      SSS-8       0.423 *
+sss_8_6      SSS-8       0.416 *
+sss_8_7      SSS-8       0.392
+sss_8_8      SSS-8       0.422 *
+pcs_1        PCS         0.808 *
+pcs_2        PCS         0.829 *
+pcs_3        PCS         0.877 *
+pcs_4        PCS         0.906 *
+pcs_5        PCS         0.881 *
+pcs_6        PCS         0.834 *
+pcs_7        PCS         0.691 *
+pcs_8        PCS         0.840 *
+pcs_9        PCS         0.894 *
+pcs_10       PCS         0.920 *
+pcs_11       PCS         0.883 *
+pcs_12       PCS         0.763 *
+pcs_13       PCS         0.757 *
+
+Mean lambda: SSS-8 items = 0.416 | PCS items = 0.837
+AVE of the single 'somatic' factor = 0.503 (threshold .50)
+
+--- STANDARDIZED LOADINGS, TWO-FACTOR MODEL (WLSMV) ---
+Item         factor     lambda
+------------------------------ 
+sss_8_1      SSS         0.494
+sss_8_2      SSS         0.673
+sss_8_3      SSS         0.630
+sss_8_4      SSS         0.792
+sss_8_5      SSS         0.649
+sss_8_6      SSS         0.641
+sss_8_7      SSS         0.608
+sss_8_8      SSS         0.643
+pcs_1        PCS         0.813
+pcs_2        PCS         0.834
+pcs_3        PCS         0.881
+pcs_4        PCS         0.908
+pcs_5        PCS         0.884
+pcs_6        PCS         0.837
+pcs_7        PCS         0.697
+pcs_8        PCS         0.844
+pcs_9        PCS         0.896
+pcs_10       PCS         0.922
+pcs_11       PCS         0.886
+pcs_12       PCS         0.768
+pcs_13       PCS         0.763
+
+AVE(SSS-8) = 0.417 | AVE(PCS) = 0.711
+Fornell-Larcker discriminant validity: r^2 = 0.262 vs AVE = 0.417 / 0.711
+  -> PASSES: each factor explains more of its own items than it shares with the other
+
+--- BIFACTOR MODEL (WLSMV) ---
+Item         scale           G     specific
+------------------------------------------ 
+sss_8_1      SSS-8       0.256        0.461
+sss_8_2      SSS-8       0.388        0.527
+sss_8_3      SSS-8       0.346        0.533
+sss_8_4      SSS-8       0.446        0.643
+sss_8_5      SSS-8       0.370        0.519
+sss_8_6      SSS-8       0.362        0.525
+sss_8_7      SSS-8       0.325        0.538
+sss_8_8      SSS-8       0.359        0.534
+pcs_1        PCS         0.793        0.218
+pcs_2        PCS         0.872        0.040
+pcs_3        PCS         0.911        0.082
+pcs_4        PCS         0.908        0.183
+pcs_5        PCS         0.885        0.168
+pcs_6        PCS         0.786        0.308
+pcs_7        PCS         0.675        0.200
+pcs_8        PCS         0.718        0.468
+pcs_9        PCS         0.745        0.522
+pcs_10       PCS         0.706        0.640
+pcs_11       PCS         0.681        0.615
+pcs_12       PCS         0.693        0.347
+pcs_13       PCS         0.682        0.357
+
+Mean |G| loading: SSS-8 = 0.356 | PCS = 0.774
+Mean |specific| loading: SSS-8 = 0.535 | PCS = 0.319
+If the specific factors carry loadings comparable to or larger than the
+general factor, the general factor is not strong enough to justify a
+single composite score.
+
+Here the general factor is PCS-DOMINATED: mean |G| loading is 0.774 for
+PCS items but only 0.356 for SSS-8 items (gap = 0.417), while the SSS-8
+specific factor (0.535) is stronger than SSS-8 items' loadings on G.
+In other words, a single score over these 21 items is mostly a PCS score.
+
+#############################################################################
+5. RELIABILITY AND COMPOSITE JUSTIFICATION
+#############################################################################
+
+McDonald's omega (Schmid-Leiman on the polychoric matrix, principal axis):
+Item set / group factors              omega_h    omega_t
+-------------------------------------------------------- 
+21 items (3 group factors)              0.551      0.962
+21 items (2 group factors)              0.603      0.959
+SSS-8 alone (2 group factors)           0.668      0.860
+PCS alone (3 group factors)             0.878      0.975
+
+NOTE: psych::omega requires 3 group factors for full identification. The
+two rows fitted with 2 group factors (21 items / SSS-8 alone) were estimated
+with general-factor loadings constrained equal, as psych warns; the 3-group-
+factor row for the 21-item composite is the unconstrained solution and is
+the one quoted in the verdict.
+
+21-item composite, 3 group factors: omega_h = 0.551, omega_total = 0.962
+Proportion of RELIABLE variance attributable to the general factor:
+  omega_h / omega_total = 0.573
+  ECV (explained common variance) = 0.429
+Rule of thumb: omega_h >= .70-.80 supports scoring a single total; below
+~.50 the total score is dominated by group factors, not a general factor.
+
+Cronbach's alpha (raw / Pearson) and ordinal alpha (polychoric):
+Scale                           alpha  ord.alpha    avg r (raw)
+-------------------------------------------------------------- 
+21-item composite               0.931      0.945          0.392
+SSS-8 (8 items)                 0.797      0.846          0.335
+PCS (13 items)                  0.955      0.967          0.621
+
+NOTE: alpha rises mechanically with test length, so a high alpha for the
+21-item composite is NOT evidence of unidimensionality. The average
+inter-item correlation and omega_h are the informative numbers.
+
+Average variance extracted (from the WLSMV CFAs):
+  one-factor 'somatic' (all 21 items): AVE = 0.503
+  two-factor: AVE(SSS-8) = 0.417, AVE(PCS) = 0.711
+  (AVE >= .50 is the usual convergent-validity threshold.)
+
+SSS-8 TOTAL x PCS TOTAL (sum scores):
+  Pearson  r = 0.450, 95% CI [0.394, 0.503], N = 830, r^2 = 0.203
+  Spearman rho = 0.424
+  disattenuated (Cronbach alpha)  = 0.516
+  disattenuated (ordinal alpha)   = 0.498
+  disattenuated (omega total)     = 0.492
+  latent correlation, WLSMV CFA   = 0.511 (the model-based analogue)
+
+If the disattenuated correlation is well below 1.00, the two scales are not
+measuring the same construct even after correcting for unreliability.
+
+#############################################################################
+6. VERDICT
+#############################################################################
+
+EVIDENCE SUMMARY
+----------------
+  N = 830 complete cases (of 832 in the analysis sample)
+  KMO = 0.947, Bartlett p < .0001 -> factorable
+  Parallel analysis (PA, polychoric): 4 factors
+  MAP: 2 factor(s); VSS-1: 1; VSS-2: 2
+  2-factor EFA: factor 1 = 0 SSS / 13 PCS; factor 2 = 8 SSS / 0 PCS
+  EFA factor correlation (oblimin) = 0.485
+  CFA 1-factor: CFI = 0.779, TLI = 0.755, RMSEA = 0.142 [0.137, 0.148], SRMR = 0.106
+  CFA 2-factor: CFI = 0.881, TLI = 0.867, RMSEA = 0.105 [0.099, 0.111], SRMR = 0.046
+  CFA bifactor: CFI = 0.943, TLI = 0.929, RMSEA = 0.077 [0.070, 0.083], SRMR = 0.032
+  Latent r(SSS-8, PCS) = 0.511 (26.2% shared variance)
+  1-factor loadings are lopsided: mean lambda = 0.416 (SSS-8) vs 0.837 (PCS)
+  Observed r(SSS-8 total, PCS total) = 0.450; disattenuated = 0.516
+  omega_h = 0.551, omega_total = 0.962 for the 21-item composite
+
+AUTOMATED READ OF THE DECISION RULES
+------------------------------------
+  - Parallel analysis indicates 4 factor(s) -> MORE THAN ONE dimension
+  - 2-factor CFA improves CFI by +0.101, RMSEA by -0.037, SRMR by -0.060 vs 1-factor
+  - 1-factor model does NOT meet conventional fit thresholds (CFI>=.95, RMSEA<=.06, SRMR<=.08)
+  - 2-factor model does NOT meet those thresholds
+  - latent r = 0.511 is BELOW the .85 heuristic for 'not discriminable'
+  - omega_h = 0.551 is below .70, so a single total score is NOT well justified on reliability grounds alone
+
+PLAIN-LANGUAGE VERDICT
+----------------------
+The SSS-8 and the PCS are EMPIRICALLY SEPARABLE in this sample. Parallel
+analysis retains more than one factor, the two-factor solution splits
+cleanly along scale boundaries, and the two-factor CFA fits better than
+the one-factor CFA on every index reported above.
+
+HOWEVER, the two factors correlate r = 0.511 (26% shared variance).
+That is a substantial but far from unity association: the two scales share
+a meaningful common core while retaining clearly separate reliable
+variance. A single 'somatic' composite therefore blends two related but
+distinguishable constructs, exactly as the reviewer argued.
+
+RECOMMENDED FRAMING FOR THE RESPONSE LETTER
+-------------------------------------------
+Report these numbers, concede that the composite is not strictly
+unidimensional, and lean on 17_revision_sensitivity.R: the SSS-8-only
+model is the honest primary specification, with the SSS-8 + PCS composite
+retained (if at all) as a broader 'somatic distress' index whose label is
+changed to reflect that it includes pain-related cognitive appraisal.
+
+Provenance: every number above was produced by this script
+(18_somatic_factor_structure.R) in this run. Nothing is carried over from
+earlier analyses except the reference values quoted in the header comment.
+
+
+#############################################################################
+#############################################################################
+PART B. IS THE MULTIPLICATIVE EFFECT A PAIN-CATASTROPHIZING EFFECT?
+        DUAL-PATHWAY SEM WITH THREE ALTERNATIVE SOMATIC MEDIATORS
+#############################################################################
+#############################################################################
+
+MOTIVATION
+----------
+Part A shows the 21-item composite is PCS-dominated. 17_revision_sensitivity.R
+shows the IAS x IATS -> Somatic interaction weakens when PCS is dropped.
+If the interaction is carried by the PCS, the published 'somatic
+amplification' effect is really a pain-catastrophizing effect. Part B tests
+that directly by swapping ONLY the mediator.
+
+SPECIFICATION (identical to model M0 of 17_revision_sensitivity.R)
+------------------------------------------------------------------
+  data      : dfc_interoception_profiling.csv
+  predictors: IAS and IATS full 42-item means, z-scored, product term formed
+              after z-scoring (ias_x_iats = ias_z * iats_z)
+  model     : tas_z ~ ias_z + iats_z + ias_x_iats
+              somatic_z ~ ias_z + iats_z + ias_x_iats
+              mh_z ~ tas_z + somatic_z + ias_z + iats_z + ias_x_iats
+  outcome   : MH composite = z-scored mean of PHQ-9, GAD-7, STAI
+  estimator : ML (lavaan), no covariates (matches baseline M0)
+  bootstrap : 2000 ordinary nonparametric resamples, percentile CIs, seed = 42
+  Only the mediator differs across models.
+
+MEDIATORS
+---------
+  (a) SSS-8 + PCS composite : z-scored mean of the two scale totals (published)
+  (b) SSS-8 alone           : SSS-8 total
+  (c) PCS alone             : PCS total
+  (d) PCS rumination        : mean of pcs_8, pcs_9, pcs_10, pcs_11
+  (e) PCS magnification     : mean of pcs_6, pcs_7, pcs_13
+  (f) PCS helplessness      : mean of pcs_1..pcs_5, pcs_12
+
+PCS SUBSCALE PROVENANCE: no scoring script in this project or in the
+upstream mi project assigns PCS items to subscales (only a single pcs
+total is computed). The groupings above are Sullivan, Bishop & Pivik's
+(1995) published definition, matched against the verbatim item text
+recovered from the Qualtrics survey export
+(mi/analyses/soma/data/psychosomatic_controls_October 22, 2024_11.48.xlsx,
+row 2 = question text). The recovered wording matches the published
+instrument item for item, so the mapping is verified against item content
+rather than assumed from numbering alone. Items as administered:
+  pcs_1    HELPLESSNESS   1. I worry all the time about whether the pain will end
+  pcs_2    HELPLESSNESS   2. I feel I can't go on
+  pcs_3    HELPLESSNESS   3. It's terrible and I think it's never going to get any better
+  pcs_4    HELPLESSNESS   4. It's awful and I feel it overwhelms me
+  pcs_5    HELPLESSNESS   5. I feel I can't stand it any more
+  pcs_6    MAGNIFICATION  6. I become afraid that the pain will become worse
+  pcs_7    MAGNIFICATION  7. I keep thinking of other painful events
+  pcs_8    RUMINATION     8. I anxiously want the pain to go away
+  pcs_9    RUMINATION     9. I can't seem to keep it out of my mind
+  pcs_10   RUMINATION     10. I keep thinking about how much it hurts
+  pcs_11   RUMINATION     11. I keep thinking about how badly I want the pain to stop
+  pcs_12   HELPLESSNESS   12. There's nothing I can do to reduce the intensity of the pain
+  pcs_13   MAGNIFICATION  13. I wonder whether something serious may happen
+
+Row alignment between the item-level file and the SEM source file was
+verified (responseid identical row-wise, and the sss8 / pcs / tas scale
+scores identical row-wise), so subscale scores line up with the SEM data.
+
+SAMPLE AND CONVERGENCE
+----------------------
+Model                                           N    converged
+-------------------------------------------------------------- 
+(a) SSS-8 + PCS composite (published)         832         TRUE
+(b) SSS-8 alone                               832         TRUE
+(c) PCS alone                                 832         TRUE
+(d) PCS rumination subscale                   832         TRUE
+(e) PCS magnification subscale                832         TRUE
+(f) PCS helplessness subscale                 832         TRUE
+joint two-mediator model (SSS-8 + PCS)        832         TRUE
+
+No missing data on any model variable, so every model uses the full N.
+
+#############################################################################
+B1. THE THREE PRIMARY MODELS, FULL PATH SETS
+#############################################################################
+
+-----------------------------------------------------------------------------
+MODEL (a) SSS-8 + PCS composite (published)  [mediator variable: somatic_combined]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.094  [ -0.154,  -0.033]    0.0025 | [ -0.162,  -0.027]    0.0090 **
+IATS -> Mediator                0.444  [  0.390,   0.497]    <.0001 | [  0.390,   0.497]    <.0001 ***
+IAS x IATS -> Mediator         -0.094  [ -0.156,  -0.032]    0.0028 | [ -0.159,  -0.027]    0.0080 **
+TAS -> MH                       0.307  [  0.256,   0.359]    <.0001 | [  0.246,   0.368]    <.0001 ***
+Mediator -> MH                  0.611  [  0.567,   0.655]    <.0001 | [  0.554,   0.665]    <.0001 ***
+IAS -> MH (direct)             -0.067  [ -0.116,  -0.018]    0.0072 | [ -0.116,  -0.019]    0.0060 **
+IATS -> MH (direct)            -0.005  [ -0.059,   0.049]    0.8629 | [ -0.057,   0.047]    0.8720 
+IAS x IATS -> MH (direct)      -0.043  [ -0.090,   0.003]    0.0682 | [ -0.085,   0.001]    0.0550 .
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.106  [ -0.131,  -0.081]    <.0001 | [ -0.138,  -0.079]    <.0001 ***
+IATS -> TAS -> MH               0.097  [  0.073,   0.121]    <.0001 | [  0.069,   0.125]    <.0001 ***
+IAS -> Mediator -> MH          -0.057  [ -0.094,  -0.020]    0.0025 | [ -0.099,  -0.017]    0.0090 **
+IATS -> Mediator -> MH          0.271  [  0.232,   0.310]    <.0001 | [  0.232,   0.312]    <.0001 ***
+Total indirect                  0.204  [  0.142,   0.266]    <.0001 | [  0.124,   0.284]    <.0001 ***
+
+R-squared: TAS = 0.234 | Mediator = 0.203 | MH = 0.559
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0890  delta CI [-0.1478, -0.0303]  boot CI [-0.1509, -0.0255]
+  IAS x IATS -> MH (direct)  est =  -0.0390  delta CI [-0.0810,  0.0030]  boot CI [-0.0768,  0.0006]
+
+-----------------------------------------------------------------------------
+MODEL (b) SSS-8 alone  [mediator variable: somatic_sss_only]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.099  [ -0.160,  -0.037]    0.0017 | [ -0.166,  -0.027]    0.0020 **
+IATS -> Mediator                0.409  [  0.354,   0.465]    <.0001 | [  0.350,   0.466]    <.0001 ***
+IAS x IATS -> Mediator         -0.068  [ -0.131,  -0.006]    0.0330 | [ -0.134,  -0.002]    0.0430 *
+TAS -> MH                       0.329  [  0.276,   0.382]    <.0001 | [  0.266,   0.389]    <.0001 ***
+Mediator -> MH                  0.554  [  0.508,   0.600]    <.0001 | [  0.500,   0.605]    <.0001 ***
+IAS -> MH (direct)             -0.062  [ -0.113,  -0.011]    0.0173 | [ -0.112,  -0.009]    0.0200 *
+IATS -> MH (direct)             0.032  [ -0.023,   0.087]    0.2555 | [ -0.026,   0.086]    0.2600 
+IAS x IATS -> MH (direct)      -0.062  [ -0.110,  -0.014]    0.0110 | [ -0.106,  -0.015]    0.0080 *
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.114  [ -0.140,  -0.088]    <.0001 | [ -0.146,  -0.086]    <.0001 ***
+IATS -> TAS -> MH               0.103  [  0.078,   0.129]    <.0001 | [  0.073,   0.133]    <.0001 ***
+IAS -> Mediator -> MH          -0.055  [ -0.089,  -0.020]    0.0018 | [ -0.092,  -0.015]    0.0020 **
+IATS -> Mediator -> MH          0.227  [  0.190,   0.264]    <.0001 | [  0.190,   0.264]    <.0001 ***
+Total indirect                  0.162  [  0.103,   0.221]    <.0001 | [  0.081,   0.240]    <.0001 ***
+
+R-squared: TAS = 0.234 | Mediator = 0.176 | MH = 0.524
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0648  delta CI [-0.1246, -0.0051]  boot CI [-0.1283, -0.0023]
+  IAS x IATS -> MH (direct)  est =  -0.0565  delta CI [-0.1001, -0.0129]  boot CI [-0.0968, -0.0139]
+
+-----------------------------------------------------------------------------
+MODEL (c) PCS alone  [mediator variable: somatic_pcs_only]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.061  [ -0.125,   0.003]    0.0617 | [ -0.130,   0.006]    0.0850 .
+IATS -> Mediator                0.346  [  0.287,   0.406]    <.0001 | [  0.283,   0.408]    <.0001 ***
+IAS x IATS -> Mediator         -0.092  [ -0.156,  -0.027]    0.0055 | [ -0.159,  -0.023]    0.0070 **
+TAS -> MH                       0.407  [  0.352,   0.463]    <.0001 | [  0.341,   0.471]    <.0001 ***
+Mediator -> MH                  0.388  [  0.336,   0.440]    <.0001 | [  0.324,   0.453]    <.0001 ***
+IAS -> MH (direct)             -0.062  [ -0.117,  -0.007]    0.0265 | [ -0.119,  -0.006]    0.0310 *
+IATS -> MH (direct)             0.094  [  0.036,   0.152]    0.0014 | [  0.036,   0.153]    0.0020 **
+IAS x IATS -> MH (direct)      -0.062  [ -0.115,  -0.010]    0.0187 | [ -0.109,  -0.015]    0.0090 *
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.141  [ -0.171,  -0.111]    <.0001 | [ -0.177,  -0.108]    <.0001 ***
+IATS -> TAS -> MH               0.128  [  0.099,   0.157]    <.0001 | [  0.096,   0.162]    <.0001 ***
+IAS -> Mediator -> MH          -0.024  [ -0.049,   0.001]    0.0630 | [ -0.051,   0.003]    0.0850 .
+IATS -> Mediator -> MH          0.134  [  0.105,   0.164]    <.0001 | [  0.103,   0.168]    <.0001 ***
+Total indirect                  0.098  [  0.045,   0.151]    0.0003 | [  0.032,   0.164]    0.0020 ***
+
+R-squared: TAS = 0.234 | Mediator = 0.122 | MH = 0.443
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0868  delta CI [-0.1485, -0.0251]  boot CI [-0.1513, -0.0222]
+  IAS x IATS -> MH (direct)  est =  -0.0575  delta CI [-0.1055, -0.0095]  boot CI [-0.0999, -0.0141]
+
+
+#############################################################################
+B2. THE KEY QUESTION: THE IAS x IATS INTERACTION ON EACH MEDIATOR
+#############################################################################
+
+IAS x IATS -> MEDIATOR, side by side (fully standardized):
+Mediator                                   beta       95% CI (delta)    p_Wald |        95% CI (boot)    p_boot
+-------------------------------------------------------------------------------------------------------------------- 
+(a) SSS-8 + PCS composite (published)    -0.094  [ -0.156,  -0.032]    0.0028 | [ -0.159,  -0.027]    0.0080 **
+(b) SSS-8 alone                          -0.068  [ -0.131,  -0.006]    0.0330 | [ -0.134,  -0.002]    0.0430 *
+(c) PCS alone                            -0.092  [ -0.156,  -0.027]    0.0055 | [ -0.159,  -0.023]    0.0070 **
+(d) PCS rumination subscale              -0.071  [ -0.137,  -0.005]    0.0355 | [ -0.139,  -0.002]    0.0430 *
+(e) PCS magnification subscale           -0.100  [ -0.165,  -0.036]    0.0023 | [ -0.169,  -0.031]    0.0070 **
+(f) PCS helplessness subscale            -0.089  [ -0.155,  -0.024]    0.0071 | [ -0.156,  -0.018]    0.0190 **
+
+For completeness, the other two mediator-equation paths:
+Mediator                                  IAS -> Med (b2)   IATS -> Med (b1)     R2 Med
+---------------------------------------------------------------------------------------- 
+(a) SSS-8 + PCS composite (published)    -0.094 p=0.0025     0.444 p=<.0001       0.203
+(b) SSS-8 alone                          -0.099 p=0.0017     0.409 p=<.0001       0.176
+(c) PCS alone                            -0.061 p=0.0617     0.346 p=<.0001       0.122
+(d) PCS rumination subscale              -0.036 p=0.2785     0.292 p=<.0001       0.084
+(e) PCS magnification subscale           -0.077 p=0.0177     0.353 p=<.0001       0.129
+(f) PCS helplessness subscale            -0.063 p=0.0540     0.332 p=<.0001       0.113
+
+Mediator -> MH and the direct interaction on MH:
+Mediator                                   Med -> MH (c2) IASxIATS -> MH (d3)      R2 MH
+---------------------------------------------------------------------------------------- 
+(a) SSS-8 + PCS composite (published)     0.611 p=<.0001    -0.043 p=0.0682       0.559
+(b) SSS-8 alone                           0.554 p=<.0001    -0.062 p=0.0110       0.524
+(c) PCS alone                             0.388 p=<.0001    -0.062 p=0.0187       0.443
+(d) PCS rumination subscale               0.313 p=<.0001    -0.074 p=0.0059       0.419
+(e) PCS magnification subscale            0.328 p=<.0001    -0.065 p=0.0178       0.411
+(f) PCS helplessness subscale             0.401 p=<.0001    -0.063 p=0.0179       0.447
+
+
+#############################################################################
+B3. FORMAL TEST: DOES THE INTERACTION DIFFER BETWEEN PCS AND SSS-8?
+#############################################################################
+
+Method. The two single-mediator models cannot be compared informally, since
+their coefficients come from the same participants and are correlated. Both
+mediators are therefore entered in ONE model as parallel mediators with the
+same predictor set and correlated residuals, and the equality of the two
+interaction coefficients is tested with a Wald test and with a percentile
+bootstrap of their difference.
+
+Validity check (the joint model must not change the coefficients it compares):
+  b3 for SSS-8: joint -0.064836 vs single-mediator -0.064836, difference = -2.78e-17
+  b3 for PCS  : joint -0.086824 vs single-mediator -0.086824, difference = 2.78e-17
+  Identical to numerical precision, as expected when the two mediator
+  equations share the same right-hand side. The joint model therefore only
+  supplies the covariance needed for the difference test; it does not alter
+  the quantities being compared.
+
+Both mediators are z-scored, so the two coefficients are in the same metric
+(SD of the respective mediator per unit of the product term) and their
+difference is interpretable.
+
+Joint model coefficients (unstandardized, z-scored metric):
+Parameter                                 est       SE               95% CI          p
+-------------------------------------------------------------------------------------- 
+IAS x IATS -> SSS-8                   -0.0648   0.0305  [-0.1246, -0.0051]     0.0335 *
+IAS x IATS -> PCS                     -0.0868   0.0315  [-0.1485, -0.0251]     0.0058 **
+DIFFERENCE (PCS - SSS-8)              -0.0220   0.0351  [-0.0908,  0.0468]     0.5312 
+IATS -> SSS-8                          0.4094   0.0322  [ 0.3463,  0.4725]     <.0001 ***
+IATS -> PCS                            0.3461   0.0332  [ 0.2810,  0.4112]     <.0001 ***
+DIFFERENCE (PCS - SSS-8)              -0.0633   0.0370  [-0.1359,  0.0093]     0.0877 .
+IAS -> SSS-8                          -0.0986   0.0317  [-0.1606, -0.0365]     0.0019 **
+IAS -> PCS                            -0.0609   0.0327  [-0.1250,  0.0032]     0.0624 .
+DIFFERENCE (PCS - SSS-8)               0.0377   0.0364  [-0.0338,  0.1091]     0.3015 
+SSS-8 -> MH (controlling PCS)          0.4498   0.0256  [ 0.3996,  0.4999]     <.0001 ***
+PCS -> MH (controlling SSS-8)          0.2448   0.0248  [ 0.1963,  0.2934]     <.0001 ***
+
+Bootstrap of the same quantities (percentile, 2000 resamples):
+Parameter                                 est            95% boot CI     p_boot
+-------------------------------------------------------------------------------- 
+IAS x IATS -> SSS-8                   -0.0648  [ -0.1283,  -0.0023]     0.0430
+IAS x IATS -> PCS                     -0.0868  [ -0.1513,  -0.0222]     0.0070
+DIFFERENCE in interaction             -0.0220  [ -0.0967,   0.0488]     0.5160
+IATS -> SSS-8                          0.4094  [  0.3453,   0.4729]     <.0001
+IATS -> PCS                            0.3461  [  0.2813,   0.4118]     <.0001
+DIFFERENCE in IATS effect             -0.0633  [ -0.1439,   0.0142]     0.1080
+IAS -> SSS-8                          -0.0986  [ -0.1664,  -0.0270]     0.0020
+IAS -> PCS                            -0.0609  [ -0.1281,   0.0063]     0.0850
+DIFFERENCE in IAS effect               0.0377  [ -0.0361,   0.1095]     0.3150
+(bootstrap resamples used: 2000, failed: 0)
+
+WALD TEST of H0: b3(PCS) = b3(SSS-8)
+  chi2(1) = 0.3921, p = 0.5312
+
+Wald test of joint equality of ALL THREE mediator-equation paths
+(H0: b1, b2 and b3 are the same for PCS and SSS-8):
+  chi2(3) = 5.3871, p = 0.1456
+
+INTERPRETATION OF THE TEST
+--------------------------
+Interaction difference (PCS minus SSS-8) = -0.0220, 95% CI [-0.0908, 0.0468],
+Wald p = 0.5312; bootstrap 95% CI [-0.0967, 0.0488], bootstrap p = 0.5160.
+
+-> The interaction is NOT significantly larger for PCS than for SSS-8 by the Wald test,
+   and the bootstrap CI for the difference INCLUDES zero.
+   The two mediators therefore cannot be statistically distinguished on the
+   interaction path, even though only one of them reaches significance on
+   its own. A non-significant difference between a significant and a
+   non-significant effect is NOT evidence that the effects are equal, nor
+   that they differ; the comparison is simply underpowered.
+
+
+#############################################################################
+B4. SECONDARY: WHICH PCS FACET CARRIES THE INTERACTION?
+#############################################################################
+
+Same model, mediator replaced by each PCS subscale in turn. These are
+descriptive; the three subscales are strongly intercorrelated and the models
+are not mutually adjusted.
+
+Subscale intercorrelations (Pearson) and with SSS-8:
+         pcs_rum pcs_mag pcs_help   pcs  sss8
+pcs_rum    1.000   0.782    0.816 0.936 0.357
+pcs_mag    0.782   1.000    0.780 0.890 0.425
+pcs_help   0.816   0.780    1.000 0.951 0.468
+pcs        0.936   0.890    0.951 1.000 0.450
+sss8       0.357   0.425    0.468 0.450 1.000
+
+Alpha of each subscale (raw, Pearson):
+  rumination     (4 items): alpha = 0.929
+  magnification  (3 items): alpha = 0.799
+  helplessness   (6 items): alpha = 0.921
+
+
+-----------------------------------------------------------------------------
+MODEL (d) PCS rumination subscale  [mediator variable: pcs_rum]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.036  [ -0.101,   0.029]    0.2785 | [ -0.103,   0.033]    0.3290 
+IATS -> Mediator                0.292  [  0.229,   0.354]    <.0001 | [  0.229,   0.355]    <.0001 ***
+IAS x IATS -> Mediator         -0.071  [ -0.137,  -0.005]    0.0355 | [ -0.139,  -0.002]    0.0430 *
+TAS -> MH                       0.443  [  0.388,   0.499]    <.0001 | [  0.380,   0.505]    <.0001 ***
+Mediator -> MH                  0.313  [  0.260,   0.365]    <.0001 | [  0.252,   0.373]    <.0001 ***
+IAS -> MH (direct)             -0.060  [ -0.116,  -0.004]    0.0364 | [ -0.120,   0.001]    0.0550 *
+IATS -> MH (direct)             0.122  [  0.064,   0.180]    <.0001 | [  0.064,   0.181]    <.0001 ***
+IAS x IATS -> MH (direct)      -0.074  [ -0.127,  -0.021]    0.0059 | [ -0.120,  -0.026]    0.0030 **
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.153  [ -0.185,  -0.122]    <.0001 | [ -0.191,  -0.119]    <.0001 ***
+IATS -> TAS -> MH               0.139  [  0.109,   0.170]    <.0001 | [  0.104,   0.175]    <.0001 ***
+IAS -> Mediator -> MH          -0.011  [ -0.032,   0.009]    0.2797 | [ -0.033,   0.011]    0.3290 
+IATS -> Mediator -> MH          0.091  [  0.066,   0.116]    <.0001 | [  0.067,   0.120]    <.0001 ***
+Total indirect                  0.066  [  0.015,   0.117]    0.0108 | [  0.004,   0.129]    0.0360 *
+
+R-squared: TAS = 0.234 | Mediator = 0.084 | MH = 0.419
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0674  delta CI [-0.1304, -0.0044]  boot CI [-0.1326, -0.0019]
+  IAS x IATS -> MH (direct)  est =  -0.0693  delta CI [-0.1188, -0.0198]  boot CI [-0.1124, -0.0245]
+
+-----------------------------------------------------------------------------
+MODEL (e) PCS magnification subscale  [mediator variable: pcs_mag]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.077  [ -0.140,  -0.013]    0.0177 | [ -0.143,  -0.012]    0.0210 *
+IATS -> Mediator                0.353  [  0.294,   0.412]    <.0001 | [  0.290,   0.411]    <.0001 ***
+IAS x IATS -> Mediator         -0.100  [ -0.165,  -0.036]    0.0023 | [ -0.169,  -0.031]    0.0070 **
+TAS -> MH                       0.421  [  0.365,   0.477]    <.0001 | [  0.355,   0.485]    <.0001 ***
+Mediator -> MH                  0.328  [  0.273,   0.382]    <.0001 | [  0.263,   0.395]    <.0001 ***
+IAS -> MH (direct)             -0.055  [ -0.111,   0.001]    0.0561 | [ -0.116,   0.005]    0.0740 .
+IATS -> MH (direct)             0.107  [  0.048,   0.167]    0.0004 | [  0.049,   0.166]    <.0001 ***
+IAS x IATS -> MH (direct)      -0.065  [ -0.118,  -0.011]    0.0178 | [ -0.112,  -0.016]    0.0060 *
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.146  [ -0.176,  -0.115]    <.0001 | [ -0.182,  -0.112]    <.0001 ***
+IATS -> TAS -> MH               0.132  [  0.103,   0.162]    <.0001 | [  0.100,   0.167]    <.0001 ***
+IAS -> Mediator -> MH          -0.025  [ -0.046,  -0.004]    0.0198 | [ -0.048,  -0.004]    0.0210 *
+IATS -> Mediator -> MH          0.116  [  0.088,   0.143]    <.0001 | [  0.086,   0.149]    <.0001 ***
+Total indirect                  0.077  [  0.027,   0.127]    0.0025 | [  0.013,   0.138]    0.0150 **
+
+R-squared: TAS = 0.234 | Mediator = 0.129 | MH = 0.411
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0949  delta CI [-0.1563, -0.0335]  boot CI [-0.1607, -0.0290]
+  IAS x IATS -> MH (direct)  est =  -0.0598  delta CI [-0.1094, -0.0102]  boot CI [-0.1041, -0.0143]
+
+-----------------------------------------------------------------------------
+MODEL (f) PCS helplessness subscale  [mediator variable: pcs_help]
+-----------------------------------------------------------------------------
+
+Fully standardized (std.all) coefficients, delta-method 95% CI and Wald p,
+with percentile bootstrap 95% CI and bootstrap p on the same metric.
+
+Path                             beta       95% CI (delta)         p |        95% CI (boot)    p_boot 
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                     -0.346  [ -0.400,  -0.291]    <.0001 | [ -0.407,  -0.284]    <.0001 ***
+IATS -> TAS                     0.314  [  0.258,   0.371]    <.0001 | [  0.247,   0.380]    <.0001 ***
+IAS x IATS -> TAS              -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+IAS -> Mediator                -0.063  [ -0.127,   0.001]    0.0540 | [ -0.130,   0.005]    0.0760 .
+IATS -> Mediator                0.332  [  0.272,   0.392]    <.0001 | [  0.272,   0.392]    <.0001 ***
+IAS x IATS -> Mediator         -0.089  [ -0.155,  -0.024]    0.0071 | [ -0.156,  -0.018]    0.0190 **
+TAS -> MH                       0.396  [  0.341,   0.452]    <.0001 | [  0.329,   0.460]    <.0001 ***
+Mediator -> MH                  0.401  [  0.350,   0.452]    <.0001 | [  0.335,   0.465]    <.0001 ***
+IAS -> MH (direct)             -0.065  [ -0.119,  -0.010]    0.0199 | [ -0.121,  -0.011]    0.0220 *
+IATS -> MH (direct)             0.100  [  0.043,   0.157]    0.0006 | [  0.042,   0.158]    <.0001 ***
+IAS x IATS -> MH (direct)      -0.063  [ -0.114,  -0.011]    0.0179 | [ -0.108,  -0.017]    0.0070 *
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH               -0.137  [ -0.167,  -0.108]    <.0001 | [ -0.172,  -0.105]    <.0001 ***
+IATS -> TAS -> MH               0.125  [  0.096,   0.153]    <.0001 | [  0.092,   0.158]    <.0001 ***
+IAS -> Mediator -> MH          -0.025  [ -0.051,   0.001]    0.0551 | [ -0.052,   0.002]    0.0760 .
+IATS -> Mediator -> MH          0.133  [  0.103,   0.163]    <.0001 | [  0.103,   0.166]    <.0001 ***
+Total indirect                  0.095  [  0.042,   0.148]    0.0004 | [  0.028,   0.161]    0.0020 ***
+
+R-squared: TAS = 0.234 | Mediator = 0.113 | MH = 0.447
+N = 832 | converged = TRUE | bootstrap resamples used = 2000 (failed 0)
+
+Unstandardized metric for the interaction paths (cross-check):
+  IAS x IATS -> TAS          est =  -0.0074  delta CI [-0.0650,  0.0502]  boot CI [-0.0707,  0.0640]
+  IAS x IATS -> Mediator     est =  -0.0847  delta CI [-0.1467, -0.0227]  boot CI [-0.1505, -0.0172]
+  IAS x IATS -> MH (direct)  est =  -0.0575  delta CI [-0.1051, -0.0098]  boot CI [-0.0991, -0.0161]
+
+
+#############################################################################
+B5. PART B VERDICT
+#############################################################################
+
+THE THREE INTERACTION COEFFICIENTS (IAS x IATS -> mediator, standardized):
+  (a) SSS-8 + PCS composite : beta = -0.094, 95% CI [-0.156, -0.032], p = 0.0028
+  (b) SSS-8 alone           : beta = -0.068, 95% CI [-0.131, -0.006], p = 0.0330
+  (c) PCS alone             : beta = -0.092, 95% CI [-0.156, -0.027], p = 0.0055
+
+  Difference (PCS - SSS-8)  : -0.0220, Wald p = 0.5312, bootstrap p = 0.5160
+
+PCS SUBSCALES (IAS x IATS -> subscale, standardized):
+  (d) PCS rumination subscale      beta = -0.071, 95% CI [-0.137, -0.005], p = 0.0355 *
+  (e) PCS magnification subscale   beta = -0.100, 95% CI [-0.165, -0.036], p = 0.0023 **
+  (f) PCS helplessness subscale    beta = -0.089, 95% CI [-0.155, -0.024], p = 0.0071 **
+
+PLAIN-LANGUAGE READING
+----------------------
+Interaction magnitudes: composite -0.094 | SSS-8 -0.068 | PCS -0.092
+The larger single-scale interaction is on PCS.
+Significant at .05 on its own: composite YES, SSS-8 YES, PCS YES.
+
+BUT the formal test does not license the claim that the effect is
+specifically a pain-catastrophizing effect: the PCS and SSS-8 interaction
+coefficients do not differ significantly from each other. The honest
+statement is that the interaction is estimated with similar magnitude on
+both mediators and that this study cannot resolve which one carries it.
+
+Note also that the composite's interaction can exceed BOTH single-scale
+interactions: averaging two z-scored mediators cancels part of their
+independent error variance, so the composite can be a more reliable
+indicator of whatever common variance the interaction acts on. Compare the
+three coefficients above against that possibility before concluding that
+one scale 'drives' the effect.
+
+Provenance: every Part B number was produced by this script in this run,
+with the same data, specification, estimator, seed and resample count as
+model M0 of 17_revision_sensitivity.R.

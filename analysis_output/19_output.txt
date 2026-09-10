@@ -1,0 +1,384 @@
+=============================================================================
+EXACT TEST STATISTICS FOR REVISION (COMMSPSYCHOL-26-0385-T)
+=============================================================================
+
+Script:      19_ert_exact_statistics.R
+Date:        2026-09-07 08:49 
+R:           R version 4.4.0 (2024-04-24 ucrt) 
+lavaan:      0.6.21 
+Estimator:   ML, complete cases
+Bootstrap:   2000 nonparametric (ordinary) resamples, seed 42 
+             95% CIs are percentile bootstrap unless stated otherwise
+
+Rows in data file:                 N = 832 
+Complete cases on all model vars:  N = 832 
+SD of the IAS x IATS product term:    1.0561 
+  (the product of two z-scores does not itself have SD 1, which is why a
+   lavaan std.all value for any interaction term equals the z-metric
+   coefficient multiplied by this SD; documented in 17_revision_sensitivity.R)
+
+#############################################################################
+PART 0: REPRODUCTION CHECK AGAINST THE PUBLISHED MODEL M0
+#############################################################################
+
+Model M0: full 42-item IAS/IATS, somatic = SSS-8 + PCS composite,
+mental health = PHQ-9 + GAD-7 + STAI composite, no covariates.
+
+Path                         target      refit      diff   target p    refit p       OK
+------------------------------------------------------------------------------ 
+IAS -> TAS                   -0.346     -0.346    0.0004          -     0.0000      yes
+IATS -> TAS                   0.314      0.314    0.0004          -     0.0000      yes
+IAS x IATS -> TAS            -0.008     -0.008    0.0002     0.8011     0.8010      yes
+IAS -> Somatic               -0.094     -0.094    0.0004          -     0.0025      yes
+IATS -> Somatic               0.444      0.444   -0.0004          -     0.0000      yes
+IAS x IATS -> Somatic        -0.094     -0.094   -0.0000     0.0030     0.0028      yes
+
+Model chi-square: chi2(1) = 91.701, p < .001 (<1e-16)
+Converged: TRUE 
+N used by lavaan: 832 
+
+REPRODUCTION CHECK: PASS. All six published coefficients and both
+published p values reproduce to the precision printed in the manuscript.
+
+#############################################################################
+PART 1: SIMPLE SLOPES OF IAS AT IATS = -1 SD, MEAN, +1 SD
+#############################################################################
+
+Definition. All variables are z-scored, so the simple slope is the change
+in the mediator, in SD units, per 1 SD increase in IAS, evaluated at the
+stated level of IATS. It is computed as b_IAS + b_IASxIATS * k, with
+k = -1, 0, +1. Because the mediator equation of the SEM is a saturated
+regression, the OLS re-centring approach and the SEM defined parameter
+give identical point estimates; the OLS version is reported because it
+carries exact residual degrees of freedom.
+
+--- SOMATIC MEDIATOR (SSS-8 + PCS composite) regressed on IAS ---
+
+(a) OLS simple slopes: two-tailed t test on the regression coefficient
+
+Level                  slope       SE                 95% CI         t          p
+------------------------------------------------------------------------------ 
+IATS = -1 SD         -0.0046   0.0417  [ -0.0864,   0.0773]    -0.110      .9126
+IATS = mean (0)      -0.0936   0.0312  [ -0.1549,  -0.0324]    -2.999      .0028
+IATS = +1 SD         -0.1827   0.0449  [ -0.2709,  -0.0945]    -4.065 < .001 (5e-05)
+
+  test: t test on an OLS coefficient, df = 828 (N = 832 , 4 estimated parameters)
+  CI: exact t-based 95% CI
+
+(b) Same slopes as SEM defined parameters (model M0)
+    z: Wald z test using the bootstrap SE; CI: percentile bootstrap
+
+Level                  slope  SE_boot            95% boot CI         z   p (Wald z)     p (boot)
+------------------------------------------------------------------------------------------------ 
+IATS = -1 SD         -0.0046   0.0415  [ -0.0845,   0.0801]    -0.110        .9121        .8820
+IATS = mean (0)      -0.0936   0.0341  [ -0.1560,  -0.0243]    -2.748        .0060        .0070
+IATS = +1 SD         -0.1827   0.0517  [ -0.2764,  -0.0770]    -3.536 < .001 (4e-04)        .0010
+
+(c) Alternative metric: the same slopes expressed in lavaan std.all,
+    i.e. with the product term rescaled by its own SD. Delta-method CI.
+
+Level               beta.std       SE         95% CI (delta)          p
+------------------------------------------------------------------------------ 
+IATS = -1 SD          0.0004   0.0426  [ -0.0830,   0.0839]      .9922
+IATS = mean (0)      -0.0936   0.0341  [ -0.1604,  -0.0269]      .0060
+IATS = +1 SD         -0.1877   0.0530  [ -0.2916,  -0.0837] < .001 (4e-04)
+
+--- ALEXITHYMIA (TAS-20 total) regressed on IAS ---
+
+(a) OLS simple slopes: two-tailed t test on the regression coefficient
+
+Level                  slope       SE                 95% CI         t          p
+------------------------------------------------------------------------------ 
+IATS = -1 SD         -0.3382   0.0409  [ -0.4184,  -0.2580]    -8.276 < .001 (5e-16)
+IATS = mean (0)      -0.3456   0.0306  [ -0.4057,  -0.2856]   -11.296 < .001 (1e-27)
+IATS = +1 SD         -0.3530   0.0440  [ -0.4395,  -0.2666]    -8.015 < .001 (4e-15)
+
+  test: t test on an OLS coefficient, df = 828 (N = 832 , 4 estimated parameters)
+  CI: exact t-based 95% CI
+
+(b) Same slopes as SEM defined parameters (model M0)
+    z: Wald z test using the bootstrap SE; CI: percentile bootstrap
+
+Level                  slope  SE_boot            95% boot CI         z   p (Wald z)     p (boot)
+------------------------------------------------------------------------------------------------ 
+IATS = -1 SD         -0.3382   0.0471  [ -0.4324,  -0.2516]    -7.187 < .001 (7e-13) < .001 (0/2000)
+IATS = mean (0)      -0.3456   0.0328  [ -0.4111,  -0.2819]   -10.542 < .001 (<1e-16) < .001 (0/2000)
+IATS = +1 SD         -0.3530   0.0474  [ -0.4407,  -0.2530]    -7.453 < .001 (9e-14) < .001 (0/2000)
+
+(c) Alternative metric: the same slopes expressed in lavaan std.all,
+    i.e. with the product term rescaled by its own SD. Delta-method CI.
+
+Level               beta.std       SE         95% CI (delta)          p
+------------------------------------------------------------------------------ 
+IATS = -1 SD         -0.3378   0.0468  [ -0.4294,  -0.2462] < .001 (5e-13)
+IATS = mean (0)      -0.3456   0.0308  [ -0.4060,  -0.2853] < .001 (<1e-16)
+IATS = +1 SD         -0.3535   0.0478  [ -0.4472,  -0.2598] < .001 (1e-13)
+
+--- Index of moderated mediation (formal test of whether the IAS
+    indirect effect depends on IATS) ---
+
+Somatic pathway      index =  -0.0520, SE_boot = 0.0189, 95% boot CI [-0.0877, -0.0134],
+                     Wald z = -2.749, p = .0060; percentile bootstrap p = .0100
+
+Alexithymia pathway  index =  -0.0022, SE_boot = 0.0100, 95% boot CI [-0.0214, 0.0187],
+                     Wald z = -0.217, p = .8284; percentile bootstrap p = .8820
+
+--- (d) The same simple slopes at each profile-typical IATS level ---
+
+Figure panels D and E label the slopes by profile rather than by SD, so
+these are the values that correspond one-to-one to the figure labels.
+IATS(z) is fixed at each profile's mean (see Part 4 for the profile
+solution and profile n).
+
+Profile            IATS(z)     slope       SE                 95% CI        t     df              p
+---------------------------------------------------------------------------------------------------- 
+Somatic mediator (figure panel D):
+  Hypervigilant      0.970   -0.1800   0.0443  [ -0.2669,  -0.0931]   -4.064    828 < .001 (5e-05)
+  Uncertain          0.022   -0.0955   0.0313  [ -0.1569,  -0.0342]   -3.056    828          .0023
+  Efficient         -0.898   -0.0136   0.0397  [ -0.0916,   0.0643]   -0.343    828          .7313
+Alexithymia / TAS-20 (figure panel E):
+  Hypervigilant      0.970   -0.3528   0.0434  [ -0.4380,  -0.2676]   -8.127    828 < .001 (2e-15)
+  Uncertain          0.022   -0.3458   0.0307  [ -0.4060,  -0.2856]  -11.281    828 < .001 (1e-27)
+  Efficient         -0.898   -0.3390   0.0389  [ -0.4154,  -0.2625]   -8.706    828 < .001 (2e-17)
+
+  test: two-tailed t test on an OLS coefficient after re-centring IATS
+  at the profile mean; CI is the exact t-based 95% CI.
+
+NOTE ON THE MANUSCRIPT VALUES -0.317 / -0.122 / +0.16.
+Those three numbers are hard-coded in 12_sem_pathway_analysis.R (lines
+1008-1012, annotated "from reference figure") and are not produced by any
+computation in this repository. They do not match the fitted model on any
+metric or at any IATS level: the tabulated model-implied slopes above are
+the correct values and are far smaller in absolute size.
+
+The slope of IAS on the somatic mediator changes sign at
+IATS(z) = -1.051. The observed IATS(z) range is -1.868 to 3.141, so the
+slope is positive for the 17.5% of the sample (n = 146) below that
+point. That crossing lies BELOW the Efficient profile mean, so the
+positive slope labelled +0.16 for the Efficient profile in the figure is
+not what the model implies: at the Efficient mean the slope is -0.0136.
+
+#############################################################################
+PART 2: IAS x IATS INTERACTION ON EACH TAS-20 SUBSCALE
+#############################################################################
+
+Item groupings (from 13_tas_subscale_analysis.R, Bagby et al. 1994;
+items 4, 5, 10, 18, 19 are already reverse-scored in this dataset, and
+DIF + DDF + EOT reproduces the TAS-20 total exactly):
+  DIF (Difficulty Identifying Feelings), 7 items:  tas_1, tas_3, tas_6, tas_7, tas_9, tas_13, tas_14
+  DDF (Difficulty Describing Feelings), 5 items:   tas_2, tas_4, tas_11, tas_12, tas_17
+  EOT (Externally Oriented Thinking), 8 items:     tas_5, tas_8, tas_10, tas_15, tas_16, tas_18, tas_19, tas_20
+
+Each subscale is z-scored and regressed on z-scored IAS, z-scored IATS
+and their product, in a separate model per subscale.
+
+(a) Separate OLS models: two-tailed t test on the interaction coefficient
+
+Subscale            beta       SE                 95% CI         t     df            p
+---------------------------------------------------------------------------------------- 
+DIF              -0.0381   0.0287  [ -0.0946,   0.0183]    -1.327    828        .1849
+DDF              -0.0124   0.0307  [ -0.0727,   0.0478]    -0.405    828        .6857
+EOT               0.0510   0.0327  [ -0.0131,   0.1151]     1.561    828        .1189
+TAS-20 total     -0.0074   0.0295  [ -0.0653,   0.0505]    -0.251    828        .8016
+
+  beta is in the z metric (z-scored outcome, z-scored IAS and IATS,
+  raw product). Multiply by 1.0561 for the lavaan std.all metric:
+
+Subscale       beta (std.all)         95% CI (std.all)
+------------------------------------------------------------------------------ 
+DIF                 -0.0403  [  -0.0999,    0.0193]
+DDF                 -0.0131  [  -0.0767,    0.0505]
+EOT                  0.0538  [  -0.0139,    0.1215]
+TAS-20 total        -0.0078  [  -0.0689,    0.0533]
+
+(b) Variance explained by the interaction: F test for the increment in R2
+    over the additive model (IAS + IATS)
+
+Subscale         Delta R2            F         df            p
+------------------------------------------------------------------------------ 
+DIF               0.00155        1.761     1, 828        .1849
+DDF               0.00016        0.164     1, 828        .6857
+EOT               0.00277        2.437     1, 828        .1189
+TAS-20 total      0.00006        0.063     1, 828        .8016
+
+(c) Same interactions inside the parallel multiple-mediator SEM
+    (DIF, DDF, EOT and somatic as simultaneous mediators; residual
+    covariances among subscales freed). Percentile bootstrap CI,
+    R = 2000 ; p is a Wald z test on the bootstrap SE.
+
+Path                beta  SE_boot            95% boot CI         z   p (Wald z)     p (boot)
+-------------------------------------------------------------------------------------------- 
+IAS x IATS -> DIF   -0.0381   0.0306  [ -0.0953,   0.0239]    -1.246        .2128        .2590
+IAS x IATS -> DDF   -0.0124   0.0331  [ -0.0736,   0.0536]    -0.375        .7077        .7690
+IAS x IATS -> EOT    0.0510   0.0353  [ -0.0191,   0.1218]     1.442        .1493        .1450
+
+  std.all values from the same SEM (delta-method CI):
+
+Path             beta.std                   95% CI            p
+------------------------------------------------------------------------------ 
+IAS x IATS -> DIF    -0.0403  [   -0.1037,     0.0231]        .2130
+IAS x IATS -> DDF    -0.0131  [   -0.0817,     0.0555]        .7077
+IAS x IATS -> EOT     0.0538  [   -0.0190,     0.1267]        .1474
+
+#############################################################################
+PART 3: INDIRECT EFFECT OF IAS ON MENTAL HEALTH VIA DIF, DDF AND EOT
+#############################################################################
+
+Parallel multiple-mediator SEM: DIF, DDF, EOT and the somatic composite
+enter simultaneously as mediators of IAS, IATS and their product on the
+mental-health composite. All variables z-scored, so the estimates below
+are already fully standardized (no product term is involved in any of
+these indirect effects, so the z metric and std.all coincide).
+Bootstrap: R = 2000 successful resamples.
+
+Indirect effect                est  SE_boot              95% boot CI        z   p (Wald z)     p (boot)
+-------------------------------------------------------------------------------------------------------- 
+IAS -> DIF -> MH           -0.0787   0.0150  [  -0.1100,   -0.0510]   -5.243 < .001 (2e-07) < .001 (0/2000)
+IAS -> DDF -> MH           -0.0375   0.0109  [  -0.0600,   -0.0172]   -3.448 < .001 (6e-04) < .001 (0/2000)
+IAS -> EOT -> MH            0.0070   0.0057  [  -0.0040,    0.0183]    1.233        .2175        .2110
+IAS -> Somatic -> MH       -0.0501   0.0183  [  -0.0844,   -0.0131]   -2.737        .0062        .0070
+IAS -> all 3 facets -> MH   -0.1093   0.0155  [  -0.1406,   -0.0798]   -7.063 < .001 (2e-12) < .001 (0/2000)
+
+A-paths and b-paths that compose them (same model):
+
+Path                        beta  SE_boot              95% boot CI   p (Wald z)
+---------------------------------------------------------------------------------- 
+IAS -> DIF               -0.3039   0.0323  [  -0.3663,   -0.2402] < .001 (<1e-16)
+IAS -> DDF               -0.2994   0.0335  [  -0.3659,   -0.2326] < .001 (<1e-16)
+IAS -> EOT               -0.2319   0.0344  [  -0.3013,   -0.1661] < .001 (1e-11)
+DIF -> MH                 0.2591   0.0381  [   0.1811,    0.3329] < .001 (1e-11)
+DDF -> MH                 0.1252   0.0333  [   0.0615,    0.1911] < .001 (2e-04)
+EOT -> MH                -0.0301   0.0241  [  -0.0771,    0.0174]        .2118
+Somatic -> MH             0.5354   0.0304  [   0.4732,    0.5950] < .001 (<1e-16)
+
+Pairwise contrasts between facet-specific indirect effects
+(Wald z on the bootstrap SE, plus percentile bootstrap p):
+
+Contrast              diff  SE_boot              95% boot CI   p (Wald z)     p (boot)
+---------------------------------------------------------------------------------------- 
+DIF - DDF          -0.0412   0.0208  [  -0.0834,   -0.0010]        .0477        .0470
+DIF - EOT          -0.0857   0.0167  [  -0.1199,   -0.0544] < .001 (3e-07) < .001 (0/2000)
+DDF - EOT          -0.0445   0.0133  [  -0.0723,   -0.0198] < .001 (8e-04)        .0010
+
+--- Percentage share of the alexithymia-mediated indirect effect ---
+
+Share is computed on absolute values, share_j = |ind_j| / sum_k |ind_k|,
+which is the definition used in 13_tas_subscale_analysis.R (needed because
+the EOT effect has the opposite sign to DIF and DDF). Percentages are
+recomputed inside every bootstrap resample; the CI is percentile.
+The p value in the last column tests H0: this facet contributes 0% of the
+alexithymia-mediated effect, which is identical to the test that the
+facet-specific indirect effect is zero (percentile bootstrap).
+
+Facet     share %   boot mean            95% boot CI signed share %     p (boot)
+---------------------------------------------------------------------------------- 
+DIF         63.9%       63.7% [    46.8%,     81.1%]          72.1% < .001 (0/2000)
+DDF         30.4%       30.4% [    14.6%,     46.5%]          34.3% < .001 (0/2000)
+EOT          5.7%        5.9% [     0.3%,     13.4%]          -6.4%        .2110
+
+  share %      = share computed from the point estimates
+  boot mean    = mean of the same quantity across resamples
+  signed share = ind_j / total_alex (sums to 100%, can be negative)
+
+#############################################################################
+PART 4: PATHWAY DOMINANCE BY INTEROCEPTIVE PROFILE
+#############################################################################
+
+Profiles are the k-means solution of 04_cluster_analysis.R / 12b
+(k = 3, seed 123, nstart 50, on z-scored IAS and IATS totals).
+
+Profile n:
+  Efficient      n = 301
+  Hypervigilant  n = 273
+  Uncertain      n = 258
+
+Profile-typical values (mean z-score within profile):
+Profile             IAS (z)   IATS (z)
+------------------------------------------------------------------------------ 
+Efficient             0.616     -0.898
+Hypervigilant         0.342      0.970
+Uncertain            -1.081      0.022
+
+Conditional indirect effect of IAS on mental health at each profile's
+typical IATS level, separately through the alexithymia (TAS) and the
+somatic mediator. Model M0, R = 2000 bootstrap resamples.
+
+Profile          Pathway            est  SE_boot              95% boot CI   p (Wald z)     p (boot)
+---------------------------------------------------------------------------------------------------- 
+Hypervigilant    Alexithymia    -0.1037   0.0173  [  -0.1397,   -0.0710] < .001 (2e-09) < .001 (0/2000)
+                 Somatic        -0.1051   0.0298  [  -0.1604,   -0.0448] < .001 (4e-04)        .0010
+Uncertain        Alexithymia    -0.1016   0.0139  [  -0.1302,   -0.0757] < .001 (2e-13) < .001 (0/2000)
+                 Somatic        -0.0558   0.0200  [  -0.0932,   -0.0152]        .0052        .0070
+Efficient        Alexithymia    -0.0996   0.0162  [  -0.1344,   -0.0704] < .001 (8e-10) < .001 (0/2000)
+                 Somatic        -0.0080   0.0231  [  -0.0520,    0.0387]        .7307        .7210
+
+--- Percentage of the total indirect effect carried by each pathway ---
+
+pct_alex = |cond_alex| / (|cond_alex| + |cond_som|) * 100, recomputed in
+every bootstrap resample (definition used in 12b_pathway_dominance_test.R).
+The p value tests H0: the two pathways carry equal absolute effect, i.e.
+pct = 50%. Two tests are reported for that null:
+  Wald z   : z = diff / SE_boot on the signed contrast
+             (somatic minus alexithymia conditional indirect effect),
+             the test used in the published analysis;
+  bootstrap: two-sided percentile bootstrap p on |cond_som| - |cond_alex|.
+
+Profile                 Alexithymia %  bootmean            Somatic %  bootmean       diff   p (Wald z)         p (boot)
+-------------------------------------------------------------------------------------------------------------------------- 
+Hypervigilant     49.7% [ 37.9,  68.5]     50.5%  50.3% [ 31.5,  62.1]     49.5%    -0.0014        .9611            .9660
+Uncertain         64.6% [ 51.2,  86.9]     65.6%  35.4% [ 13.1,  48.8]     34.4%     0.0458        .0351            .0280
+Efficient         92.6% [ 64.0,  99.2]     84.5%   7.4% [  0.8,  36.0]     15.5%     0.0916 < .001 (3e-04)            .0010
+
+  Percentages are from the point estimates; brackets are percentile
+  bootstrap CIs on the percentage itself; bootmean is the mean of the
+  same percentage across resamples. The two differ because a bounded
+  ratio of absolute effects is skewed. The published values (85 / 15,
+  65 / 35, 51 / 49) are bootstrap MEANS from 5000 resamples, so they
+  should be compared with the bootmean columns, not the point estimates.
+  diff = signed contrast (somatic minus alexithymia). Both conditional
+  indirect effects are negative, so a positive diff means the somatic
+  effect is the smaller of the two in absolute value.
+
+Signed contrast in full, per profile:
+
+Profile                diff   SE_boot              95% boot CI        z   p (Wald z)
+-------------------------------------------------------------------------------------- 
+Hypervigilant       -0.0014    0.0295  [  -0.0577,    0.0557]   -0.049        .9611
+Uncertain            0.0458    0.0217  [   0.0043,    0.0885]    2.108        .0351
+Efficient            0.0916    0.0255  [   0.0429,    0.1433]    3.593 < .001 (3e-04)
+
+  Family of 3 tests. Bonferroni-corrected alpha = .05 / 3 = .0167
+  (the correction applied in 12b_pathway_dominance_test.R).
+
+#############################################################################
+PART 5: SAMPLE SIZE AND CONVERGENCE FOR EVERY MODEL
+#############################################################################
+
+Model                                                N  converged     df  chi-square                p
+---------------------------------------------------------------------------------------------------- 
+M0 (ML, reproduction check)                        832       TRUE      1      91.701  < .001 (<1e-16)
+M0 (bootstrap, Parts 1 and 4)                      832       TRUE      1      91.701  < .001 (<1e-16)
+Parallel subscale mediation (Parts 2c and 3)       832       TRUE      3     200.286  < .001 (<1e-16)
+
+Bootstrap resamples requested: 2000 
+Successful resamples, M0: 2000  (failed: 0 )
+Successful resamples, parallel subscale model: 2000  (failed: 0 )
+
+OLS models (Parts 1a and 2a): N =832, residual df = 828 for every interaction model
+(4 estimated coefficients: intercept, IAS, IATS, IAS x IATS).
+
+Note on model fit. The published specification leaves the residual
+covariance between the alexithymia mediator and the somatic mediator
+fixed at zero (and, in the parallel model, the three subscale-somatic
+residual covariances), so the models are over-identified rather than
+saturated and the chi-square is significant. This is the specification
+used in 12_sem_pathway_analysis.R and 17_revision_sensitivity.R and is
+reproduced here unchanged. Both models are recursive with uncorrelated
+disturbances, so every structural equation is estimated equation-by-
+equation and its ML coefficients equal the OLS coefficients; this is
+verified numerically above, where the OLS simple slopes in Part 1a match
+the SEM defined parameters in Part 1b to four decimal places.
+
+=============================================================================
+END OF OUTPUT
+=============================================================================

@@ -1,0 +1,294 @@
+=============================================================================
+MINIMAL INTEROCEPTIVE SUBTYPING: ITEM SELECTION ANALYSIS
+=============================================================================
+
+Sample: N = 832 
+IAS items: 21
+IATS items: 21
+Total items: 42
+
+=============================================================================
+APPROACH 1: LASSO REGRESSION
+=============================================================================
+
+Using LASSO (L1 penalty) to identify items that survive regularization.
+Items with non-zero coefficients are most predictive.
+
+LASSO Results (Mental Health Composite):
+Lambda (1se): 0.04112854 
+Items with non-zero coefficients: 16 
+
+Top 10 items by |coefficient|:
+  1. iats_17: 0.1703
+  2. ias_19: -0.1067
+  3. ias_2: -0.0909
+  4. iats_3: 0.0608
+  5. iats_1: 0.0503
+  6. ias_5: -0.0471
+  7. iats_11: 0.0458
+  8. iats_21: 0.0409
+  9. iats_18: 0.0300
+  10. iats_16: 0.0242
+
+
+Items selected across multiple outcomes:
+  iats_17: selected in 6/6 outcomes
+  ias_2: selected in 5/6 outcomes
+  iats_1: selected in 5/6 outcomes
+  ias_5: selected in 4/6 outcomes
+  ias_19: selected in 4/6 outcomes
+  iats_3: selected in 4/6 outcomes
+  iats_11: selected in 4/6 outcomes
+  iats_16: selected in 4/6 outcomes
+  iats_18: selected in 4/6 outcomes
+  iats_21: selected in 4/6 outcomes
+  ias_3: selected in 2/6 outcomes
+  ias_4: selected in 2/6 outcomes
+  iats_20: selected in 2/6 outcomes
+  ias_1: selected in 1/6 outcomes
+  ias_7: selected in 1/6 outcomes
+
+
+=============================================================================
+APPROACH 2: RANDOM FOREST FEATURE IMPORTANCE
+=============================================================================
+
+Random Forest Variable Importance (% Inc MSE):
+
+Top 15 items:
+  1. iats_17: 24.86
+  2. ias_19: 12.45
+  3. ias_2: 9.75
+  4. iats_19: 9.28
+  5. iats_3: 9.18
+  6. iats_21: 8.99
+  7. iats_15: 8.97
+  8. ias_5: 8.72
+  9. ias_12: 8.16
+  10. iats_1: 8.01
+  11. iats_20: 7.47
+  12. iats_16: 7.45
+  13. ias_11: 6.79
+  14. iats_8: 6.76
+  15. iats_18: 6.73
+
+
+=============================================================================
+APPROACH 3: NETWORK CENTRALITY (NALS-Inspired)
+=============================================================================
+
+Building correlation network of item responses.
+Items with high centrality are 'hub' items that connect to many others.
+
+Network Centrality (Weighted Degree + Betweenness):
+
+Top 15 most central items:
+  1. iats_21: strength=7.54, betweenness=173.0
+  2. iats_18: strength=2.02, betweenness=420.0
+  3. iats_14: strength=6.35, betweenness=134.0
+  4. ias_20: strength=1.30, betweenness=408.0
+  5. ias_18: strength=1.08, betweenness=420.0
+  6. ias_19: strength=1.32, betweenness=400.0
+  7. ias_21: strength=1.32, betweenness=396.0
+  8. iats_20: strength=6.38, betweenness=56.0
+  9. iats_3: strength=7.05, betweenness=10.0
+  10. iats_13: strength=6.75, betweenness=3.0
+  11. iats_6: strength=6.46, betweenness=5.0
+  12. iats_16: strength=6.43, betweenness=1.0
+  13. iats_17: strength=6.17, betweenness=2.0
+  14. ias_15: strength=2.80, betweenness=207.0
+  15. iats_9: strength=5.86, betweenness=1.0
+
+
+=============================================================================
+CONSENSUS RANKING
+=============================================================================
+
+Combined consensus ranking (averaging LASSO, RF, and Network methods):
+
+Rank  Item        Scale  LASSO  RF   Network  #Outcomes
+----  ----------  -----  -----  ---  -------  ---------
+  1   iats_17     IATS     1      1    13        6
+  2   ias_19      IAS     2      2     6        4
+  3   iats_21     IATS     8      6     1        4
+  4   iats_3      IATS     4      5     9        4
+  5   iats_18     IATS     9     15     2        4
+  6   iats_1      IATS     5     10    28        5
+  7   iats_16     IATS    10     12    12        4
+  8   ias_2       IAS     3      3    38        5
+  9   iats_11     IATS     7     16    21        4
+ 10   ias_5       IAS     6      8    37        4
+ 11   iats_15     IATS    12      7    18        1
+ 12   ias_4       IAS    11     17    33        2
+ 13   iats_20     IATS    42     11     8        2
+ 14   ias_3       IAS    13     18    31        2
+ 15   ias_21      IAS    16     22     7        0
+ 16   iats_19     IATS    14      4    30        0
+ 17   ias_11      IAS    23     13    25        1
+ 18   ias_12      IAS    24      9    23        0
+ 19   ias_15      IAS    27     27    14        1
+ 20   iats_9      IATS    15     33    15        0
+
+
+=============================================================================
+SATURATION ANALYSIS: HOW MANY ITEMS DO WE NEED?
+=============================================================================
+
+Incremental R² for Mental Health Composite:
+
+   1 items: CV R² = 0.184
+   2 items: CV R² = 0.240
+   3 items: CV R² = 0.261
+   4 items: CV R² = 0.276
+   5 items: CV R² = 0.282
+   6 items: CV R² = 0.286
+   8 items: CV R² = 0.316
+  10 items: CV R² = 0.324
+  15 items: CV R² = 0.325
+  21 items: CV R² = 0.328
+  30 items: CV R² = 0.316
+  42 items: CV R² = 0.302
+
+  Full IAS+IATS totals: CV R² = 0.221
+
+SATURATION POINT: 8 items achieve 90% of maximum predictive power
+
+
+=============================================================================
+RECOMMENDED MINIMAL ITEM SETS
+=============================================================================
+
+TOP IAS ITEMS (by consensus ranking):
+  1. ias_19
+  2. ias_2
+  3. ias_5
+  4. ias_4
+  5. ias_3
+
+TOP IATS ITEMS (by consensus ranking):
+  1. iats_17
+  2. iats_21
+  3. iats_3
+  4. iats_18
+  5. iats_1
+
+
+MINIMAL SET PERFORMANCE COMPARISON:
+
+  1 IAS + 1 IATS       (2 items): CV R² = 0.240
+  2 IAS + 2 IATS       (4 items): CV R² = 0.297
+  3 IAS + 3 IATS       (6 items): CV R² = 0.315
+  4 IAS + 4 IATS       (8 items): CV R² = 0.321
+  5 IAS + 5 IATS       (10 items): CV R² = 0.322
+  Full scales (totals) (2 items): CV R² = 0.221
+
+
+PERCENT OF FULL SCALE PERFORMANCE:
+  1 IAS + 1 IATS      : 108.7% of full scale performance
+  2 IAS + 2 IATS      : 134.2% of full scale performance
+  3 IAS + 3 IATS      : 142.5% of full scale performance
+  4 IAS + 4 IATS      : 145.1% of full scale performance
+  5 IAS + 5 IATS      : 145.7% of full scale performance
+  Full scales (totals): 100.0% of full scale performance
+
+
+=============================================================================
+CLUSTER PRESERVATION ANALYSIS
+=============================================================================
+
+Question: Do the 10-item and 21-item reduced sets preserve the 3-cluster
+structure found with the full 42-item scales?
+
+Item Sets:
+  Top 10 items: IAS ( 3 ): ias_19, ias_2, ias_5 
+                IATS ( 7 ): iats_17, iats_21, iats_3, iats_18, iats_1, iats_16, iats_11 
+  Top 21 items: IAS ( 9 ): ias_19, ias_2, ias_5, ias_4, ias_3, ias_21, ias_11, ias_12, ias_15 
+                IATS ( 12 ): iats_17, iats_21, iats_3, iats_18, iats_1, iats_16, iats_11, iats_15, iats_20, iats_19, iats_9, iats_6 
+
+--- Full 42 Items ---
+Silhouette: 0.35 
+  cluster      ias_z      iats_z   n         label
+2       2  0.6159326 -0.89822244 301     Efficient
+3       3  0.3423230  0.96997598 273 Hypervigilant
+1       1 -1.0808136  0.02155624 258     Uncertain
+
+--- Top 21 Items ---
+Silhouette: 0.354 
+  cluster      ias_z      iats_z   n         label
+2       2  0.5688218 -0.86544380 319     Efficient
+1       1  0.4006938  0.96591809 261 Hypervigilant
+3       3 -1.1350604  0.09512679 252     Uncertain
+
+--- Top 10 Items ---
+Silhouette: 0.392 
+  cluster      ias_z     iats_z   n         label
+3       3  0.5238137 -0.7681261 383     Efficient
+2       2  0.3557408  1.0063723 239 Hypervigilant
+1       1 -1.3602034  0.2555681 210     Uncertain
+
+
+=== Cluster Agreement Analysis ===
+
+Adjusted Rand Index (1.0 = perfect agreement, 0 = random):
+  21 items vs Full: 0.608 
+  10 items vs Full: 0.334 
+  10 items vs 21 items: 0.467 
+
+
+=== SUMMARY: Cluster Preservation ===
+   Item_Set N_IAS N_IATS Silhouette ARI_vs_Full
+1 Full (42)    21     21  0.3504724   1.0000000
+2    Top 21     9     12  0.3536354   0.6079221
+3    Top 10     3      7  0.3918056   0.3339104
+
+
+Interpretation:
+- ARI > 0.80: Excellent agreement (clusters preserved)
+- ARI 0.65-0.80: Good agreement (similar structure)
+- ARI 0.50-0.65: Moderate agreement (some differences)
+- ARI < 0.50: Poor agreement (different structure)
+
+
+=============================================================================
+CLUSTER FLOW ANALYSIS: WHO GETS RECLASSIFIED?
+=============================================================================
+
+=== Transition Matrices ===
+
+Full 42 -> Top 21:
+               
+                Efficient Hypervigilant Uncertain
+  Efficient           271            14        16
+  Hypervigilant        21           227        25
+  Uncertain            27            20       211
+% staying same profile: 85.2 %
+
+Top 21 -> Top 10:
+               
+                Efficient Hypervigilant Uncertain
+  Efficient           293            11        15
+  Hypervigilant        39           193        29
+  Uncertain            51            35       166
+% staying same profile: 78.4 %
+
+Full 42 -> Top 10:
+               
+                Efficient Hypervigilant Uncertain
+  Efficient           263            16        22
+  Hypervigilant        51           182        40
+  Uncertain            69            41       148
+% staying same profile: 71.3 %
+
+
+=== Who Gets Reclassified? ===
+
+Mean |IAS z-score| for those who changed vs. stayed (Full->21):
+  Changed: 0.63 
+  Stayed: 0.82 
+
+Mean |IATS z-score| for those who changed vs. stayed (Full->21):
+  Changed: 0.52 
+  Stayed: 0.86 
+
+-> People who get reclassified tend to be closer to cluster boundaries
+   (smaller absolute z-scores = less extreme on IAS/IATS)

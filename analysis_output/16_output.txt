@@ -1,0 +1,88 @@
+N = 832
+
+[Q1] TAS facet means by profile
+                 dif                ddf                eot                tas             
+                mean   std count   mean   std count   mean   std count   mean    std count
+profile_short                                                                             
+Efficient      13.23  5.21   301  11.72  4.20   301  19.38  4.56   301  44.33  10.89   301
+Hypervigilant  18.72  6.52   273  14.45  4.65   273  19.91  3.94   273  53.08  12.59   273
+Uncertain      19.28  6.25   258  15.42  4.53   258  21.23  3.93   258  55.93  11.71   258
+
+Facet ANOVAs (F, p, eta2_p):
+facet     F            p  eta2_p  mean_Efficient  mean_Hypervigilant  mean_Uncertain
+  dif 89.52 6.320894e-36  0.1776           13.23               18.72           19.28
+  ddf 52.91 2.368562e-22  0.1132           11.72               14.45           15.42
+  eot 14.23 8.364595e-07  0.0332           19.38               19.91           21.23
+  tas 75.76 6.077820e-31  0.1545           44.33               53.08           55.93
+
+Pairwise (Welch t) Uncertain vs Hypervigilant per facet:
+facet     t        p  mean_Uncertain  mean_Hypervigilant  diff  cohen_d
+  dif 1.012 0.311883           19.28               18.72  0.56    0.088
+  ddf 2.421 0.015794           15.42               14.45  0.96    0.210
+  eot 3.876 0.000120           21.23               19.91  1.32    0.337
+  tas 2.702 0.007112           55.93               53.08  2.85    0.234
+
+[Q2] Hierarchical regression predicting somatic burden
+                    step                                                         formula  n_params     R2  adj_R2  delta_R2      F            p
+         step1_TAS_total                                                 somatic_z ~ tas         1 0.1847  0.1837    0.1847 188.02 1.012876e-38
+           step1b_facets                               somatic_z ~ dif_z + ddf_z + eot_z         3 0.3254  0.3230    0.1407 133.13 2.205453e-70
+step2_facets_plus_intero              somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z         5 0.3688  0.3650    0.0434  96.53 4.169637e-80
+              step3_full somatic_z ~ dif_z + ddf_z + eot_z + ias_z + iats_z + ias_x_iats         6 0.3732  0.3687    0.0044  81.88 2.418301e-80
+
+Full-model standardised coefficients (somatic_z ~ DIF + DDF + EOT + IAS + IATS + IAS x IATS):
+ predictor    beta     se      t            p  ci_lower  ci_upper
+     dif_z  0.5572 0.0448 12.440 1.102816e-32    0.4693    0.6451
+     ddf_z -0.0914 0.0433 -2.108 3.530983e-02   -0.1764   -0.0063
+     eot_z -0.0826 0.0303 -2.727 6.527622e-03   -0.1421   -0.0232
+     ias_z  0.0292 0.0298  0.979 3.278134e-01   -0.0293    0.0877
+    iats_z  0.2414 0.0313  7.723 3.285613e-14    0.1801    0.3028
+ias_x_iats -0.0647 0.0268 -2.415 1.595849e-02   -0.1173   -0.0121
+
+Model comparison (R^2 for somatic_z):
+                               model     R2      predictors
+                            DIF only 0.3055             DIF
+                      TAS total only 0.1847             TAS
+                     DIF + DDF + EOT 0.3254          facets
+             IAS + IATS + IAS x IATS 0.2027          intero
+       TAS + IAS + IATS + IAS x IATS 0.2859    TAS + intero
+Full (facets + intero + interaction) 0.3732 facets + intero
+
+Variance decomposition of somatic_z (R^2):
+  unique to TAS facets       = 0.1706
+  unique to IAS+IATS+int     = 0.0478
+  shared                     = 0.1548
+  total (full model R^2)     = 0.3732
+
+[Q3] Decomposing the Uncertain - Hypervigilant somatic gap
+
+Profile means of predictors (z units):
+               dif_z  ddf_z  eot_z  ias_z  iats_z  ias_x_iats
+profile_short                                                
+Efficient     -0.558 -0.434 -0.176  0.616  -0.899      -0.520
+Hypervigilant  0.275  0.146 -0.052  0.343   0.971       0.338
+Uncertain      0.360  0.351  0.261 -1.081   0.022      -0.003
+
+Profile means of somatic_z:
+profile_short
+Efficient       -0.430
+Hypervigilant    0.379
+Uncertain        0.100
+
+Predicted contributions to Hypervigilant - Uncertain somatic_z gap:
+ predictor  mean_Uncertain  mean_Hypervigilant  mean_diff  beta_full_model  contribution_to_gap  pct_of_total_gap
+     dif_z          0.3600              0.2749    -0.0851           0.5572              -0.0474            -19.30
+     ddf_z          0.3508              0.1464    -0.2044          -0.0914               0.0187              7.60
+     eot_z          0.2607             -0.0520    -0.3127          -0.0826               0.0258             10.51
+     ias_z         -1.0815              0.3425     1.4240           0.0292               0.0415             16.91
+    iats_z          0.0216              0.9706     0.9490           0.2414               0.2291             93.25
+ias_x_iats         -0.0027              0.3384     0.3411          -0.0647              -0.0221             -8.98
+
+Observed Hypervigilant - Uncertain somatic_z gap = 0.2785
+Predicted gap from joint model = 0.2457
+
+[Figure] Building 3_s_10_alexithymia_somatic_pathway.png
+Figure saved to C:\code\projects\intero_mod\plots\supplementary_plots\3_s_10_alexithymia_somatic_pathway.png
+
+Summary JSON: C:\code\projects\intero_mod\supplementary_data\alexithymia_somatic_summary.json
+
+Done.

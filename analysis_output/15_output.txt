@@ -1,0 +1,94 @@
+N = 832
+
+[1] k-means on z-scored 42 items — k-selection
+ k  silhouette     CH     DB  inertia  min_max_ratio                                  sizes
+ 2      0.1152 123.36 2.4866 30422.55          0.841                             [380, 452]
+ 3      0.1033  97.96 2.6394 28264.48          0.813                        [270, 310, 252]
+ 4      0.0688  78.94 2.8428 27172.16          0.555                   [265, 147, 223, 197]
+ 5      0.0633  67.12 2.7859 26379.76          0.452              [114, 121, 173, 252, 172]
+ 6      0.0522  58.68 2.8218 25784.85          0.382          [121, 89, 233, 125, 133, 131]
+ 7      0.0483  52.41 2.9744 25299.95          0.409      [67, 134, 104, 164, 109, 155, 99]
+ 8      0.0478  47.28 2.9805 24930.35          0.363 [111, 100, 106, 121, 57, 120, 157, 60]
+
+k-means 42-item k=3 centroids and label assignment:
+             ias_z  iats_z    n      canonical
+c42_km3_raw                                   
+0            0.329   1.060  254  Hypervigilant
+1           -0.995   0.028  268      Uncertain
+2            0.591  -0.892  310      Efficient
+
+[2] Gower-PAM on 42 ordinal items — k-selection
+ k  silhouette                          sizes  min_max_ratio
+ 2      0.1544                     [549, 283]          0.515
+ 3      0.1227                [283, 446, 103]          0.231
+ 4      0.0881           [148, 121, 393, 170]          0.308
+ 5      0.0749      [147, 188, 243, 143, 111]          0.457
+ 6      0.0666 [112, 102, 130, 159, 133, 196]          0.520
+
+Gower-PAM k=3 centroids and label assignment:
+              ias_z  iats_z    n           label
+c42_pam3_raw                                    
+0             0.140  -1.024  283   Low Attention
+1            -0.126   0.268  446         Average
+2             0.160   1.653  103  High Attention
+
+k-means 42-item k=3 ANOVAs:
+outcome     F            p  eta2_p  mean_Efficient  sd_Efficient  n_Efficient  mean_Hypervigilant  sd_Hypervigilant  n_Hypervigilant  mean_Uncertain  sd_Uncertain  n_Uncertain
+    tas 76.42 3.456499e-31  0.1557           44.33         11.02          310               53.84             12.58              254           55.39         11.65          268
+   sss8 58.94 1.165126e-24  0.1245           14.43          5.09          310               19.54              6.25              254           17.47          5.63          268
+    pcs 35.15 2.219284e-15  0.0782           26.10         11.42          310               34.42             12.45              254           31.50         12.31          268
+   phq9 50.50 2.020890e-21  0.1086           14.44          5.23          310               19.10              6.72              254           18.42          6.21          268
+   gad7 58.94 1.164734e-24  0.1245           10.97          4.46          310               15.47              6.03              254           14.60          5.43          268
+   stai 40.88 1.172924e-17  0.0898           41.72         12.77          310               49.07             12.80              254           50.44         12.03          268
+
+Gower-PAM k=3 ANOVAs:
+outcome     F            p  eta2_p  mean_Average  sd_Average  n_Average  mean_High Attention  sd_High Attention  n_High Attention  mean_Low Attention  sd_Low Attention  n_Low Attention
+    tas 41.45 6.943094e-18  0.0909         52.48       11.25        446                57.08              12.98               103               45.85             13.19              283
+   sss8 46.46 7.505617e-20  0.1008         17.59        5.78        446                20.60               6.37               103               14.67              5.35              283
+    pcs 21.71 6.451063e-10  0.0498         31.32       12.12        446                35.61              13.30               103               26.99             11.95              283
+   phq9 30.31 1.977611e-13  0.0681         17.58        6.09        446                20.53               7.04               103               15.23              5.94              283
+   gad7 37.02 3.985092e-16  0.0820         14.08        5.50        446                16.50               6.30               103               11.53              4.91              283
+   stai 18.48 1.401291e-08  0.0427         48.21       12.35        446                50.52              13.19               103               43.13             13.53              283
+
+Published 2-variable k=3 ANOVAs (recomputed):
+outcome     F            p  eta2_p  mean_Average Accuracy / High Attention  sd_Average Accuracy / High Attention  n_Average Accuracy / High Attention  mean_High Accuracy / Low Attention  sd_High Accuracy / Low Attention  n_High Accuracy / Low Attention  mean_Low Accuracy / Average Attention  sd_Low Accuracy / Average Attention  n_Low Accuracy / Average Attention
+    tas 75.76 6.077820e-31  0.1545                                   53.08                                 12.59                                  273                               44.33                             10.89                              301                                  55.93                                11.71                                 258
+   sss8 50.95 1.354215e-21  0.1095                                   19.19                                  6.25                                  273                               14.48                              5.13                              301                                  17.52                                 5.68                                 258
+    pcs 28.05 1.637362e-12  0.0634                                   33.82                                 12.69                                  273                               26.41                             11.55                              301                                  31.37                                12.18                                 258
+   phq9 45.80 1.362254e-19  0.0995                                   18.79                                  6.71                                  273                               14.48                              5.24                              301                                  18.52                                 6.23                                 258
+   gad7 51.96 5.491653e-22  0.1114                                   15.08                                  5.91                                  273                               11.02                              4.58                              301                                  14.76                                 5.50                                 258
+   stai 39.72 3.376718e-17  0.0874                                   48.70                                 12.97                                  273                               41.72                             12.58                              301                                  50.62                                12.08                                 258
+
+Cross-tab k-means-42 (rows) vs published (cols):
+orig_label     Average Accuracy / High Attention  High Accuracy / Low Attention  Low Accuracy / Average Attention  All
+c42_km3                                                                                                               
+Efficient                                      9                            291                                10  310
+Hypervigilant                                240                              3                                11  254
+Uncertain                                     24                              7                               237  268
+All                                          273                            301                               258  832
+
+Cross-tab Gower-PAM (rows) vs published (cols):
+orig_label      Average Accuracy / High Attention  High Accuracy / Low Attention  Low Accuracy / Average Attention  All
+c42_pam3                                                                                                               
+Average                                       177                             90                               179  446
+High Attention                                 92                              0                                11  103
+Low Attention                                   4                            211                                68  283
+All                                           273                            301                               258  832
+
+k-means-42 vs published canonical agreement: 768/832 = 0.923
+
+[5] Bootstrap Jaccard stability — B=100
+  algorithm                           cluster  mean_jaccard
+  kmeans_42                         Efficient         0.591
+  kmeans_42                     Hypervigilant         0.572
+  kmeans_42                         Uncertain         0.569
+kmeans_2var Average Accuracy / High Attention         0.577
+kmeans_2var     High Accuracy / Low Attention         0.600
+kmeans_2var  Low Accuracy / Average Attention         0.584
+
+[7] Building supplementary figure
+Figure saved to C:\code\projects\intero_mod\plots\supplementary_plots\1_s_9_item_level_clustering_sensitivity.png
+
+Summary JSON: C:\code\projects\intero_mod\supplementary_data\item_level_summary.json
+
+Done.

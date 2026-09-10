@@ -1,0 +1,52 @@
+N = 832 
+
+====================================================================== 
+NORMALITY ASSESSMENT FOR LPA ASSUMPTIONS
+====================================================================== 
+
+--- IAS (Interoceptive Accuracy) ---
+N: 832 
+Mean: 77.72 | SD: 10.79 
+Min: 36 | Max: 105 
+Skewness: -0.07 (excellent: |skew| < 0.5)
+Excess Kurtosis: 0.106 (excellent: |kurt| < 1)
+Shapiro-Wilk W: 0.9967 | p = 0.0818 
+Kolmogorov-Smirnov D: 0.0351 | p = 0.258 
+
+--- IATS (Interoceptive Attention) ---
+N: 832 
+Mean: 47.11 | SD: 13.97 
+Min: 21 | Max: 91 
+Skewness: 0.239 (excellent: |skew| < 0.5)
+Excess Kurtosis: -0.31 (excellent: |kurt| < 1)
+Shapiro-Wilk W: 0.9874 | p = 1.39e-06 
+Kolmogorov-Smirnov D: 0.0371 | p = 0.201 
+
+====================================================================== 
+INTERPRETATION FOR LPA
+====================================================================== 
+
+Note: Statistical tests (Shapiro-Wilk, KS) are overly sensitive with
+large samples (n=832). With large N, even trivial deviations from 
+normality will be statistically significant.
+
+For LPA, focus on practical metrics:
+  1. Skewness: |value| < 1 is acceptable
+  2. Kurtosis: |value| < 2 is acceptable
+  3. Visual inspection (Q-Q plots)
+
+SUMMARY:
+  IAS: skew = -0.07 , kurtosis = 0.106 
+  IATS: skew = 0.239 , kurtosis = -0.31 
+
+CONCLUSION: Both variables show acceptable normality for LPA.
+LPA assumptions are reasonably met.
+null device 
+          1 
+
+Q-Q plots saved: plots/supplementary_plots/1_s_9_normality_qq_plots.png
+null device 
+          1 
+Histograms saved: plots/supplementary_plots/1_s_8_normality_histograms.png
+
+Done!

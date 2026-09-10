@@ -1,0 +1,20 @@
+FIGURE 2. Interoceptive profile clustering and outcomes.
+========================================================
+
+Panel A: Correlation heatmap (lower triangle) for IATS, IAS, TAS, SSS-8, PCS,
+PHQ-9, GAD-7, and STAI. Cell colors encode sign and significance; values are
+Pearson r. This panel provides the variable-level context used for clustering
+and outcome contrasts.
+
+Panel B: Scatter of IAS vs IATS with 90% ellipses for the 3 k-means profiles
+(Efficient, Hypervigilant, Uncertain). Colors match profile labels across the
+figure.
+
+Panels C-H: Outcome distributions by profile, shown as box plots with Tukey HSD
+markers. Boxes show the median and interquartile range, whiskers extend to 1.5
+times the interquartile range, grey points show values beyond the whiskers, and
+the white diamond marks the group mean. TAS (C), SSS-8 (D), PCS (E), PHQ-9 (F),
+GAD-7 (G), and STAI (H). These panels show how the profiles differ across
+alexithymia, somatic symptoms, pain, depression, anxiety, and trait anxiety.
+
+Sample: N = 832.

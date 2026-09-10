@@ -1,0 +1,213 @@
+=============================================================================
+K-SELECTION METHODS FOR INTEROCEPTIVE PROFILES
+=============================================================================
+
+N = 832 
+Variables: IAS (standardized), IATS (standardized)
+
+=============================================================================
+INDEX VALUES BY K
+=============================================================================
+
+  k       WSS Silhouette       CH        DB        Dunn
+  2 1061.8481  0.3384610 469.1124 1.1484223 0.009623724
+  3  714.6117  0.3504724 549.5186 0.9375670 0.016096123
+  4  579.9954  0.3288529 514.8890 0.9347279 0.015104380
+  5  472.3876  0.3368512 520.6579 0.9104113 0.017375988
+  6  384.6553  0.3425055 548.5882 0.8522751 0.019844351
+  7  336.2833  0.3354244 542.0609 0.8416899 0.020765755
+  8  292.9815  0.3437453 550.0452 0.8411600 0.023086728
+  9  263.6598  0.3407028 545.6055 0.8332420 0.023146883
+ 10  239.2505  0.3389526 543.1314 0.8185945 0.023146883
+
+=============================================================================
+OPTIMAL K BY METHOD
+=============================================================================
+
+1. Elbow (WSS): k = 3 
+2. Silhouette (max): k = 3 
+3. Calinski-Harabasz (max): k = 8 
+4. Davies-Bouldin (min): k = 10 
+5. Dunn Index (max): k = 9 
+6. Gap Statistic: k = 1 
+7. Hartigan's Rule: k = 1 
+
+=============================================================================
+SUMMARY: VOTE COUNT BY K
+=============================================================================
+
+--- Vote Tally ---
+  k=1: 2 votes (Gap Statistic, Hartigan)
+  k=3: 2 votes (Elbow, Silhouette)
+  k=8: 1 votes (Calinski-Harabasz)
+  k=9: 1 votes (Dunn)
+  k=10: 1 votes (Davies-Bouldin)
+
+CONSENSUS: k = 1 (2/7 methods)
+
+
+K-selection figure saved.
+#############################################################################
+PART 2: K-MEANS CLUSTERING (k=3)
+#############################################################################
+
+Sample: N = 832 
+Clustering variables: IAS, IATS (standardized)
+Method: K-means clustering
+
+=============================================================================
+DETERMINING OPTIMAL NUMBER OF CLUSTERS
+=============================================================================
+
+Silhouette widths:
+  k = 2: 0.338
+  k = 3: 0.350
+  k = 4: 0.329
+  k = 5: 0.337
+  k = 6: 0.343
+
+Optimal k by silhouette: 3 (silhouette = 0.350)
+
+=============================================================================
+3-CLUSTER SOLUTION
+=============================================================================
+
+Silhouette width: 0.350
+
+CLUSTER PROFILES:
+
+  cluster   n  pct IAS_mean IAS_sd IAS_z IATS_mean IATS_sd IATS_z
+1       1 258 31.0     66.1    6.5 -1.08      47.4     9.4   0.02
+2       2 301 36.2     84.4    7.8  0.62      34.6     7.7  -0.90
+3       3 273 32.8     81.4    7.6  0.34      60.7     9.4   0.97
+                              label
+1  Low Accuracy / Average Attention
+2     High Accuracy / Low Attention
+3 Average Accuracy / High Attention
+
+
+=============================================================================
+MENTAL HEALTH OUTCOMES BY CLUSTER
+=============================================================================
+
+Outcome means (SD) by cluster:
+
+  cluster                     cluster_label   n TAS_mean TAS_sd PHQ9_mean
+1       1  Low Accuracy / Average Attention 258     55.9   11.7      18.5
+2       2     High Accuracy / Low Attention 301     44.3   10.9      14.5
+3       3 Average Accuracy / High Attention 273     53.1   12.6      18.8
+  PHQ9_sd GAD7_mean GAD7_sd STAI_mean STAI_sd SSS8_mean SSS8_sd PCS_mean PCS_sd
+1     6.2      14.8     5.5      50.6    12.1      17.5     5.7     31.4   12.2
+2     5.2      11.0     4.6      41.7    12.6      14.5     5.1     26.4   11.5
+3     6.7      15.1     5.9      48.7    13.0      19.2     6.2     33.8   12.7
+
+
+ANOVA RESULTS:
+
+Alexithymia (TAS): F(2,829) = 75.8, p < .001, eta-sq = 0.155
+Depression (PHQ-9): F(2,829) = 45.8, p < .001, eta-sq = 0.099
+Anxiety (GAD-7): F(2,829) = 52.0, p < .001, eta-sq = 0.111
+Trait Anxiety (STAI): F(2,829) = 39.7, p < .001, eta-sq = 0.087
+Somatic Symptoms (SSS8): F(2,829) = 50.9, p < .001, eta-sq = 0.109
+Pain Catastrophizing (PCS): F(2,829) = 28.0, p < .001, eta-sq = 0.063
+
+
+POST-HOC COMPARISONS (Tukey HSD):
+
+Efficient cluster: 2 (High Accuracy / Low Attention)
+
+--- Alexithymia (TAS) ---
+       diff     lwr    upr p adj
+2-1 -11.605 -13.940 -9.269 0.000
+3-1  -2.850  -5.240 -0.459 0.014
+3-2   8.755   6.454 11.056 0.000
+
+--- Depression (PHQ-9) ---
+      diff    lwr    upr p adj
+2-1 -4.045 -5.253 -2.837  0.00
+3-1  0.264 -0.972  1.500  0.87
+3-2  4.309  3.119  5.499  0.00
+
+--- Anxiety (GAD-7) ---
+      diff    lwr    upr p adj
+2-1 -3.747 -4.809 -2.685 0.000
+3-1  0.321 -0.766  1.407 0.768
+3-2  4.068  3.022  5.114 0.000
+
+--- Trait Anxiety (STAI) ---
+      diff     lwr    upr p adj
+2-1 -8.906 -11.409 -6.404 0.000
+3-1 -1.924  -4.485  0.636 0.182
+3-2  6.982   4.517  9.447 0.000
+
+--- Somatic Symptoms (SSS8) ---
+      diff    lwr    upr p adj
+2-1 -3.042 -4.174 -1.909 0.000
+3-1  1.671  0.512  2.830 0.002
+3-2  4.712  3.597  5.828 0.000
+
+--- Pain Catastrophizing (PCS) ---
+      diff    lwr    upr p adj
+2-1 -4.963 -7.378 -2.548 0.000
+3-1  2.456 -0.016  4.928 0.052
+3-2  7.419  5.040  9.798 0.000
+
+
+=============================================================================
+SUMMARY
+=============================================================================
+
+Three distinct interoceptive profiles were identified:
+
+PROFILE 1: Low Accuracy / Average Attention
+  N = 258 (31.0%)
+  IAS = 66.1 (z = -1.08), IATS = 47.4 (z = 0.02)
+  Mental health: TAS=55.9, PHQ-9=18.5, GAD-7=14.8, STAI=50.6
+
+PROFILE 2: High Accuracy / Low Attention
+  N = 301 (36.2%)
+  IAS = 84.4 (z = 0.62), IATS = 34.6 (z = -0.90)
+  Mental health: TAS=44.3, PHQ-9=14.5, GAD-7=11.0, STAI=41.7
+
+PROFILE 3: Average Accuracy / High Attention
+  N = 273 (32.8%)
+  IAS = 81.4 (z = 0.34), IATS = 60.7 (z = 0.97)
+  Mental health: TAS=53.1, PHQ-9=18.8, GAD-7=15.1, STAI=48.7
+
+
+
+Publication figure saved: figure_2_clustering_profiles.png
+Scatter plot saved: plots/sub_plots/fig1_B_scatter.png
+Supplementary plot saved: plots/supplementary_plots/1_s_5_demographics_by_profile.png
+Cluster analysis complete.
+
+Running robustness analysis...
+#############################################################################
+PART 3: CLUSTER ROBUSTNESS ANALYSIS - K=3 SOLUTION
+#############################################################################
+
+BOOTSTRAP STABILITY (B = 100 resamples):
+
+  Uncertain: Jaccard = 0.906 (HIGHLY STABLE)
+  Efficient: Jaccard = 0.902 (HIGHLY STABLE)
+  Hypervigilant: Jaccard = 0.949 (HIGHLY STABLE)
+
+  Mean stability: 0.919
+
+
+CLUSTER QUALITY INDICES:
+  Silhouette width: 0.350
+  Dunn index: 0.016
+  Calinski-Harabasz: 549.5
+  Separation ratio: 1.81
+
+
+SPHERICITY:
+  Cluster 1: 0.791
+  Cluster 2: 0.574
+  Cluster 3: 0.920
+
+  Mean sphericity: 0.761
+
+
+CONCLUSION: K-means 3-cluster solution is ROBUST

@@ -1,0 +1,60 @@
+=============================================================================
+SEM SENSITIVITY ANALYSIS: Full vs Minimal Interoceptive Scales
+=============================================================================
+N = 832
+Date: 2026-09-07 09:16:15.19412
+
+SCALE DEFINITIONS:
+  Full:    IAS (21 items) + IATS (21 items) = 42 items total
+  Minimal: IAS (10 items) + IATS (11 items) = 21 items total
+           Selected via consensus ranking (LASSO + RF + Network centrality)
+
+=============================================================================
+PATH COEFFICIENT COMPARISON
+=============================================================================
+
+Path                       Full    Minimal       Diff   % Change
+-----------------------------------------------------------------
+IAS → TAS               -0.35      -0.38      -0.03      -8.6%
+IATS → TAS               0.31       0.32       0.01       3.2%
+IAS → Somatic           -0.09      -0.09       0.00       0.0%
+IATS → Somatic           0.43       0.47       0.04       9.3%
+TAS → MH                 0.31       0.28      -0.03      -9.7%
+Somatic → MH             0.62       0.61      -0.01      -1.6%
+IAS → MH (direct)       -0.06      -0.11      -0.05     -83.3%
+IATS → MH (direct)      -0.01      -0.00       0.01     100.0%
+
+=============================================================================
+VARIANCE EXPLAINED (R²) COMPARISON
+=============================================================================
+
+Variable              Full    Minimal Difference
+--------------------------------------------------
+TAS                  23.4%      27.9%       4.6%
+Somatic              19.4%      23.8%       4.4%
+Mental Health        55.7%      57.2%       1.4%
+
+=============================================================================
+INDIRECT EFFECTS COMPARISON
+=============================================================================
+
+Pathway                         Full    Minimal
+--------------------------------------------------
+IAS → TAS → MH            -0.101     -0.103
+IATS → Somatic → MH        0.250      0.274
+IAS → Somatic → MH        -0.051     -0.055
+IATS → TAS → MH            0.092      0.087
+
+=============================================================================
+INTERPRETATION
+=============================================================================
+
+Scale correlations (Full vs Minimal):
+  IAS:  r = 0.890
+  IATS: r = 0.963
+
+Average absolute change in path coefficients: 27.0%
+
+CONCLUSION: Substantial differences between full and minimal scales.
+The item selection may have altered the construct coverage.
+Careful consideration needed before using minimal scale.

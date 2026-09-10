@@ -1,0 +1,58 @@
+======================================================================
+CORRELATION HEATMAP GENERATOR
+Interoception and Mental Health Variables
+======================================================================
+
+Loading data from: dfc_interoception_profiling.csv
+Dataset shape: (832, 185)
+
+--------------------------------------------------
+Creating heatmap: Subjective interoceptive accuracy and attention
+--------------------------------------------------
+  Variables: 8
+  Complete cases: 832
+  Saved: .\plots\sub_plots\fig1_A_heatmap.png
+
+--------------------------------------------------
+Creating heatmap: Subjective interoceptive accuracy and attention (with VVIQ)
+--------------------------------------------------
+  Variables: 9
+  Complete cases: 832
+  Saved: .\plots\other_plots_vviq_plots\1_s_8_heatmap_intero_mh_vviq.png
+
+--------------------------------------------------
+Saving correlation matrices
+--------------------------------------------------
+  Saved: supplementary_data/correlation_matrix_intero_mh.csv
+  Saved: supplementary_data/correlation_matrix_intero_mh_vviq.csv
+
+======================================================================
+KEY CORRELATIONS
+======================================================================
+
+1. IAS-IATS correlation: r = -0.078
+   -> Very weak! IAS and IATS measure distinct constructs.
+
+2. IAS correlations with mental health (negative = better MH):
+   IAS-TAS: r = -0.369
+   IAS-PHQ-9: r = -0.206
+   IAS-GAD-7: r = -0.202
+   IAS-STAI: r = -0.259
+   IAS-SSS-8: r = -0.124
+   IAS-PCS: r = -0.080
+
+3. IATS correlations with mental health (positive = worse MH):
+   IATS-TAS: r = 0.340
+   IATS-PHQ-9: r = 0.331
+   IATS-GAD-7: r = 0.356
+   IATS-STAI: r = 0.275
+   IATS-SSS-8: r = 0.403
+   IATS-PCS: r = 0.333
+
+4. VVIQ correlations:
+   VVIQ-IAS: r = 0.209 (positive)
+   VVIQ-IATS: r = -0.039 (near zero)
+
+======================================================================
+COMPLETE
+======================================================================

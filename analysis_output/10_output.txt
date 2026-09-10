@@ -1,0 +1,164 @@
+=============================================================================
+NETWORK ANALYSIS: INTEROCEPTION AND MENTAL HEALTH ITEMS
+=============================================================================
+
+Sample: N = 832 
+Total items: 119 
+
+
+=== Network Construction (threshold =  0.3 ) ===
+Network created: 119 nodes, 1669 edges
+
+=== Communities detected ===
+Number of communities: 10 
+
+Community 1 (n= 21 ):
+scales_in_comm
+IAS 
+ 21 
+
+Community 2 (n= 21 ):
+scales_in_comm
+IATS 
+  21 
+
+Community 3 (n= 14 ):
+scales_in_comm
+GAD-7 PHQ-9   TAS 
+    1     1    12 
+
+Community 4 (n= 1 ):
+scales_in_comm
+TAS 
+  1 
+
+Community 5 (n= 1 ):
+scales_in_comm
+TAS 
+  1 
+
+Community 6 (n= 4 ):
+scales_in_comm
+TAS 
+  4 
+
+Community 7 (n= 1 ):
+scales_in_comm
+TAS 
+  1 
+
+Community 8 (n= 1 ):
+scales_in_comm
+TAS 
+  1 
+
+Community 9 (n= 41 ):
+scales_in_comm
+GAD-7 PHQ-9 SSS-8  STAI 
+    5     8     8    20 
+
+Community 10 (n= 14 ):
+scales_in_comm
+GAD-7   PCS 
+    1    13 
+
+
+=============================================================================
+BRIDGING ANALYSIS
+=============================================================================
+
+Which interoceptive items connect most to mental health items?
+
+Top 15 interoceptive items by connections to MH:
+           item edges_to_mh is_top10 scale
+iats_17 iats_17          18     TRUE  IATS
+iats_3   iats_3           6     TRUE  IATS
+iats_20 iats_20           3    FALSE  IATS
+iats_15 iats_15           2    FALSE  IATS
+iats_16 iats_16           2     TRUE  IATS
+iats_21 iats_21           2     TRUE  IATS
+iats_1   iats_1           1     TRUE  IATS
+iats_6   iats_6           1    FALSE  IATS
+ias_1     ias_1           0    FALSE   IAS
+ias_2     ias_2           0     TRUE   IAS
+ias_3     ias_3           0    FALSE   IAS
+ias_4     ias_4           0    FALSE   IAS
+ias_5     ias_5           0     TRUE   IAS
+ias_6     ias_6           0    FALSE   IAS
+ias_7     ias_7           0    FALSE   IAS
+
+
+Mean edges to MH by group:
+  Top 10 items: 2.9 
+  Other items: 0.19 
+
+t-test (Top 10 vs Others):
+  t = -1.52 , p = 0.162 
+
+
+=============================================================================
+CORRELATION WITH MENTAL HEALTH COMPOSITE
+=============================================================================
+
+Top 10 items: Correlation with MH Composite:
+           item mh_correlation
+iats_17 iats_17          0.436
+iats_3   iats_3          0.366
+iats_21 iats_21          0.348
+iats_16 iats_16          0.338
+iats_1   iats_1          0.330
+iats_11 iats_11          0.309
+ias_2     ias_2         -0.286
+ias_5     ias_5         -0.265
+ias_19   ias_19         -0.260
+iats_18 iats_18          0.240
+
+
+All Interoceptive Items: Top 15 by MH Correlation:
+           item mh_correlation is_top10
+iats_17 iats_17          0.436     TRUE
+iats_3   iats_3          0.366     TRUE
+iats_21 iats_21          0.348     TRUE
+iats_16 iats_16          0.338     TRUE
+iats_15 iats_15          0.337    FALSE
+iats_1   iats_1          0.330     TRUE
+iats_11 iats_11          0.309     TRUE
+iats_20 iats_20          0.298    FALSE
+ias_2     ias_2         -0.286     TRUE
+ias_5     ias_5         -0.265     TRUE
+ias_19   ias_19         -0.260     TRUE
+iats_8   iats_8          0.253    FALSE
+iats_6   iats_6          0.242    FALSE
+iats_18 iats_18          0.240     TRUE
+iats_10 iats_10          0.235    FALSE
+
+
+=============================================================================
+MDS SPATIAL ANALYSIS: DISTANCE TO MH CLUSTER
+=============================================================================
+
+Mean distance to MH centroid:
+  Top 10 items: 0.429 
+  Other items: 0.532 
+
+t-test: t = 7.25 , p = 6.19e-07 
+
+
+========================================
+SUMMARY: NETWORK ANALYSIS RESULTS
+========================================
+
+Network properties:
+  Nodes: 119 
+  Edges: 1669 
+  Density: 0.238 
+  Communities: 10 
+
+Bridging (interoception -> mental health):
+  Top 10 items mean connections: 2.9 
+  Other items mean connections: 0.19 
+
+Key findings:
+1. Interoception and Mental Health form SEPARATE clusters
+2. IATS items generally bridge more to MH than IAS items
+3. Top 10 predictive items show distinct network patterns

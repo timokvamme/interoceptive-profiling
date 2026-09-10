@@ -1,0 +1,440 @@
+=============================================================================
+REVISION SENSITIVITY ANALYSES: DUAL-PATHWAY SEM (COMMSPSYCHOL-26-0385-T)
+=============================================================================
+
+Sample: N = 832 
+Date: 2026-09-07 09:44 
+Estimator: ML (lavaan), complete cases; no missing data on any model variable
+Bootstrap: 2000 resamples, percentile CIs, seed = 42
+
+Models:
+  M0  baseline    somatic = SSS-8 + PCS   no covariates  (published model)
+  A2  covariates  somatic = SSS-8 + PCS   + age + gender on TAS, Somatic, MH
+  A3  SSS-8 only  somatic = SSS-8         no covariates
+  A4  combined    somatic = SSS-8         + age + gender on TAS, Somatic, MH
+
+Missing data: the source file has 0 missing values on age, gender, tas,
+sss8, pcs, phq9, gad7, stai, and all 42 IAS/IATS items, so every model is
+estimated on the full N = 832 with no listwise deletion. 
+
+Gender coding: source variable is 1 / 2 / 3 (n = 402 / 425 / 5). Entered as 
+two dummies with category 1 as reference, rather than as a single numeric
+step, so the 5-person third category cannot distort a linear contrast.
+
+
+#############################################################################
+A1: METRIC RECONCILIATION FOR THE PUBLISHED MODEL (HIGHEST PRIORITY)
+#############################################################################
+
+Model: full 42-item IAS/IATS, somatic = SSS-8 + PCS composite, MH composite,
+no covariates. This is exactly the specification in 12_sem_pathway_analysis.R
+(run_dual_pathway_sem with somatic_combined and mh_composite).
+
+THE PROBLEM
+-----------
+12_sem_pathway_analysis.R z-scores every variable and then forms the product
+term ias_x_iats = ias_z * iats_z. The product of two z-scored variables is
+NOT itself unit-variance: SD(ias_z * iats_z) = 1.056073 in this sample.
+Consequently, for the interaction paths only, the fully standardized
+coefficient differs from the unstandardized one by that factor:
+  std.all = est * 1.056073
+For every non-interaction path the two metrics coincide to 3 decimals,
+because those predictors and all outcomes are already z-scored.
+lavaan attaches the UNSTANDARDIZED Wald p-value to std.all, which is why the
+p-value is identical in both columns and the discrepancy went unnoticed.
+
+Verification of the published numbers, from this re-fit:
+  IAS x IATS -> Somatic, unstandardized est = -0.089048 (SE 0.029999)
+  IAS x IATS -> Somatic, std.all           = -0.094041 (delta SE 0.031494)
+  ratio std.all / est                      = 1.056073
+  Wald p (identical for both)               = 0.002994
+  delta-method 95% CI, unstandardized      = [-0.1478, -0.0303]
+  delta-method 95% CI, standardized        = [-0.1558, -0.0323]
+
+The published interval [-0.146, -0.023] is centred on -0.0845, i.e. on the
+UNSTANDARDIZED point estimate, while the published point estimate -0.091 is
+the STANDARDIZED one. The manuscript therefore pairs a standardized estimate
+with an unstandardized interval. That is the defect these numbers replace.
+
+BOOTSTRAP RESULTS (5000 requested resamples, ordinary nonparametric,
+percentile method, seed = 42; 5000 succeeded, 0 failed)
+The standardized column is a genuine bootstrap of std.all: within every
+resample the model is re-fit and standardizedSolution() recomputes std.all
+from that resample's own implied variances. It is NOT the unstandardized
+interval multiplied by a constant.
+
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.346 [ -0.4087,  -0.2816]   < .0001 |  -0.346 [ -0.4056,  -0.2841]   < .0001
+IATS -> TAS                  |   0.314 [  0.2458,   0.3814]   < .0001 |   0.314 [  0.2468,   0.3804]   < .0001
+IAS x IATS -> TAS            |  -0.007 [ -0.0724,   0.0640]    0.8504 |  -0.008 [ -0.0765,   0.0682]    0.8504
+IAS -> Somatic               |  -0.094 [ -0.1609,  -0.0265]    0.0084 |  -0.094 [ -0.1612,  -0.0264]    0.0084
+IATS -> Somatic              |   0.444 [  0.3840,   0.5026]   < .0001 |   0.444 [  0.3901,   0.4961]   < .0001
+IAS x IATS -> Somatic        |  -0.089 [ -0.1523,  -0.0258]    0.0068 |  -0.094 [ -0.1607,  -0.0272]    0.0068
+TAS -> MH                    |   0.294 [  0.2346,   0.3499]   < .0001 |   0.307 [  0.2444,   0.3698]   < .0001
+Somatic -> MH                |   0.584 [  0.5259,   0.6423]   < .0001 |   0.611 [  0.5535,   0.6654]   < .0001
+IAS -> MH (direct)           |  -0.064 [ -0.1117,  -0.0162]    0.0084 |  -0.067 [ -0.1170,  -0.0168]    0.0084
+IATS -> MH (direct)          |  -0.005 [ -0.0546,   0.0461]    0.8660 |  -0.005 [ -0.0573,   0.0482]    0.8660
+IAS x IATS -> MH (direct)    |  -0.039 [ -0.0763,   0.0014]    0.0568 |  -0.043 [ -0.0842,   0.0015]    0.0568
+IAS -> TAS -> MH             |  -0.102 [ -0.1307,  -0.0751]   < .0001 |  -0.106 [ -0.1369,  -0.0785]   < .0001
+IATS -> TAS -> MH            |   0.092 [  0.0661,   0.1205]   < .0001 |   0.097 [  0.0690,   0.1271]   < .0001
+IAS -> Somatic -> MH         |  -0.055 [ -0.0943,  -0.0157]    0.0084 |  -0.057 [ -0.0980,  -0.0164]    0.0084
+IATS -> Somatic -> MH        |   0.259 [  0.2179,   0.3026]   < .0001 |   0.271 [  0.2322,   0.3116]   < .0001
+Total indirect               |   0.195 [  0.1192,   0.2695]   < .0001 |   0.204 [  0.1261,   0.2806]   < .0001
+
+Headline coefficients requested for the response letter:
+---------------------------------------------------------------------------------------------------------------- 
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.346 [ -0.4087,  -0.2816]   < .0001 |  -0.346 [ -0.4056,  -0.2841]   < .0001
+IATS -> TAS                  |   0.314 [  0.2458,   0.3814]   < .0001 |   0.314 [  0.2468,   0.3804]   < .0001
+IAS x IATS -> TAS            |  -0.007 [ -0.0724,   0.0640]    0.8504 |  -0.008 [ -0.0765,   0.0682]    0.8504
+IATS -> Somatic              |   0.444 [  0.3840,   0.5026]   < .0001 |   0.444 [  0.3901,   0.4961]   < .0001
+IAS -> Somatic               |  -0.094 [ -0.1609,  -0.0265]    0.0084 |  -0.094 [ -0.1612,  -0.0264]    0.0084
+IAS x IATS -> Somatic        |  -0.089 [ -0.1523,  -0.0258]    0.0068 |  -0.094 [ -0.1607,  -0.0272]    0.0068
+
+RECOMMENDATION
+--------------
+Report the FULLY STANDARDIZED (std.all) metric throughout, with percentile
+bootstrap CIs computed on the standardized quantity, i.e. the right-hand
+block above. Reasons:
+  1. It is the metric the main text already quotes (-0.345, +0.314, +0.444,
+     -0.095, -0.091), so only the intervals change, not the headline values.
+  2. It is the only metric in which the interaction term is on the same
+     footing as the main effects; the unstandardized interaction is scaled
+     by the arbitrary SD of the product term (1.0561).
+  3. Standardized betas are what the profile-level interpretation rests on.
+Supplementary Table 1 should then be regenerated in the same metric, or
+explicitly labelled 'unstandardized' with the unstandardized CIs from the
+left-hand block. Do not mix the two, which is the present state.
+
+
+#############################################################################
+MODEL M0: BASELINE (SSS-8 + PCS, NO COVARIATES) - FULL PATH SET
+#############################################################################
+
+Reproduction of the published dual-pathway SEM, re-estimated here so every
+comparison below is against numbers produced by this same script.
+The 'beta' column below is std.all with delta-method CIs; the bootstrap
+block underneath repeats it with percentile CIs on both metrics.
+
+Path                                 beta      SE               95% CI         p 
+---------------------------------------------------------------------------------------- 
+IAS -> TAS                         -0.346   0.028  [ -0.400,  -0.291]   < .0001 ***
+IATS -> TAS                         0.314   0.029  [  0.258,   0.371]   < .0001 ***
+IAS x IATS -> TAS                  -0.008   0.031  [ -0.069,   0.053]    0.8010 
+IAS -> Somatic                     -0.094   0.031  [ -0.154,  -0.033]    0.0025 **
+IATS -> Somatic                     0.444   0.027  [  0.390,   0.497]   < .0001 ***
+IAS x IATS -> Somatic              -0.094   0.031  [ -0.156,  -0.032]    0.0028 **
+TAS -> MH                           0.307   0.026  [  0.256,   0.359]   < .0001 ***
+Somatic -> MH                       0.611   0.022  [  0.567,   0.655]   < .0001 ***
+IAS -> MH (direct)                 -0.067   0.025  [ -0.116,  -0.018]    0.0072 **
+IATS -> MH (direct)                -0.005   0.027  [ -0.059,   0.049]    0.8629 
+IAS x IATS -> MH (direct)          -0.043   0.024  [ -0.090,   0.003]    0.0682 .
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH                   -0.106   0.013  [ -0.131,  -0.081]   < .0001 ***
+IATS -> TAS -> MH                   0.097   0.012  [  0.073,   0.121]   < .0001 ***
+IAS -> Somatic -> MH               -0.057   0.019  [ -0.094,  -0.020]    0.0025 **
+IATS -> Somatic -> MH               0.271   0.020  [  0.232,   0.310]   < .0001 ***
+Total indirect                      0.204   0.032  [  0.142,   0.266]   < .0001 ***
+
+R2: TAS = 0.234, Somatic = 0.203, MH = 0.559
+N = 832 | converged = TRUE
+
+Bootstrap percentile 95% CIs (5000 successful resamples of 5000; 0 failed):
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.346 [ -0.4087,  -0.2816]   < .0001 |  -0.346 [ -0.4056,  -0.2841]   < .0001
+IATS -> TAS                  |   0.314 [  0.2458,   0.3814]   < .0001 |   0.314 [  0.2468,   0.3804]   < .0001
+IAS x IATS -> TAS            |  -0.007 [ -0.0724,   0.0640]    0.8504 |  -0.008 [ -0.0765,   0.0682]    0.8504
+IAS -> Somatic               |  -0.094 [ -0.1609,  -0.0265]    0.0084 |  -0.094 [ -0.1612,  -0.0264]    0.0084
+IATS -> Somatic              |   0.444 [  0.3840,   0.5026]   < .0001 |   0.444 [  0.3901,   0.4961]   < .0001
+IAS x IATS -> Somatic        |  -0.089 [ -0.1523,  -0.0258]    0.0068 |  -0.094 [ -0.1607,  -0.0272]    0.0068
+TAS -> MH                    |   0.294 [  0.2346,   0.3499]   < .0001 |   0.307 [  0.2444,   0.3698]   < .0001
+Somatic -> MH                |   0.584 [  0.5259,   0.6423]   < .0001 |   0.611 [  0.5535,   0.6654]   < .0001
+IAS -> MH (direct)           |  -0.064 [ -0.1117,  -0.0162]    0.0084 |  -0.067 [ -0.1170,  -0.0168]    0.0084
+IATS -> MH (direct)          |  -0.005 [ -0.0546,   0.0461]    0.8660 |  -0.005 [ -0.0573,   0.0482]    0.8660
+IAS x IATS -> MH (direct)    |  -0.039 [ -0.0763,   0.0014]    0.0568 |  -0.043 [ -0.0842,   0.0015]    0.0568
+IAS -> TAS -> MH             |  -0.102 [ -0.1307,  -0.0751]   < .0001 |  -0.106 [ -0.1369,  -0.0785]   < .0001
+IATS -> TAS -> MH            |   0.092 [  0.0661,   0.1205]   < .0001 |   0.097 [  0.0690,   0.1271]   < .0001
+IAS -> Somatic -> MH         |  -0.055 [ -0.0943,  -0.0157]    0.0084 |  -0.057 [ -0.0980,  -0.0164]    0.0084
+IATS -> Somatic -> MH        |   0.259 [  0.2179,   0.3026]   < .0001 |   0.271 [  0.2322,   0.3116]   < .0001
+Total indirect               |   0.195 [  0.1192,   0.2695]   < .0001 |   0.204 [  0.1261,   0.2806]   < .0001
+
+
+#############################################################################
+A2: AGE + GENDER COVARIATE SEM (SOMATIC = SSS-8 + PCS)
+#############################################################################
+
+Age and gender enter as predictors of BOTH mediators (TAS, Somatic) and of
+the mental-health composite. Tests whether the dual-pathway dissociation is
+an artefact of demographic differences between profiles (the Efficient
+profile is significantly older).
+
+Path                                 beta      SE               95% CI         p 
+---------------------------------------------------------------------------------------- 
+IAS -> TAS                         -0.340   0.028  [ -0.395,  -0.286]   < .0001 ***
+IATS -> TAS                         0.299   0.030  [  0.241,   0.358]   < .0001 ***
+IAS x IATS -> TAS                  -0.008   0.031  [ -0.069,   0.052]    0.7869 
+IAS -> Somatic                     -0.092   0.031  [ -0.152,  -0.032]    0.0025 **
+IATS -> Somatic                     0.428   0.028  [  0.373,   0.483]   < .0001 ***
+IAS x IATS -> Somatic              -0.088   0.031  [ -0.149,  -0.027]    0.0044 **
+TAS -> MH                           0.300   0.026  [  0.249,   0.351]   < .0001 ***
+Somatic -> MH                       0.609   0.023  [  0.564,   0.653]   < .0001 ***
+IAS -> MH (direct)                 -0.065   0.025  [ -0.114,  -0.017]    0.0085 **
+IATS -> MH (direct)                -0.026   0.028  [ -0.080,   0.028]    0.3474 
+IAS x IATS -> MH (direct)          -0.043   0.023  [ -0.089,   0.003]    0.0696 .
+age (z) -> TAS                     -0.088   0.031  [ -0.149,  -0.027]    0.0047 **
+gender d2 (cat2 vs cat1) -> TAS    -0.062   0.030  [ -0.122,  -0.003]    0.0405 *
+gender d3 (cat3 vs cat1) -> TAS    -0.017   0.030  [ -0.077,   0.042]    0.5666 
+age (z) -> Somatic                  0.011   0.032  [ -0.051,   0.072]    0.7355 
+gender d2 (cat2 vs cat1) -> Somatic    0.125   0.030  [  0.066,   0.185]   < .0001 ***
+gender d3 (cat3 vs cat1) -> Somatic    0.113   0.031  [  0.053,   0.172]    0.0002 ***
+age (z) -> MH                      -0.093   0.024  [ -0.139,  -0.047]   < .0001 ***
+gender d2 (cat2 vs cat1) -> MH      0.018   0.023  [ -0.028,   0.063]    0.4437 
+gender d3 (cat3 vs cat1) -> MH      0.014   0.023  [ -0.031,   0.060]    0.5404 
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH                   -0.102   0.012  [ -0.127,  -0.078]   < .0001 ***
+IATS -> TAS -> MH                   0.090   0.012  [  0.066,   0.113]   < .0001 ***
+IAS -> Somatic -> MH               -0.056   0.019  [ -0.093,  -0.020]    0.0025 **
+IATS -> Somatic -> MH               0.261   0.020  [  0.221,   0.300]   < .0001 ***
+Total indirect                      0.192   0.031  [  0.130,   0.254]   < .0001 ***
+
+R2: TAS = 0.244, Somatic = 0.228, MH = 0.568
+N = 832 | converged = TRUE
+
+Bootstrap percentile 95% CIs (1984 successful resamples of 2000; 16 failed):
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.340 [ -0.4039,  -0.2777]   < .0001 |  -0.340 [ -0.4015,  -0.2816]   < .0001
+IATS -> TAS                  |   0.299 [  0.2279,   0.3678]   < .0001 |   0.299 [  0.2290,   0.3672]   < .0001
+IAS x IATS -> TAS            |  -0.008 [ -0.0706,   0.0652]    0.8579 |  -0.008 [ -0.0754,   0.0691]    0.8579
+IAS -> Somatic               |  -0.092 [ -0.1597,  -0.0248]    0.0091 |  -0.092 [ -0.1602,  -0.0252]    0.0091
+IATS -> Somatic              |   0.428 [  0.3677,   0.4866]   < .0001 |   0.428 [  0.3735,   0.4817]   < .0001
+IAS x IATS -> Somatic        |  -0.084 [ -0.1431,  -0.0227]    0.0101 |  -0.088 [ -0.1512,  -0.0239]    0.0101
+TAS -> MH                    |   0.287 [  0.2326,   0.3453]   < .0001 |   0.300 [  0.2415,   0.3646]   < .0001
+Somatic -> MH                |   0.582 [  0.5233,   0.6425]   < .0001 |   0.609 [  0.5508,   0.6645]   < .0001
+IAS -> MH (direct)           |  -0.062 [ -0.1073,  -0.0160]    0.0081 |  -0.065 [ -0.1124,  -0.0167]    0.0081
+IATS -> MH (direct)          |  -0.025 [ -0.0790,   0.0281]    0.3639 |  -0.026 [ -0.0826,   0.0292]    0.3639
+IAS x IATS -> MH (direct)    |  -0.038 [ -0.0769,   0.0004]    0.0534 |  -0.043 [ -0.0849,   0.0004]    0.0534
+IAS -> TAS -> MH             |  -0.098 [ -0.1273,  -0.0738]   < .0001 |  -0.102 [ -0.1333,  -0.0766]   < .0001
+IATS -> TAS -> MH            |   0.086 [  0.0608,   0.1134]   < .0001 |   0.090 [  0.0635,   0.1194]   < .0001
+IAS -> Somatic -> MH         |  -0.054 [ -0.0935,  -0.0141]    0.0091 |  -0.056 [ -0.0968,  -0.0146]    0.0091
+IATS -> Somatic -> MH        |   0.249 [  0.2079,   0.2912]   < .0001 |   0.261 [  0.2198,   0.3013]   < .0001
+Total indirect               |   0.183 [  0.1052,   0.2616]   < .0001 |   0.192 [  0.1108,   0.2726]   < .0001
+
+
+#############################################################################
+A3: SSS-8 ALONE AS THE SOMATIC MEDIATOR (NO COVARIATES)
+#############################################################################
+
+PCS dropped from the somatic composite. Reviewers note PCS is (a) also used
+as a standalone outcome and (b) measures cognitive pain appraisal rather
+than somatic symptom burden.
+
+NOTE: 12_sem_pathway_analysis.R already contains an SSS-alone vs SSS+PCS
+sensitivity check (its PART 4 / RQ4). That existing comparison reported:
+  SSS-8 Only : IATS->Som  0.409 | IAS->Som -0.099 | IxI->Som -0.068, p = .0336 | Som->MH 0.549 | R2 MH 0.528
+  SSS-8 + PCS: IATS->Som  0.443 | IAS->Som -0.093 | IxI->Som -0.094, p = .0030 | Som->MH 0.603 | R2 MH 0.560
+Those numbers (2026-09-02 rerun on corrected scores) are reproduced exactly below; this script adds the 95% CIs,
+the full path set, and the bootstrap CIs that the earlier run did not print.
+
+Path                                 beta      SE               95% CI         p 
+---------------------------------------------------------------------------------------- 
+IAS -> TAS                         -0.346   0.028  [ -0.400,  -0.291]   < .0001 ***
+IATS -> TAS                         0.314   0.029  [  0.258,   0.371]   < .0001 ***
+IAS x IATS -> TAS                  -0.008   0.031  [ -0.069,   0.053]    0.8010 
+IAS -> Somatic                     -0.099   0.031  [ -0.160,  -0.037]    0.0017 **
+IATS -> Somatic                     0.409   0.028  [  0.354,   0.465]   < .0001 ***
+IAS x IATS -> Somatic              -0.068   0.032  [ -0.131,  -0.006]    0.0330 *
+TAS -> MH                           0.329   0.027  [  0.276,   0.382]   < .0001 ***
+Somatic -> MH                       0.554   0.024  [  0.508,   0.600]   < .0001 ***
+IAS -> MH (direct)                 -0.062   0.026  [ -0.113,  -0.011]    0.0173 *
+IATS -> MH (direct)                 0.032   0.028  [ -0.023,   0.087]    0.2555 
+IAS x IATS -> MH (direct)          -0.062   0.024  [ -0.110,  -0.014]    0.0110 *
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH                   -0.114   0.013  [ -0.140,  -0.088]   < .0001 ***
+IATS -> TAS -> MH                   0.103   0.013  [  0.078,   0.129]   < .0001 ***
+IAS -> Somatic -> MH               -0.055   0.017  [ -0.089,  -0.020]    0.0018 **
+IATS -> Somatic -> MH               0.227   0.019  [  0.190,   0.264]   < .0001 ***
+Total indirect                      0.162   0.030  [  0.103,   0.221]   < .0001 ***
+
+R2: TAS = 0.234, Somatic = 0.176, MH = 0.524
+N = 832 | converged = TRUE
+
+Bootstrap percentile 95% CIs (2000 successful resamples of 2000; 0 failed):
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.346 [ -0.4090,  -0.2816]   < .0001 |  -0.346 [ -0.4074,  -0.2837]   < .0001
+IATS -> TAS                  |   0.314 [  0.2464,   0.3787]   < .0001 |   0.314 [  0.2468,   0.3804]   < .0001
+IAS x IATS -> TAS            |  -0.007 [ -0.0707,   0.0640]    0.8510 |  -0.008 [ -0.0759,   0.0683]    0.8510
+IAS -> Somatic               |  -0.099 [ -0.1664,  -0.0270]    0.0020 |  -0.099 [ -0.1660,  -0.0272]    0.0020
+IATS -> Somatic              |   0.409 [  0.3453,   0.4729]   < .0001 |   0.409 [  0.3502,   0.4663]   < .0001
+IAS x IATS -> Somatic        |  -0.065 [ -0.1283,  -0.0023]    0.0430 |  -0.068 [ -0.1340,  -0.0025]    0.0430
+TAS -> MH                    |   0.315 [  0.2568,   0.3751]   < .0001 |   0.329 [  0.2658,   0.3894]   < .0001
+Somatic -> MH                |   0.531 [  0.4751,   0.5837]   < .0001 |   0.554 [  0.4996,   0.6050]   < .0001
+IAS -> MH (direct)           |  -0.059 [ -0.1089,  -0.0088]    0.0200 |  -0.062 [ -0.1122,  -0.0091]    0.0200
+IATS -> MH (direct)          |   0.031 [ -0.0251,   0.0824]    0.2600 |   0.032 [ -0.0260,   0.0858]    0.2600
+IAS x IATS -> MH (direct)    |  -0.056 [ -0.0968,  -0.0139]    0.0080 |  -0.062 [ -0.1057,  -0.0154]    0.0080
+IAS -> TAS -> MH             |  -0.109 [ -0.1402,  -0.0819]   < .0001 |  -0.114 [ -0.1464,  -0.0861]   < .0001
+IATS -> TAS -> MH            |   0.099 [  0.0702,   0.1282]   < .0001 |   0.103 [  0.0734,   0.1334]   < .0001
+IAS -> Somatic -> MH         |  -0.052 [ -0.0885,  -0.0144]    0.0020 |  -0.055 [ -0.0917,  -0.0155]    0.0020
+IATS -> Somatic -> MH        |   0.217 [  0.1790,   0.2573]   < .0001 |   0.227 [  0.1896,   0.2642]   < .0001
+Total indirect               |   0.155 [  0.0775,   0.2319]   < .0001 |   0.162 [  0.0807,   0.2396]   < .0001
+
+
+#############################################################################
+A4: COMBINED - SSS-8 ALONE + AGE + GENDER COVARIATES
+#############################################################################
+
+Both adjustments applied simultaneously: the strictest test of the
+multiplicative somatic pathway.
+
+Path                                 beta      SE               95% CI         p 
+---------------------------------------------------------------------------------------- 
+IAS -> TAS                         -0.340   0.028  [ -0.395,  -0.286]   < .0001 ***
+IATS -> TAS                         0.299   0.030  [  0.241,   0.358]   < .0001 ***
+IAS x IATS -> TAS                  -0.008   0.031  [ -0.069,   0.052]    0.7869 
+IAS -> Somatic                     -0.097   0.031  [ -0.158,  -0.036]    0.0017 **
+IATS -> Somatic                     0.396   0.029  [  0.339,   0.454]   < .0001 ***
+IAS x IATS -> Somatic              -0.063   0.032  [ -0.125,  -0.001]    0.0471 *
+TAS -> MH                           0.324   0.027  [  0.271,   0.376]   < .0001 ***
+Somatic -> MH                       0.549   0.024  [  0.503,   0.596]   < .0001 ***
+IAS -> MH (direct)                 -0.059   0.026  [ -0.110,  -0.009]    0.0209 *
+IATS -> MH (direct)                 0.009   0.028  [ -0.046,   0.065]    0.7472 
+IAS x IATS -> MH (direct)          -0.061   0.024  [ -0.109,  -0.014]    0.0115 *
+age (z) -> TAS                     -0.088   0.031  [ -0.149,  -0.027]    0.0047 **
+gender d2 (cat2 vs cat1) -> TAS    -0.062   0.030  [ -0.122,  -0.003]    0.0405 *
+gender d3 (cat3 vs cat1) -> TAS    -0.017   0.030  [ -0.077,   0.042]    0.5666 
+age (z) -> Somatic                  0.016   0.032  [ -0.047,   0.079]    0.6150 
+gender d2 (cat2 vs cat1) -> Somatic    0.113   0.031  [  0.053,   0.174]    0.0003 ***
+gender d3 (cat3 vs cat1) -> Somatic    0.107   0.031  [  0.046,   0.168]    0.0006 ***
+age (z) -> MH                      -0.093   0.025  [ -0.141,  -0.045]    0.0001 ***
+gender d2 (cat2 vs cat1) -> MH      0.033   0.024  [ -0.014,   0.080]    0.1692 
+gender d3 (cat3 vs cat1) -> MH      0.024   0.024  [ -0.023,   0.071]    0.3188 
+
+Indirect effects (standardized):
+---------------------------------------------------------------------------------------- 
+IAS -> TAS -> MH                   -0.110   0.013  [ -0.136,  -0.085]   < .0001 ***
+IATS -> TAS -> MH                   0.097   0.013  [  0.072,   0.122]   < .0001 ***
+IAS -> Somatic -> MH               -0.054   0.017  [ -0.087,  -0.020]    0.0018 **
+IATS -> Somatic -> MH               0.218   0.019  [  0.180,   0.255]   < .0001 ***
+Total indirect                      0.151   0.030  [  0.092,   0.210]   < .0001 ***
+
+R2: TAS = 0.244, Somatic = 0.198, MH = 0.534
+N = 832 | converged = TRUE
+
+Bootstrap percentile 95% CIs (1984 successful resamples of 2000; 16 failed):
+                             | UNSTANDARDIZED (est)                   | FULLY STANDARDIZED (std.all)          
+Path                         |     est          95% boot CI    p_boot | std.all          95% boot CI    p_boot
+---------------------------------------------------------------------------------------------------------------- 
+IAS -> TAS                   |  -0.340 [ -0.4039,  -0.2777]   < .0001 |  -0.340 [ -0.4015,  -0.2816]   < .0001
+IATS -> TAS                  |   0.299 [  0.2279,   0.3678]   < .0001 |   0.299 [  0.2290,   0.3672]   < .0001
+IAS x IATS -> TAS            |  -0.008 [ -0.0706,   0.0652]    0.8579 |  -0.008 [ -0.0754,   0.0691]    0.8579
+IAS -> Somatic               |  -0.097 [ -0.1669,  -0.0269]    0.0071 |  -0.097 [ -0.1651,  -0.0272]    0.0071
+IATS -> Somatic              |   0.396 [  0.3318,   0.4608]   < .0001 |   0.396 [  0.3343,   0.4545]   < .0001
+IAS x IATS -> Somatic        |  -0.060 [ -0.1221,   0.0029]    0.0605 |  -0.063 [ -0.1277,   0.0032]    0.0605
+TAS -> MH                    |   0.310 [  0.2541,   0.3674]   < .0001 |   0.324 [  0.2635,   0.3860]   < .0001
+Somatic -> MH                |   0.526 [  0.4692,   0.5785]   < .0001 |   0.549 [  0.4918,   0.6010]   < .0001
+IAS -> MH (direct)           |  -0.057 [ -0.1048,  -0.0074]    0.0302 |  -0.059 [ -0.1093,  -0.0076]    0.0302
+IATS -> MH (direct)          |   0.009 [ -0.0470,   0.0609]    0.7389 |   0.009 [ -0.0492,   0.0632]    0.7389
+IAS x IATS -> MH (direct)    |  -0.056 [ -0.0954,  -0.0136]    0.0081 |  -0.061 [ -0.1048,  -0.0152]    0.0081
+IAS -> TAS -> MH             |  -0.106 [ -0.1366,  -0.0801]   < .0001 |  -0.110 [ -0.1425,  -0.0837]   < .0001
+IATS -> TAS -> MH            |   0.093 [  0.0653,   0.1226]   < .0001 |   0.097 [  0.0683,   0.1284]   < .0001
+IAS -> Somatic -> MH         |  -0.051 [ -0.0873,  -0.0144]    0.0071 |  -0.054 [ -0.0908,  -0.0149]    0.0071
+IATS -> Somatic -> MH        |   0.209 [  0.1687,   0.2491]   < .0001 |   0.218 [  0.1803,   0.2572]   < .0001
+Total indirect               |   0.145 [  0.0662,   0.2163]    0.0010 |   0.151 [  0.0704,   0.2270]    0.0010
+
+
+#############################################################################
+SIDE-BY-SIDE COMPARISON OF THE KEY PATHS ACROSS ALL FOUR MODELS
+#############################################################################
+
+Path                       | M0 base                | A2 +cov                | A3 SSS8                | A4 both               
+------------------------------------------------------------------------------------------------------------------------------ 
+IAS -> TAS                 | -0.346 p=< .0001      | -0.340 p=< .0001      | -0.346 p=< .0001      | -0.340 p=< .0001     
+IATS -> TAS                |  0.314 p=< .0001      |  0.299 p=< .0001      |  0.314 p=< .0001      |  0.299 p=< .0001     
+IAS x IATS -> TAS          | -0.008 p=0.8010       | -0.008 p=0.7869       | -0.008 p=0.8010       | -0.008 p=0.7869      
+IAS -> Somatic             | -0.094 p=0.0025       | -0.092 p=0.0025       | -0.099 p=0.0017       | -0.097 p=0.0017      
+IATS -> Somatic            |  0.444 p=< .0001      |  0.428 p=< .0001      |  0.409 p=< .0001      |  0.396 p=< .0001     
+IAS x IATS -> Somatic      | -0.094 p=0.0028       | -0.088 p=0.0044       | -0.068 p=0.0330       | -0.063 p=0.0471      
+TAS -> MH                  |  0.307 p=< .0001      |  0.300 p=< .0001      |  0.329 p=< .0001      |  0.324 p=< .0001     
+Somatic -> MH              |  0.611 p=< .0001      |  0.609 p=< .0001      |  0.554 p=< .0001      |  0.549 p=< .0001     
+
+
+KEY INTERACTION TERMS: STANDARDIZED, DELTA-METHOD vs BOOTSTRAP CIs
+-------------------------------------------------------------------------------------------------------- 
+Model  Interaction path          std.all       95% CI (delta)    p_Wald |   95% CI (bootstrap)    p_boot
+m0     IAS x IATS -> TAS          -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8504 
+m0     IAS x IATS -> Somatic      -0.094  [ -0.156,  -0.032]    0.0028 | [ -0.161,  -0.027]    0.0068 **
+a2     IAS x IATS -> TAS          -0.008  [ -0.069,   0.052]    0.7869 | [ -0.075,   0.069]    0.8579 
+a2     IAS x IATS -> Somatic      -0.088  [ -0.149,  -0.027]    0.0044 | [ -0.151,  -0.024]    0.0101 **
+a3     IAS x IATS -> TAS          -0.008  [ -0.069,   0.053]    0.8010 | [ -0.076,   0.068]    0.8510 
+a3     IAS x IATS -> Somatic      -0.068  [ -0.131,  -0.006]    0.0330 | [ -0.134,  -0.002]    0.0430 *
+a4     IAS x IATS -> TAS          -0.008  [ -0.069,   0.052]    0.7869 | [ -0.075,   0.069]    0.8579 
+a4     IAS x IATS -> Somatic      -0.063  [ -0.125,  -0.001]    0.0471 | [ -0.128,   0.003]    0.0605 *
+
+
+SAME INTERACTION TERMS IN THE UNSTANDARDIZED METRIC (for cross-checking
+against Supplementary Table 1)
+-------------------------------------------------------------------------------------------------------- 
+Model  Interaction path              est       95% CI (delta)    p_Wald |   95% CI (bootstrap)    p_boot
+m0     IAS x IATS -> TAS         -0.0074  [-0.0650,  0.0502]    0.8011 | [-0.0724,  0.0640]    0.8504
+m0     IAS x IATS -> Somatic     -0.0890  [-0.1478, -0.0303]    0.0030 | [-0.1523, -0.0258]    0.0068
+a2     IAS x IATS -> TAS         -0.0079  [-0.0652,  0.0494]    0.7869 | [-0.0706,  0.0652]    0.8579
+a2     IAS x IATS -> Somatic     -0.0837  [-0.1416, -0.0257]    0.0047 | [-0.1431, -0.0227]    0.0101
+a3     IAS x IATS -> TAS         -0.0074  [-0.0650,  0.0502]    0.8011 | [-0.0707,  0.0640]    0.8510
+a3     IAS x IATS -> Somatic     -0.0648  [-0.1246, -0.0051]    0.0335 | [-0.1283, -0.0023]    0.0430
+a4     IAS x IATS -> TAS         -0.0079  [-0.0652,  0.0494]    0.7869 | [-0.0706,  0.0652]    0.8579
+a4     IAS x IATS -> Somatic     -0.0597  [-0.1187, -0.0006]    0.0477 | [-0.1221,  0.0029]    0.0605
+
+
+MODEL R-SQUARED
+------------------------------------------------------------ 
+Model          R2 TAS R2 Somatic      R2 MH        N
+m0              0.234      0.203      0.559      832
+a2              0.244      0.228      0.568      832
+a3              0.234      0.176      0.524      832
+a4              0.244      0.198      0.534      832
+
+
+#############################################################################
+VERDICTS
+#############################################################################
+
+--- M0 baseline ( M0_baseline_SSS8+PCS_nocov ) ---
+  Somatic IAS x IATS: std.all = -0.094, delta CI [-0.156, -0.032], p = 0.0028
+                      bootstrap CI [-0.161, -0.027], p_boot = 0.0068 -> SIGNIFICANT (multiplicative somatic pathway holds)
+  Alexithymia IAS x IATS: std.all = -0.008, delta CI [-0.069, 0.053], p = 0.8010
+                          bootstrap CI [-0.076, 0.068], p_boot = 0.8504 -> NULL as expected (alexithymia pathway remains additive)
+
+--- A2 age + gender covariates ( A2_SSS8+PCS_age+gender ) ---
+  Somatic IAS x IATS: std.all = -0.088, delta CI [-0.149, -0.027], p = 0.0044
+                      bootstrap CI [-0.151, -0.024], p_boot = 0.0101 -> SIGNIFICANT (multiplicative somatic pathway holds)
+  Alexithymia IAS x IATS: std.all = -0.008, delta CI [-0.069, 0.052], p = 0.7869
+                          bootstrap CI [-0.075, 0.069], p_boot = 0.8579 -> NULL as expected (alexithymia pathway remains additive)
+
+--- A3 SSS-8 only ( A3_SSS8only_nocov ) ---
+  Somatic IAS x IATS: std.all = -0.068, delta CI [-0.131, -0.006], p = 0.0330
+                      bootstrap CI [-0.134, -0.002], p_boot = 0.0430 -> SIGNIFICANT (multiplicative somatic pathway holds)
+  Alexithymia IAS x IATS: std.all = -0.008, delta CI [-0.069, 0.053], p = 0.8010
+                          bootstrap CI [-0.076, 0.068], p_boot = 0.8510 -> NULL as expected (alexithymia pathway remains additive)
+
+--- A4 SSS-8 only + age + gender ( A4_SSS8only_age+gender ) ---
+  Somatic IAS x IATS: std.all = -0.063, delta CI [-0.125, -0.001], p = 0.0471
+                      bootstrap CI [-0.128, 0.003], p_boot = 0.0605 -> NOT significant (bootstrap CI includes zero)
+  Alexithymia IAS x IATS: std.all = -0.008, delta CI [-0.069, 0.052], p = 0.7869
+                          bootstrap CI [-0.075, 0.069], p_boot = 0.8579 -> NULL as expected (alexithymia pathway remains additive)
+
+Convergence: m0 = TRUE | a2 = TRUE | a3 = TRUE | a4 = TRUE 

@@ -1,0 +1,60 @@
+Loaded 832 participants
+
+Data for LPA: 832 complete cases
+
+Running LPA models for 1-6 profiles...
+
+MODEL COMPARISON (BIC - lower is better):
+# A tibble: 6 × 5
+  Classes    AIC    BIC Entropy   BLRT_p
+    <dbl>  <dbl>  <dbl>   <dbl>    <dbl>
+1       1 13074. 13093.   1     NA      
+2       2 13067. 13100.   0.322  0.00990
+3       3 13023. 13070.   0.665  0.00990
+4       4 13026. 13087.   0.518  0.0990 
+5       5 13020. 13095.   0.605  0.00990
+6       6 13003. 13092.   0.682  0.00990
+
+Best model by BIC: 3 profiles
+
+Cross-tabulation LPA vs K-means:
+   Kmeans
+LPA   1   2   3
+  1  48 233   0
+  2 208  68 213
+  3   2   0  60
+
+Adjusted Rand Index: 0.269 
+
+LPA Profile Outcomes:
+# A tibble: 3 × 9
+  lpa_profile     n TAS_mean PHQ9_mean GAD7_mean STAI_mean SSS8_mean PCS_mean
+        <dbl> <int>    <dbl>     <dbl>     <dbl>     <dbl>     <dbl>    <dbl>
+1           1   281     44.8      14.7      11.1      41.6      14.5     25.9
+2           2   489     53.7      18.2      14.5      49.4      17.9     32.1
+3           3    62     54.9      20.3      16.3      49.3      21.1     36.9
+# ℹ 1 more variable: label <chr>
+
+================================================================================
+LATENT PROFILE ANALYSIS - SUMMARY
+================================================================================
+
+Best model by BIC: 3 profiles
+Adjusted Rand Index (vs k-means): 0.269 
+
+Profile sizes:
+
+  1   2   3 
+281 489  62 
+
+
+Profile outcomes:
+# A tibble: 3 × 9
+  lpa_profile     n TAS_mean PHQ9_mean GAD7_mean STAI_mean SSS8_mean PCS_mean
+        <dbl> <int>    <dbl>     <dbl>     <dbl>     <dbl>     <dbl>    <dbl>
+1           1   281     44.8      14.7      11.1      41.6      14.5     25.9
+2           2   489     53.7      18.2      14.5      49.4      17.9     32.1
+3           3    62     54.9      20.3      16.3      49.3      21.1     36.9
+# ℹ 1 more variable: label <chr>
+
+LPA analysis complete. Output saved to: . 

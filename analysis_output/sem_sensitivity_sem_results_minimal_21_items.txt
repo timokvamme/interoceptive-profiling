@@ -1,0 +1,66 @@
+=============================================================================
+DUAL-PATHWAY SEM: Minimal Scale (21 Items)
+=============================================================================
+N = 832
+Date: 2026-09-07 09:16:15.286297
+
+SCALE COMPOSITION:
+  IAS:  10 items
+  IATS: 11 items
+  Total: 21 items
+
+IAS Items:
+  ias_19, ias_2, ias_5, ias_4, ias_3, ias_21, ias_11, ias_12, ias_15
+
+IATS Items:
+  iats_17, iats_21, iats_3, iats_18, iats_1, iats_16, iats_11, iats_15, iats_20, iats_19, iats_9, iats_6
+
+=============================================================================
+VARIANCE EXPLAINED (R²)
+=============================================================================
+  TAS (Alexithymia): 27.9%
+  Somatic Symptoms:  23.8%
+  Mental Health:     57.2%
+
+=============================================================================
+DIRECT EFFECTS (Standardized β)
+=============================================================================
+
+TO MEDIATORS:
+  IAS → TAS:        β = -0.38, < .001
+  IATS → TAS:       β = 0.32, < .001
+  IATS → Somatic:   β = 0.47, < .001
+  IAS → Somatic:    β = -0.09, < .01
+
+TO MENTAL HEALTH:
+  TAS → MH:          β = 0.28, < .001
+  Somatic → MH:      β = 0.61, < .001
+  IAS → MH (direct): β = -0.11, < .001
+  IATS → MH (direct): β = -0.00, 0.991 ** NOT SIGNIFICANT **
+
+=============================================================================
+INDIRECT EFFECTS (Mediation)
+=============================================================================
+
+Pathway                       Effect  % Total    p-value
+-------------------------------------------------------
+IAS → TAS → MH            -0.103    16.4%     < .001
+IATS → TAS → MH            0.087    13.8%     < .001
+IAS → Somatic → MH        -0.055     8.7%      < .01
+IATS → Somatic → MH        0.274    43.6%     < .001
+
+-------------------------------------------------------
+Total indirect effect: 82.5% of total effect on MH
+Total direct effect:   17.5% of total effect on MH
+
+=============================================================================
+KEY FINDING: PATHWAY DOMINANCE
+=============================================================================
+
+IAS operates primarily through TAS (Alexithymia):
+  - IAS → TAS → MH:     65.2% of IAS's indirect effect
+  - IAS → Somatic → MH: 34.8% of IAS's indirect effect
+
+IATS operates primarily through Somatic:
+  - IATS → Somatic → MH: 75.9% of IATS's indirect effect
+  - IATS → TAS → MH:     24.1% of IATS's indirect effect
