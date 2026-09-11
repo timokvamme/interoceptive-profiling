@@ -13,3 +13,5 @@ Panels D and E: Simple slopes illustrating IAS effects by profile. Panel D
 shows consistent negative slopes across profiles (no moderation).
 
 Sample: N = 832. Bootstrap = 5000.
+
+Source data for every panel: source_data/Source_Data_Figure_1.xlsx.

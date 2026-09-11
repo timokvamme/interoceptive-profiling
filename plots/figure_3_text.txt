@@ -15,5 +15,7 @@ correlation strengths.
 
 Panel D: MDS network of interoceptive and mental health items. Distances are
 based on 1 - |r|. Node size reflects absolute correlation with the mental
-health composite; white rings mark the top 10 predictor items. Edges indicate
+health composite; black rings mark the top 21 predictor items. Edges indicate
 |r| > 0.30 and transparency scales with strength. N = 832.
+
+Source data for every panel: source_data/Source_Data_Figure_3.xlsx.

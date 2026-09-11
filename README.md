@@ -162,8 +162,14 @@ python scripts/00b_build_derived_data.py --self-check
 │   ├── sub_plots/                     # Individual figure panels
 │   ├── other_plots_vviq_plots/        # VVIQ analyses, not printed in the paper
 │   └── supplementary_plots/           # Supplementary figures, see FIGURE_MAP.md
+├── source_data/                       # Numbers behind each main figure, one workbook per figure
 └── supplementary_data/                # Intermediate data tables and results
 ```
+
+`source_data/Source_Data_Figure_1.xlsx` to `_3.xlsx` hold the numerical values
+underlying every panel of the three main figures, one sheet per panel, with a
+README sheet in each workbook naming the file and script each sheet comes from.
+`scripts/make_source_data.py` rebuilds them from `supplementary_data/`.
 
 The file names of the supplementary figures use a per-analysis prefix, not the
 numbers printed in the paper. `plots/supplementary_plots/FIGURE_MAP.md` maps

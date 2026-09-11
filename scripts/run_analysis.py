@@ -106,6 +106,12 @@ PIPELINE = [
      "Supp. Fig. 18: TAS-20 subscale decomposition (needs 19)"),
     ("s24", "supplementary_figure_scripts/make_somatic_mediator_figure.py", "Python",
      "Supp. Fig. 24: coefficients by definition of the somatic mediator"),
+
+    # Journal source-data workbooks, one per main figure, built from the
+    # supplementary_data files the figure scripts read and write. Needs Rscript
+    # for the Figure 3D MDS coordinates.
+    ("sd", "make_source_data.py", "Python",
+     "Source data workbooks for Figures 1 to 3 (source_data/)"),
 ]
 
 def run_r_script(script_path):

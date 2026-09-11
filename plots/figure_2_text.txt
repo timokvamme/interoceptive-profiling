@@ -18,3 +18,5 @@ GAD-7 (G), and STAI (H). These panels show how the profiles differ across
 alexithymia, somatic symptoms, pain, depression, anxiety, and trait anxiety.
 
 Sample: N = 832.
+
+Source data for every panel: source_data/Source_Data_Figure_2.xlsx.
