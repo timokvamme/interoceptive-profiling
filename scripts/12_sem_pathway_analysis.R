@@ -57,7 +57,7 @@ dfc$iats_full <- rowMeans(dfc[, iats_full_items], na.rm = TRUE)
 # 1b. Minimal scales (top 21 items from consensus ranking)
 # -----------------------------------------------------------------------------
 
-# Top 10 IAS items + Top 11 IATS items from item selection analysis
+# Top 21 items from the item selection analysis (9 IAS + 12 IATS with the current ranking)
 # The minimal battery is the top 21 items of the consensus ranking written by
 # 09_item_selection_analysis.R (item_consensus_ranking.csv is sorted by that
 # ranking), so this script and 09 always agree on the item set.
