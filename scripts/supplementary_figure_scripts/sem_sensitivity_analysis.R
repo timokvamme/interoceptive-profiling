@@ -20,7 +20,7 @@ ias_full <- paste0("ias_", 1:21)
 iats_full <- paste0("iats_", 1:21)
 
 # Minimal scales (top 21 items from consensus ranking)
-# 10 IAS + 11 IATS items
+# 9 IAS + 12 IATS items with the current ranking; labels below are computed, not typed
 # Same minimal battery as 12_sem_pathway_analysis.R: the top 21 items of the
 # consensus ranking written by 09_item_selection_analysis.R.
 consensus_items <- read.csv("supplementary_data/item_consensus_ranking.csv")$item[1:21]
@@ -426,7 +426,8 @@ p_full <- create_sem_diagram(fit_full, " (Full: 42 items)",
                               sprintf("IAS: 21 items | IATS: 21 items | N = %d", nrow(dfc)))
 
 p_minimal <- create_sem_diagram(fit_minimal, " (Minimal: 21 items)",
-                                 sprintf("IAS: 10 items | IATS: 11 items | N = %d", nrow(dfc)))
+                                 sprintf("IAS: %d items | IATS: %d items | N = %d",
+                                         length(ias_minimal), length(iats_minimal), nrow(dfc)))
 
 # Combine side by side
 combined <- grid.arrange(p_full, p_minimal, ncol = 2)
@@ -451,7 +452,8 @@ cat(sprintf("Date: %s\n\n", Sys.time()))
 
 cat("SCALE DEFINITIONS:\n")
 cat("  Full:    IAS (21 items) + IATS (21 items) = 42 items total\n")
-cat("  Minimal: IAS (10 items) + IATS (11 items) = 21 items total\n")
+cat(sprintf("  Minimal: IAS (%d items) + IATS (%d items) = 21 items total\n",
+            length(ias_minimal), length(iats_minimal)))
 cat("           Selected via consensus ranking (LASSO + RF + Network centrality)\n\n")
 
 cat("=============================================================================\n")

@@ -2,11 +2,11 @@
 SEM SENSITIVITY ANALYSIS: Full vs Minimal Interoceptive Scales
 =============================================================================
 N = 832
-Date: 2026-09-07 09:16:15.19412
+Date: 2026-10-30 11:26:48.166822
 
 SCALE DEFINITIONS:
   Full:    IAS (21 items) + IATS (21 items) = 42 items total
-  Minimal: IAS (10 items) + IATS (11 items) = 21 items total
+  Minimal: IAS (9 items) + IATS (12 items) = 21 items total
            Selected via consensus ranking (LASSO + RF + Network centrality)
 
 =============================================================================
